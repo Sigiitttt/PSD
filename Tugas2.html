@@ -182,8 +182,20 @@
         </ul>
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="Tugas1.html"><strong>Memahami Bisnis</strong></a></li>
+
+
+
+
 <li class="toctree-l1 current active has-children"><a class="current reference internal" href="#"><strong>Data Understanding</strong></a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="Tugas3.html"><strong>Explorasi data</strong></a></li>
+
+
+
+
+
+
+
+
 </ul>
 </details></li>
 </ul>
@@ -381,8 +393,14 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-definisi"><strong>a. Definisi</strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#b-langkah-langkah-data-understanding"><strong>b. Langkah-langkah Data Understanding</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#langkah-langkah-praktis-dalam-memahami-data-lanjutan-studi-kasus-kedai-kopi-senja">Langkah-langkah Praktis dalam Memahami Data (Lanjutan Studi Kasus: Kedai Kopi “Senja”)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#langkah-1-mengumpulkan-data-awal-initial-data-collection"><strong>Langkah 1: Mengumpulkan Data Awal (Initial Data Collection)</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#langkah-2-mendeskripsikan-data-describe-data"><strong>Langkah 2: Mendeskripsikan Data (Describe Data)</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#langkah-3-menjelajahi-data-explore-data"><strong>Langkah 3: Menjelajahi Data (Explore Data)</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#langkah-4-memverifikasi-kualitas-data-verify-data-quality"><strong>Langkah 4: Memverifikasi Kualitas Data (Verify Data Quality)</strong></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kesimpulan-kenapa-tahap-ini-penting">Kesimpulan: Kenapa Tahap Ini Penting?</a></li>
 </ul>
             </nav>
         </div>
@@ -396,36 +414,92 @@ document.write(`
                   
   <section id="data-understanding">
 <h1><strong>Data Understanding</strong><a class="headerlink" href="#data-understanding" title="Link to this heading">#</a></h1>
-<section id="a-definisi">
-<h2><strong>a. Definisi</strong><a class="headerlink" href="#a-definisi" title="Link to this heading">#</a></h2>
-<p>Data understanding adalah proses <strong>mengumpulkan, mengenali, dan memahami data</strong> yang akan digunakan untuk menjawab masalah bisnis.</p>
+<p>Setelah kita tahu <strong>apa masalah bisnis</strong> yang mau diselesaikan di tahap <em>Business Understanding</em>, sekarang saatnya kita berkenalan lebih dekat dengan “bahan baku” utama kita: <strong>Data</strong>.</p>
+<p>Selamat datang di tahap kedua: <strong>Data Understanding</strong> (Memahami Data).</p>
+<p>Jika di tahap sebelumnya kita menjadi “dokter bisnis”, sekarang kita bertransformasi menjadi “detektif”. Tugas kita adalah menginvestigasi data yang kita miliki, mencari petunjuk, memahami karakternya, dan menemukan keanehan-keanehan yang mungkin tersembunyi.</p>
+<blockquote>
+<div><p><strong>Analogi Sederhana: Memasak dengan Bahan Baru</strong></p>
+<p>Bayangkan Anda seorang koki yang diberi sekotak bahan makanan misterius untuk dimasak. Apa yang akan Anda lakukan?</p>
+<p>Tentu Anda tidak akan langsung mencampurnya ke dalam panci. Anda akan membukanya satu per satu, mencium aromanya, mungkin mencicipi sedikit, melihat teksturnya, dan memisahkan mana bahan yang segar dan mana yang sudah kurang bagus.</p>
+<p>Tahap <strong>Data Understanding</strong> adalah persis seperti itu. Kita “mencicipi” dan “merasakan” data kita sebelum mengolahnya lebih lanjut.</p>
+</div></blockquote>
+<p>Tujuan dari tahap ini adalah untuk membangun pemahaman yang kuat tentang data, yang akan menjadi dasar untuk semua langkah teknis selanjutnya.</p>
+<hr class="docutils" />
+<section id="langkah-langkah-praktis-dalam-memahami-data-lanjutan-studi-kasus-kedai-kopi-senja">
+<h2>Langkah-langkah Praktis dalam Memahami Data (Lanjutan Studi Kasus: Kedai Kopi “Senja”)<a class="headerlink" href="#langkah-langkah-praktis-dalam-memahami-data-lanjutan-studi-kasus-kedai-kopi-senja" title="Link to this heading">#</a></h2>
+<p>Kita akan melanjutkan investigasi kita pada data dari <strong>Kedai Kopi Senja</strong>. Di tahap sebelumnya, kita tahu bahwa kita punya data transaksi dan data pelanggan.</p>
+<section id="langkah-1-mengumpulkan-data-awal-initial-data-collection">
+<h3><strong>Langkah 1: Mengumpulkan Data Awal (Initial Data Collection)</strong><a class="headerlink" href="#langkah-1-mengumpulkan-data-awal-initial-data-collection" title="Link to this heading">#</a></h3>
+<p>Ini adalah langkah paling awal: mengumpulkan semua data yang relevan dari berbagai sumber ke satu tempat.</p>
+<ul class="simple">
+<li><p><strong>Tindakan:</strong> Kita meminta akses ke database mesin kasir dan sistem program loyalitas Kedai Kopi Senja. Kita <em>meng-export</em> data tersebut, misalnya dalam format file CSV atau Excel.</p></li>
+<li><p><strong>Hasil:</strong> Kita sekarang punya dua file utama: <code class="docutils literal notranslate"><span class="pre">transaksi.csv</span></code> dan <code class="docutils literal notranslate"><span class="pre">pelanggan.csv</span></code>.</p></li>
+</ul>
 </section>
-<section id="b-langkah-langkah-data-understanding">
-<h2><strong>b. Langkah-langkah Data Understanding</strong><a class="headerlink" href="#b-langkah-langkah-data-understanding" title="Link to this heading">#</a></h2>
+<section id="langkah-2-mendeskripsikan-data-describe-data">
+<h3><strong>Langkah 2: Mendeskripsikan Data (Describe Data)</strong><a class="headerlink" href="#langkah-2-mendeskripsikan-data-describe-data" title="Link to this heading">#</a></h3>
+<p>Setelah data terkumpul, kita perlu mendokumentasikan “kartu identitas” dari setiap set data.</p>
+<ul class="simple">
+<li><p><strong>Tindakan:</strong> Kita periksa kedua file tersebut.</p>
+<ul>
+<li><p><strong>Untuk <code class="docutils literal notranslate"><span class="pre">transaksi.csv</span></code>:</strong> Ada berapa baris (jumlah transaksi)? Ada berapa kolom? Apa saja nama kolomnya (<code class="docutils literal notranslate"><span class="pre">id_transaksi</span></code>, <code class="docutils literal notranslate"><span class="pre">tanggal</span></code>, <code class="docutils literal notranslate"><span class="pre">item</span></code>, <code class="docutils literal notranslate"><span class="pre">id_pelanggan</span></code>)? Apa tipe data di setiap kolom (teks, angka, tanggal)?</p></li>
+<li><p><strong>Untuk <code class="docutils literal notranslate"><span class="pre">pelanggan.csv</span></code>:</strong> Sama, kita periksa jumlah baris (jumlah pelanggan), nama kolom, dan tipe datanya.</p></li>
+</ul>
+</li>
+<li><p><strong>Hasil:</strong> Kita punya gambaran umum tentang volume dan format data. Misalnya, “Terdapat 15.000 baris transaksi dalam 6 bulan terakhir dan 850 pelanggan terdaftar.”</p></li>
+</ul>
+</section>
+<section id="langkah-3-menjelajahi-data-explore-data">
+<h3><strong>Langkah 3: Menjelajahi Data (Explore Data)</strong><a class="headerlink" href="#langkah-3-menjelajahi-data-explore-data" title="Link to this heading">#</a></h3>
+<p>Inilah bagian paling seru dari pekerjaan detektif! Kita mulai “menginterogasi” data dengan statistik dan visualisasi sederhana untuk mencari pola atau wawasan awal.</p>
+<ul class="simple">
+<li><p><strong>Tindakan:</strong></p>
 <ol class="arabic simple">
-<li><p><strong>Kumpulkan Data Awal</strong></p>
-<ul class="simple">
-<li><p>Ambil dataset dari database, file CSV, API, dll.</p></li>
-</ul>
-</li>
-<li><p><strong>Deskripsi Data</strong></p>
-<ul class="simple">
-<li><p>Apa saja fitur/kolom yang tersedia?</p></li>
-<li><p>Tipe data: numerik, kategorikal, teks, tanggal, dll.</p></li>
-</ul>
-</li>
-<li><p><strong>Eksplorasi Awal</strong></p>
-<ul class="simple">
-<li><p>Lihat ukuran data (baris, kolom).</p></li>
-<li><p>Lihat statistik deskriptif (mean, median, nilai unik).</p></li>
-</ul>
-</li>
-<li><p><strong>Identifikasi Masalah Data</strong></p>
-<ul class="simple">
-<li><p>Missing values, outliers, duplikasi, data tidak konsisten.</p></li>
-</ul>
-</li>
+<li><p><strong>Statistik Deskriptif:</strong> Kita lihat statistik dasar dari data numerik. Misalnya, berapa rata-rata nilai transaksi? Berapa transaksi terbesar dan terkecil?</p></li>
+<li><p><strong>Melihat Distribusi:</strong> Produk apa yang paling laris? Hari apa yang paling ramai (Senin, Minggu)? Jam berapa puncak keramaian kedai kopi? Kita bisa membuat grafik batang sederhana untuk melihatnya.</p></li>
+<li><p><strong>Mencari Hubungan Awal:</strong> Apakah ada hubungan antara hari dan jenis produk yang dibeli? (misalnya, di akhir pekan lebih banyak yang beli minuman non-kopi?).</p></li>
 </ol>
+</li>
+<li><p><strong>Hasil (Contoh Temuan):</strong></p>
+<ul>
+<li><p>“Wow, ternyata <strong>Kopi Susu Gula Aren</strong> adalah produk terlaris, terjual 3x lebih banyak dari Americano.”</p></li>
+<li><p>“Puncak keramaian terjadi pada jam 8-10 pagi dan jam 3-5 sore.”</p></li>
+<li><p>“Transaksi di hari Sabtu dan Minggu rata-rata nilainya lebih tinggi daripada hari kerja.”</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="langkah-4-memverifikasi-kualitas-data-verify-data-quality">
+<h3><strong>Langkah 4: Memverifikasi Kualitas Data (Verify Data Quality)</strong><a class="headerlink" href="#langkah-4-memverifikasi-kualitas-data-verify-data-quality" title="Link to this heading">#</a></h3>
+<p>Tidak ada data yang sempurna. Di tahap ini, kita mencari “cacat” atau masalah dalam data kita.</p>
+<ul class="simple">
+<li><p><strong>Tindakan:</strong></p>
+<ol class="arabic simple">
+<li><p><strong>Mencari Nilai yang Hilang (<em>Missing Values</em>):</strong> Apakah ada transaksi yang tidak tercatat <code class="docutils literal notranslate"><span class="pre">id_pelanggan</span></code>-nya? Kenapa?</p></li>
+<li><p><strong>Mencari Kesalahan atau Keanehan (<em>Anomalies/Errors</em>):</strong> Apakah ada nama produk yang salah ketik (misal: “Croissant”, “Croisant”, “Crossant”)? Apakah ada nilai transaksi yang minus atau nol?</p></li>
+<li><p><strong>Memeriksa Konsistensi:</strong> Apakah format tanggal sudah seragam di semua baris?</p></li>
+</ol>
+</li>
+<li><p><strong>Hasil (Contoh Temuan):</strong></p>
+<ul>
+<li><p>“Ditemukan 20% transaksi tidak memiliki <code class="docutils literal notranslate"><span class="pre">id_pelanggan</span></code>. Kemungkinan ini adalah transaksi dari pelanggan non-member.”</p></li>
+<li><p>“Nama produk ‘Americano’ terkadang ditulis sebagai ‘Americano Black’. Ini harus diseragamkan.”</p></li>
+<li><p>“Ada satu transaksi dengan nilai Rp 5.000.000, ini tidak wajar. Perlu diperiksa apakah ini salah input.”</p></li>
+</ul>
+</li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="kesimpulan-kenapa-tahap-ini-penting">
+<h2>Kesimpulan: Kenapa Tahap Ini Penting?<a class="headerlink" href="#kesimpulan-kenapa-tahap-ini-penting" title="Link to this heading">#</a></h2>
+<p>Melewatkan tahap <strong>Data Understanding</strong> adalah resep menuju bencana. Tanpa memahami data kita, kita bisa saja:</p>
+<ul class="simple">
+<li><p>Membuat model dari data yang salah atau “kotor”, yang akan menghasilkan kesimpulan yang salah (<em>garbage in, garbage out</em>).</p></li>
+<li><p>Kehilangan wawasan penting yang sebenarnya sudah terlihat dari eksplorasi data sederhana.</p></li>
+<li><p>Menghabiskan waktu berhari-hari untuk memperbaiki masalah di tahap selanjutnya, padahal masalah itu bisa dideteksi lebih awal di sini.</p></li>
+</ul>
+<p>Dengan menyelesaikan tahap ini, kita tidak hanya memahami data, tetapi juga mulai membangun intuisi tentang cerita apa yang bisa diungkapkan oleh data tersebut. Kita siap untuk tahap selanjutnya: <strong>menyiapkan data untuk dianalisis</strong>.</p>
 </section>
 <div class="toctree-wrapper compound">
 </div>
@@ -495,8 +569,14 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-definisi"><strong>a. Definisi</strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#b-langkah-langkah-data-understanding"><strong>b. Langkah-langkah Data Understanding</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#langkah-langkah-praktis-dalam-memahami-data-lanjutan-studi-kasus-kedai-kopi-senja">Langkah-langkah Praktis dalam Memahami Data (Lanjutan Studi Kasus: Kedai Kopi “Senja”)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#langkah-1-mengumpulkan-data-awal-initial-data-collection"><strong>Langkah 1: Mengumpulkan Data Awal (Initial Data Collection)</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#langkah-2-mendeskripsikan-data-describe-data"><strong>Langkah 2: Mendeskripsikan Data (Describe Data)</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#langkah-3-menjelajahi-data-explore-data"><strong>Langkah 3: Menjelajahi Data (Explore Data)</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#langkah-4-memverifikasi-kualitas-data-verify-data-quality"><strong>Langkah 4: Memverifikasi Kualitas Data (Verify Data Quality)</strong></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kesimpulan-kenapa-tahap-ini-penting">Kesimpulan: Kenapa Tahap Ini Penting?</a></li>
 </ul>
   </nav></div>
 

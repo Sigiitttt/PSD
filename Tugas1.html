@@ -182,8 +182,20 @@
         </ul>
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active"><a class="current reference internal" href="#"><strong>Memahami Bisnis</strong></a></li>
+
+
+
+
 <li class="toctree-l1 has-children"><a class="reference internal" href="Tugas2.html"><strong>Data Understanding</strong></a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="Tugas3.html"><strong>Explorasi data</strong></a></li>
+
+
+
+
+
+
+
+
 </ul>
 </details></li>
 </ul>
@@ -381,9 +393,31 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-definisi"><strong>a. Definisi</strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#b-langkah-langkah-business-understanding">b. <strong>Langkah-langkah Business Understanding</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#"><strong>Memahami Bisnis</strong></a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bagian-1-judul-dan-pengantar"><strong>BAGIAN 1: Judul dan Pengantar</strong></a></li>
 </ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#tujuan-utama-tahap-ini-dari-katanya-menjadi-nyata">🎯 Tujuan Utama Tahap Ini: Dari “Katanya” menjadi “Nyata”</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#studi-kasus-kedai-kopi-senja">🏪 Studi Kasus: Kedai Kopi “Senja”</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#langkah-1-menentukan-tujuan-bisnis-utama"><strong>Langkah 1: Menentukan Tujuan Bisnis Utama</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bagian-2-kode-pendokumentasian-tujuan"><strong>BAGIAN 2: Kode Pendokumentasian Tujuan</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bagian-3-mengkaji-situasi"><strong>BAGIAN 3: Mengkaji Situasi</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#langkah-2-mengkaji-situasi-sumber-daya-yang-ada"><strong>Langkah 2: Mengkaji Situasi &amp; Sumber Daya yang Ada</strong> 🗺️</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bagian-4-kode-simulasi-data"><strong>BAGIAN 4: Kode Simulasi Data</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bagian-5-menentukan-tujuan-teknis"><strong>BAGIAN 5: Menentukan Tujuan Teknis</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#langkah-3-menerjemahkan-ke-tujuan-teknis-proyek-data"><strong>Langkah 3: Menerjemahkan ke Tujuan Teknis Proyek Data</strong> 👨‍💻</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bagian-6-kode-tujuan-teknis"><strong>BAGIAN 6: Kode Tujuan Teknis</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bagian-7-rencana-proyek"><strong>BAGIAN 7: Rencana Proyek</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#langkah-4-membuat-rencana-proyek-awal"><strong>Langkah 4: Membuat Rencana Proyek Awal</strong> 📝</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#bagian-8-kode-kriteria-sukses"><strong>BAGIAN 8: Kode Kriteria Sukses</strong></a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bagian-9-kesimpulan"><strong>BAGIAN 9: Kesimpulan</strong></a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#kesimpulan-kenapa-repot-repot">Kesimpulan: Kenapa Repot-Repot?</a></li>
+</ul>
+
             </nav>
         </div>
     </div>
@@ -396,40 +430,251 @@ document.write(`
                   
   <section id="memahami-bisnis">
 <h1><strong>Memahami Bisnis</strong><a class="headerlink" href="#memahami-bisnis" title="Link to this heading">#</a></h1>
-<section id="a-definisi">
-<h2><strong>a. Definisi</strong><a class="headerlink" href="#a-definisi" title="Link to this heading">#</a></h2>
-<p>Memahami bisnis adalah tahap awal dalam <strong>CRISP-DM (Cross-Industry Standard Process for Data Mining)</strong>.<br />
-Tujuannya: mengetahui <strong>apa masalah bisnis yang ingin diselesaikan</strong> dan <strong>apa tujuan yang ingin dicapai</strong> dengan data science.</p>
+<section id="bagian-1-judul-dan-pengantar">
+<h2><strong>BAGIAN 1: Judul dan Pengantar</strong><a class="headerlink" href="#bagian-1-judul-dan-pengantar" title="Link to this heading">#</a></h2>
+<p>Selamat datang di langkah pertama dan paling penting dalam dunia data science: <strong>Memahami Bisnis</strong> (<em>Business Understanding</em>).</p>
+<p>Banyak yang mengira proyek data itu dimulai dengan mengumpulkan data sebanyak-banyaknya atau langsung membuat model AI yang canggih. Kenyataannya, proyek terbaik justru dimulai dari secangkir kopi dan obrolan mendalam tentang <strong>masalah</strong> dan <strong>tujuan</strong> bisnis.</p>
+<blockquote>
+<div><p><strong>Analogi Sederhana: Menjadi Dokter Bisnis</strong></p>
+<p>Bayangkan Anda adalah seorang dokter spesialis. Seorang pasien datang dengan keluhan “badan saya tidak enak”. Apakah Anda akan langsung menyuruhnya melakukan CT scan, tes darah, dan MRI sekaligus? Tentu tidak.</p>
+<p>Anda akan bertanya dulu: “Di mana rasa tidak enaknya? Sejak kapan? Apa saja yang sudah Anda lakukan?”</p>
+<p>Sama seperti dokter, seorang <em>data scientist</em> harus “mendiagnosis” masalah bisnis terlebih dahulu sebelum memberikan “resep” berupa analisis data atau model AI.</p>
+</div></blockquote>
+<p>Tahap <strong>Memahami Bisnis</strong> adalah proses diagnosis ini. Tujuannya sederhana: memastikan kita menyelesaikan <strong>masalah yang tepat</strong> dengan <strong>cara yang benar</strong>.</p>
+<hr class="docutils" />
 </section>
-<section id="b-langkah-langkah-business-understanding">
-<h2>b. <strong>Langkah-langkah Business Understanding</strong><a class="headerlink" href="#b-langkah-langkah-business-understanding" title="Link to this heading">#</a></h2>
+</section>
+<section id="tujuan-utama-tahap-ini-dari-katanya-menjadi-nyata">
+<h1>🎯 Tujuan Utama Tahap Ini: Dari “Katanya” menjadi “Nyata”<a class="headerlink" href="#tujuan-utama-tahap-ini-dari-katanya-menjadi-nyata" title="Link to this heading">#</a></h1>
+<p>Di fase ini, kita ingin mengubah tujuan bisnis yang seringkali masih samar menjadi sebuah rencana proyek data yang jelas dan terukur.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p><strong>Tujuan Bisnis (Yang Sering Samar)</strong></p></th>
+<th class="head text-left"><p>➡️</p></th>
+<th class="head text-left"><p><strong>Tujuan Proyek Data (Yang Jelas &amp; Terukur)</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p>“Kita harus meningkatkan penjualan!”</p></td>
+<td class="text-left"><p>➡️</p></td>
+<td class="text-left"><p>“Membuat sistem rekomendasi produk di website untuk meningkatkan nilai transaksi rata-rata sebesar 15%.”</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>“Kenapa banyak pelanggan yang pergi ya?”</p></td>
+<td class="text-left"><p>➡️</p></td>
+<td class="text-left"><p>“Membangun model untuk memprediksi pelanggan mana yang paling berisiko berhenti berlangganan dalam 30 hari ke depan.”</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>“Promosi kita kayaknya kurang efektif.”</p></td>
+<td class="text-left"><p>➡️</p></td>
+<td class="text-left"><p>“Menganalisis data kampanye marketing untuk menemukan segmen pelanggan mana yang paling responsif terhadap diskon.”</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Dengan kata lain, kita menerjemahkan <strong>bahasa bisnis</strong> ke dalam <strong>bahasa data</strong>.</p>
+<hr class="docutils" />
+</section>
+<section id="studi-kasus-kedai-kopi-senja">
+<h1>🏪 Studi Kasus: Kedai Kopi “Senja”<a class="headerlink" href="#studi-kasus-kedai-kopi-senja" title="Link to this heading">#</a></h1>
+<p>Mari kita bedah tahap ini dengan contoh nyata. Bayangkan kita adalah <em>data scientist</em> yang disewa oleh <strong>Kedai Kopi Senja</strong>, sebuah kedai kopi lokal yang sedang naik daun.</p>
+<section id="langkah-1-menentukan-tujuan-bisnis-utama">
+<h2><strong>Langkah 1: Menentukan Tujuan Bisnis Utama</strong><a class="headerlink" href="#langkah-1-menentukan-tujuan-bisnis-utama" title="Link to this heading">#</a></h2>
+<p>Ini adalah sesi “curhat” dengan pemilik kedai kopi untuk menggali apa yang menjadi keresahan dan harapan mereka.</p>
+<ul class="simple">
+<li><p><strong>Pemilik Kedai:</strong> “Saya lihat penjualan beberapa bulan ini stagnan. Saya ingin penjualan kita naik lagi, tapi bingung harus mulai dari mana.”</p></li>
+<li><p><strong>Data Scientist:</strong> “Oke, ‘menaikkan penjualan’ itu tujuan yang bagus. Agar lebih spesifik, kenaikan seperti apa yang kita harapkan? Mungkin kita bisa fokus meningkatkan jumlah transaksi per pelanggan atau menarik lebih banyak pelanggan baru?”</p></li>
+<li><p><strong>Pemilik Kedai:</strong> “Hmm, saya ingin pelanggan yang sudah ada jadi lebih sering jajan di sini. Mungkin kita bisa buat mereka beli lebih banyak setiap kali datang.”</p></li>
+</ul>
+<p>Dari obrolan ini, kita berhasil mengerucutkan masalah.</p>
+<ul class="simple">
+<li><p><strong>Tujuan Awal:</strong> Meningkatkan penjualan.</p></li>
+<li><p><strong>Tujuan Bisnis yang Lebih Jelas:</strong> Mendorong pelanggan yang sudah ada untuk membeli lebih banyak produk dalam satu kali transaksi (<em>increase basket size</em>).</p></li>
+</ul>
+</section>
+<section id="bagian-2-kode-pendokumentasian-tujuan">
+<h2><strong>BAGIAN 2: Kode Pendokumentasian Tujuan</strong><a class="headerlink" href="#bagian-2-kode-pendokumentasian-tujuan" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># @title Mendokumentasikan Tujuan Bisnis</span>
+<span class="c1"># Sebagai seorang data scientist, kita bisa mulai mendokumentasikan hasil diskusi</span>
+<span class="c1"># ke dalam notebook kerja kita.</span>
+
+<span class="n">tujuan_bisnis_utama</span> <span class="o">=</span> <span class="s2">&quot;Meningkatkan nilai transaksi rata-rata per pelanggan (average basket size).&quot;</span>
+<span class="n">pemangku_kepentingan</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Pemilik Kedai&quot;</span><span class="p">,</span> <span class="s2">&quot;Manajer Operasional&quot;</span><span class="p">]</span>
+<span class="n">metrik_bisnisBAGIAN</span> <span class="mi">3</span><span class="p">:</span> <span class="n">Mengkaji</span> <span class="n">Situasi_kunci</span> <span class="o">=</span> <span class="s2">&quot;Rupiah (IDR) per transaksi&quot;</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;--- Hasil Diskusi Awal ---&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Tujuan Bisnis Utama: </span><span class="si">{</span><span class="n">tujuan_bisnis_utama</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Pemangku Kepentingan Utama: </span><span class="si">{</span><span class="n">pemangku_kepentingan</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Metrik yang Akan Diukur: </span><span class="si">{</span><span class="n">metrik_bisnis_kunci</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">  File</span><span class="nn"> &quot;/tmp/ipython-input-189906073.py&quot;</span><span class="gt">, line </span><span class="mi">7</span>
+    <span class="n">metrik_bisnisBAGIAN</span> <span class="mi">3</span><span class="p">:</span> <span class="n">Mengkaji</span> <span class="n">Situasi_kunci</span> <span class="o">=</span> <span class="s2">&quot;Rupiah (IDR) per transaksi&quot;</span>
+                        <span class="o">^</span>
+<span class="ne">SyntaxError</span>: invalid syntax
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="bagian-3-mengkaji-situasi">
+<h2><strong>BAGIAN 3: Mengkaji Situasi</strong><a class="headerlink" href="#bagian-3-mengkaji-situasi" title="Link to this heading">#</a></h2>
+</section>
+<section id="langkah-2-mengkaji-situasi-sumber-daya-yang-ada">
+<h2><strong>Langkah 2: Mengkaji Situasi &amp; Sumber Daya yang Ada</strong> 🗺️<a class="headerlink" href="#langkah-2-mengkaji-situasi-sumber-daya-yang-ada" title="Link to this heading">#</a></h2>
+<p>Sekarang kita “inspeksi” dapur Kedai Kopi Senja. Apa saja “bahan” (data) dan “alat” (sumber daya) yang kita punya?</p>
+<ul class="simple">
+<li><p><strong>Anda:</strong> “Data apa saja yang selama ini sudah dikumpulkan?”</p></li>
+<li><p><strong>Pemilik Kedai:</strong> “Kami punya catatan transaksi dari mesin kasir. Isinya ada tanggal, jam, produk yang dibeli, dan total harga. Kami juga punya program loyalitas, jadi ada data pelanggan.”</p></li>
+</ul>
+<p><strong>Hasil Kajian:</strong></p>
+<ul class="simple">
+<li><p><strong>Aset (Data):</strong> Data transaksi historis, data anggota program loyalitas.</p></li>
+<li><p><strong>Aset (Manusia):</strong> Wawasan dari barista senior (pengetahuan domain).</p></li>
+<li><p><strong>Batasan:</strong> Belum ada data demografis pelanggan (usia, pekerjaan). Data masih terpisah.</p></li>
+</ul>
+</section>
+<section id="bagian-4-kode-simulasi-data">
+<h2><strong>BAGIAN 4: Kode Simulasi Data</strong><a class="headerlink" href="#bagian-4-kode-simulasi-data" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># @title Simulasi Data yang Tersedia</span>
+<span class="c1"># Kita bisa membuat contoh data (dummy data) untuk membayangkan seperti apa</span>
+<span class="c1"># data yang akan kita olah nantinya. Ini membantu kita memahami struktur dan potensi data.</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+
+<span class="c1"># Simulasi data transaksi dari mesin kasir</span>
+<span class="n">data_transaksi</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;id_transaksi&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span>
+    <span class="s1">&#39;tanggal&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;2025-08-28&#39;</span><span class="p">,</span> <span class="s1">&#39;2025-08-28&#39;</span><span class="p">,</span> <span class="s1">&#39;2025-08-29&#39;</span><span class="p">,</span> <span class="s1">&#39;2025-08-29&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;item&#39;</span><span class="p">:</span> <span class="p">[[</span><span class="s1">&#39;Americano&#39;</span><span class="p">,</span> <span class="s1">&#39;Croissant&#39;</span><span class="p">],</span> <span class="p">[</span><span class="s1">&#39;Caffe Latte&#39;</span><span class="p">],</span> <span class="p">[</span><span class="s1">&#39;Kopi Susu&#39;</span><span class="p">,</span> <span class="s1">&#39;Donat Gula&#39;</span><span class="p">],</span> <span class="p">[</span><span class="s1">&#39;Americano&#39;</span><span class="p">]],</span>
+    <span class="s1">&#39;id_pelanggan&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;P001&#39;</span><span class="p">,</span> <span class="s1">&#39;P002&#39;</span><span class="p">,</span> <span class="s1">&#39;P001&#39;</span><span class="p">,</span> <span class="s1">&#39;P003&#39;</span><span class="p">]</span>
+<span class="p">}</span>
+<span class="n">df_transaksi</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data_transaksi</span><span class="p">)</span>
+
+<span class="c1"># Simulasi data pelanggan dari program loyalitas</span>
+<span class="n">data_pelanggan</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;id_pelanggan&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;P001&#39;</span><span class="p">,</span> <span class="s1">&#39;P002&#39;</span><span class="p">,</span> <span class="s1">&#39;P003&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;nama&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Budi&#39;</span><span class="p">,</span> <span class="s1">&#39;Citra&#39;</span><span class="p">,</span> <span class="s1">&#39;Eka&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;bergabung_sejak&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;2024-01-15&#39;</span><span class="p">,</span> <span class="s1">&#39;2024-03-20&#39;</span><span class="p">,</span> <span class="s1">&#39;2025-02-11&#39;</span><span class="p">]</span>
+<span class="p">}</span>
+<span class="n">df_pelanggan</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data_pelanggan</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;--- Contoh Data Transaksi ---&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df_transaksi</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">--- Contoh Data Pelanggan ---&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df_pelanggan</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Catatan: Data masih terpisah dan perlu digabungkan.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>--- Contoh Data Transaksi ---
+   id_transaksi     tanggal                     item id_pelanggan
+0             1  2025-08-28   [Americano, Croissant]         P001
+1             2  2025-08-28            [Caffe Latte]         P002
+2             3  2025-08-29  [Kopi Susu, Donat Gula]         P001
+3             4  2025-08-29              [Americano]         P003
+
+--- Contoh Data Pelanggan ---
+  id_pelanggan   nama bergabung_sejak
+0         P001   Budi      2024-01-15
+1         P002  Citra      2024-03-20
+2         P003    Eka      2025-02-11
+
+Catatan: Data masih terpisah dan perlu digabungkan.
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="bagian-5-menentukan-tujuan-teknis">
+<h2><strong>BAGIAN 5: Menentukan Tujuan Teknis</strong><a class="headerlink" href="#bagian-5-menentukan-tujuan-teknis" title="Link to this heading">#</a></h2>
+</section>
+<section id="langkah-3-menerjemahkan-ke-tujuan-teknis-proyek-data">
+<h2><strong>Langkah 3: Menerjemahkan ke Tujuan Teknis Proyek Data</strong> 👨‍💻<a class="headerlink" href="#langkah-3-menerjemahkan-ke-tujuan-teknis-proyek-data" title="Link to this heading">#</a></h2>
+<p>Ini saatnya kita sebagai <em>data scientist</em> mengubah tujuan bisnis menjadi sebuah tugas teknis yang bisa dikerjakan.</p>
+<ul class="simple">
+<li><p><strong>Tujuan Bisnis:</strong> Mendorong pelanggan membeli lebih banyak produk.</p></li>
+<li><p><strong>Ide Solusi Data:</strong> Bagaimana jika kita bisa menemukan produk apa yang sering dibeli bersamaan? Misalnya, orang yang beli <em>Caffe Latte</em> ternyata sering juga beli <em>Croissant</em>. Info ini bisa digunakan kasir untuk melakukan <em>upselling</em>.</p></li>
+<li><p><strong>Tujuan Proyek Data (Teknis):</strong> Melakukan <strong>analisis asosiasi</strong> (juga dikenal sebagai <em>Market Basket Analysis</em>) pada data transaksi untuk menemukan set produk yang paling sering dibeli bersama-sama (misal: {Kopi Susu, Donat Gula} atau {Americano, Croissant}).</p></li>
+</ul>
+</section>
+<section id="bagian-6-kode-tujuan-teknis">
+<h2><strong>BAGIAN 6: Kode Tujuan Teknis</strong><a class="headerlink" href="#bagian-6-kode-tujuan-teknis" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># @title Menentukan Tujuan Teknis &amp; Metode</span>
+<span class="c1"># Di sini kita menetapkan pendekatan teknis yang akan digunakan.</span>
+
+<span class="n">metode_analisis</span> <span class="o">=</span> <span class="s2">&quot;Market Basket Analysis (Association Rule Mining)&quot;</span>
+<span class="n">tujuan_teknis</span> <span class="o">=</span> <span class="s2">&quot;Mengidentifikasi &#39;itemsets&#39; atau pasangan produk yang sering dibeli bersama.&quot;</span>
+<span class="n">library_utama</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;pandas&quot;</span><span class="p">,</span> <span class="s2">&quot;mlxtend&quot;</span><span class="p">]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Metode yang akan digunakan: </span><span class="si">{</span><span class="n">metode_analisis</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Tujuan Teknis: </span><span class="si">{</span><span class="n">tujuan_teknis</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Perkiraan library yang akan dipakai: </span><span class="si">{</span><span class="n">library_utama</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Metode yang akan digunakan: Market Basket Analysis (Association Rule Mining)
+Tujuan Teknis: Mengidentifikasi &#39;itemsets&#39; atau pasangan produk yang sering dibeli bersama.
+Perkiraan library yang akan dipakai: [&#39;pandas&#39;, &#39;mlxtend&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="bagian-7-rencana-proyek">
+<h2><strong>BAGIAN 7: Rencana Proyek</strong><a class="headerlink" href="#bagian-7-rencana-proyek" title="Link to this heading">#</a></h2>
+</section>
+<section id="langkah-4-membuat-rencana-proyek-awal">
+<h2><strong>Langkah 4: Membuat Rencana Proyek Awal</strong> 📝<a class="headerlink" href="#langkah-4-membuat-rencana-proyek-awal" title="Link to this heading">#</a></h2>
+<p>Terakhir, kita buat kerangka kerja sederhana agar semua orang tahu apa yang akan terjadi selanjutnya.</p>
 <ol class="arabic simple">
-<li><p><strong>Identifikasi Masalah Bisnis</strong></p>
-<ul class="simple">
-<li><p>Apa tantangan atau masalah yang dihadapi organisasi?</p></li>
-<li><p>Contoh: penurunan penjualan, churn pelanggan tinggi, biaya operasional meningkat.</p></li>
-</ul>
-</li>
-<li><p><strong>Tentukan Tujuan Proyek</strong></p>
-<ul class="simple">
-<li><p>Rumuskan tujuan dalam bahasa bisnis.</p></li>
-<li><p>Contoh: meningkatkan penjualan 20%, menurunkan churn pelanggan 10%, optimasi biaya 15%.</p></li>
-</ul>
-</li>
-<li><p><strong>Formulasi Masalah Data</strong></p>
-<ul class="simple">
-<li><p>Terjemahkan masalah bisnis ke bentuk masalah data.</p></li>
-<li><p>Contoh: “Bagaimana kita memprediksi pelanggan yang akan churn?” → menjadi <strong>klasifikasi</strong>.</p></li>
-</ul>
-</li>
-<li><p><strong>Tentukan Kriteria Keberhasilan</strong></p>
-<ul class="simple">
-<li><p>Gunakan <strong>ukuran bisnis</strong> dan <strong>ukuran teknis</strong>.</p></li>
-<li><p>Contoh: AUC &gt; 80% + churn turun 10% dalam 6 bulan.</p></li>
-</ul>
-</li>
+<li><p><strong>Data Understanding &amp; Preparation (1 Minggu):</strong> Menggabungkan <code class="docutils literal notranslate"><span class="pre">df_transaksi</span></code> dan <code class="docutils literal notranslate"><span class="pre">df_pelanggan</span></code>. Membersihkan data dan mengubahnya ke format yang sesuai untuk analisis asosiasi.</p></li>
+<li><p><strong>Modeling (2 Minggu):</strong> Menjalankan algoritma (seperti Apriori) untuk menemukan aturan asosiasi (misal: Jika beli X, maka kemungkinan besar beli Y).</p></li>
+<li><p><strong>Evaluation &amp; Deployment (1 Minggu):</strong> Menganalisis aturan yang paling kuat dan menarik. Menyajikan temuan dalam bentuk visual kepada pemilik kedai dan memberikan rekomendasi strategi <em>bundling</em> atau skrip <em>upselling</em> untuk kasir.</p></li>
 </ol>
+<p><strong>Kriteria Sukses:</strong>
+Proyek dianggap berhasil jika rekomendasi yang diberikan dapat diimplementasikan dan menghasilkan <strong>peningkatan nilai transaksi rata-rata sebesar 10%</strong> dalam sebulan setelah implementasi.</p>
 </section>
+</section>
+<section id="bagian-8-kode-kriteria-sukses">
+<h1><strong>BAGIAN 8: Kode Kriteria Sukses</strong><a class="headerlink" href="#bagian-8-kode-kriteria-sukses" title="Link to this heading">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># @title Menetapkan Kriteria Sukses</span>
+<span class="c1"># Kriteria sukses haruslah terukur (quantifiable).</span>
+
+<span class="n">target_peningkatan_transaksi</span> <span class="o">=</span> <span class="mf">0.10</span> <span class="c1"># 10%</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Proyek dianggap SUKSES jika:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;- Rekomendasi diterapkan oleh tim kasir.&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;- Terjadi peningkatan nilai transaksi rata-rata sebesar </span><span class="si">{</span><span class="n">target_peningkatan_transaksi</span><span class="si">:</span><span class="s2">.0%</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Proyek dianggap SUKSES jika:
+- Rekomendasi diterapkan oleh tim kasir.
+- Terjadi peningkatan nilai transaksi rata-rata sebesar 10%.
+</pre></div>
+</div>
+</div>
+</div>
+<section id="bagian-9-kesimpulan">
+<h2><strong>BAGIAN 9: Kesimpulan</strong><a class="headerlink" href="#bagian-9-kesimpulan" title="Link to this heading">#</a></h2>
+</section>
+</section>
+<section id="kesimpulan-kenapa-repot-repot">
+<h1>Kesimpulan: Kenapa Repot-Repot?<a class="headerlink" href="#kesimpulan-kenapa-repot-repot" title="Link to this heading">#</a></h1>
+<p>Melewatkan tahap <strong>Memahami Bisnis</strong> sama saja seperti membangun rumah tanpa fondasi. Anda mungkin bisa membangun model machine learning yang 99% akurat, tapi jika model itu menyelesaikan masalah yang salah, maka usaha Anda sia-sia.</p>
+<p>Dengan menyelesaikan fase ini secara cermat, kita memastikan bahwa setiap baris kode yang kita tulis dan setiap analisis yang kita lakukan akan memberikan <strong>dampak nyata</strong> dan <strong>nilai tambah</strong> bagi Kedai Kopi Senja.</p>
 </section>
 
     <script type="text/x-thebe-config">
@@ -496,9 +741,31 @@ Tujuannya: mengetahui <strong>apa masalah bisnis yang ingin diselesaikan</strong
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-definisi"><strong>a. Definisi</strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#b-langkah-langkah-business-understanding">b. <strong>Langkah-langkah Business Understanding</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#"><strong>Memahami Bisnis</strong></a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bagian-1-judul-dan-pengantar"><strong>BAGIAN 1: Judul dan Pengantar</strong></a></li>
 </ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#tujuan-utama-tahap-ini-dari-katanya-menjadi-nyata">🎯 Tujuan Utama Tahap Ini: Dari “Katanya” menjadi “Nyata”</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#studi-kasus-kedai-kopi-senja">🏪 Studi Kasus: Kedai Kopi “Senja”</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#langkah-1-menentukan-tujuan-bisnis-utama"><strong>Langkah 1: Menentukan Tujuan Bisnis Utama</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bagian-2-kode-pendokumentasian-tujuan"><strong>BAGIAN 2: Kode Pendokumentasian Tujuan</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bagian-3-mengkaji-situasi"><strong>BAGIAN 3: Mengkaji Situasi</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#langkah-2-mengkaji-situasi-sumber-daya-yang-ada"><strong>Langkah 2: Mengkaji Situasi &amp; Sumber Daya yang Ada</strong> 🗺️</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bagian-4-kode-simulasi-data"><strong>BAGIAN 4: Kode Simulasi Data</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bagian-5-menentukan-tujuan-teknis"><strong>BAGIAN 5: Menentukan Tujuan Teknis</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#langkah-3-menerjemahkan-ke-tujuan-teknis-proyek-data"><strong>Langkah 3: Menerjemahkan ke Tujuan Teknis Proyek Data</strong> 👨‍💻</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bagian-6-kode-tujuan-teknis"><strong>BAGIAN 6: Kode Tujuan Teknis</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bagian-7-rencana-proyek"><strong>BAGIAN 7: Rencana Proyek</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#langkah-4-membuat-rencana-proyek-awal"><strong>Langkah 4: Membuat Rencana Proyek Awal</strong> 📝</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#bagian-8-kode-kriteria-sukses"><strong>BAGIAN 8: Kode Kriteria Sukses</strong></a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bagian-9-kesimpulan"><strong>BAGIAN 9: Kesimpulan</strong></a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#kesimpulan-kenapa-repot-repot">Kesimpulan: Kenapa Repot-Repot?</a></li>
+</ul>
+
   </nav></div>
 
 </div></div>

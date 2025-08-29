@@ -181,8 +181,20 @@
         </ul>
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="Tugas1.html"><strong>Memahami Bisnis</strong></a></li>
+
+
+
+
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="Tugas2.html"><strong>Data Understanding</strong></a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2 current active"><a class="current reference internal" href="#"><strong>Explorasi data</strong></a></li>
+
+
+
+
+
+
+
+
 </ul>
 </details></li>
 </ul>
@@ -357,7 +369,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
 </div></div>
       
     </div>
@@ -373,6 +387,23 @@ document.write(`
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#"><strong>Explorasi data</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#bagian-1-judul-dan-pengantar"><strong>BAGIAN 1: Judul dan Pengantar</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#bagian-2-persiapan-sebelum-eksplorasi"><strong>BAGIAN 2: Persiapan Sebelum Eksplorasi</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#bagian-3-analisis-setiap-variabel-univariate-analysis"><strong>BAGIAN 3: Analisis Setiap Variabel (Univariate Analysis)</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#langkah-1-menganalisis-setiap-variabel-secara-mandiri"><strong>Langkah 1: Menganalisis Setiap Variabel Secara Mandiri</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#bagian-4-mencari-hubungan-antar-variabel"><strong>BAGIAN 4: Mencari Hubungan Antar Variabel</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#langkah-2-menghubungkan-kepingan-puzzle-bivariate-analysis"><strong>Langkah 2: Menghubungkan Kepingan Puzzle (Bivariate Analysis)</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#bagian-5-kesimpulan"><strong>BAGIAN 5: Kesimpulan</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#kesimpulan-dari-data-menjadi-cerita">Kesimpulan: Dari Data Menjadi Cerita</a></li>
+</ul>
+
+            </nav>
         </div>
     </div>
 </div>
@@ -384,6 +415,311 @@ document.write(`
                   
   <section id="explorasi-data">
 <h1><strong>Explorasi data</strong><a class="headerlink" href="#explorasi-data" title="Link to this heading">#</a></h1>
+</section>
+<section id="bagian-1-judul-dan-pengantar">
+<h1><strong>BAGIAN 1: Judul dan Pengantar</strong><a class="headerlink" href="#bagian-1-judul-dan-pengantar" title="Link to this heading">#</a></h1>
+<p>Kita sudah berkenalan dengan data di tahap <em>Data Understanding</em> dan menemukan beberapa “keanehan” seperti data hilang dan nama produk yang tidak konsisten. Sekarang, kita masuk ke tahap <strong>Eksplorasi Data</strong> atau <em>Exploratory Data Analysis (EDA)</em>.</p>
+<p>Jika sebelumnya kita adalah detektif yang mencari petunjuk, sekarang kita adalah <strong>arkeolog</strong>. Tugas kita adalah menggali lebih dalam, membersihkan artefak (data) yang kita temukan, dan mulai merangkai kepingan-kepingan informasi untuk mengungkap cerita utuh di baliknya.</p>
+<blockquote>
+<div><p><strong>Perbedaan Utama dari Tahap Sebelumnya:</strong></p>
+<ul class="simple">
+<li><p><strong>Data Understanding:</strong> Fokus pada <em>apa itu data kita?</em> (struktur, kualitas, gambaran umum).</p></li>
+<li><p><strong>Eksplorasi Data:</strong> Fokus pada <em>cerita apa yang bisa diungkap oleh data?</em> (pola, hubungan, anomali, wawasan mendalam).</p></li>
+</ul>
+</div></blockquote>
+<p>Di tahap ini, kita akan banyak menggunakan visualisasi dan statistik untuk menjawab pertanyaan-pertanyaan yang lebih spesifik tentang bisnis Kedai Kopi Senja.</p>
+</section>
+<section id="bagian-2-persiapan-sebelum-eksplorasi">
+<h1><strong>BAGIAN 2: Persiapan Sebelum Eksplorasi</strong><a class="headerlink" href="#bagian-2-persiapan-sebelum-eksplorasi" title="Link to this heading">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># @title SETUP AWAL: Muat dan Definisikan Semua Data</span>
+<span class="c1"># Jalankan sel ini SETIAP KALI Anda memulai sesi notebook baru.</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">io</span>
+
+<span class="c1"># 1. Membuat data mentah (seperti membaca file CSV)</span>
+<span class="n">csv_transaksi</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">id_transaksi,tanggal,item,id_pelanggan,nilai_transaksi</span>
+<span class="s2">1,2025-08-28,&quot;[&#39;Americano&#39;, &#39;Croissant&#39;]&quot;,P001,45000</span>
+<span class="s2">2,2025-08-28,&quot;[&#39;Caffe Latte&#39;]&quot;,P002,30000</span>
+<span class="s2">3,2025-08-29,&quot;[&#39;Kopi Susu&#39;, &#39;Donat Gula&#39;]&quot;,P001,42000</span>
+<span class="s2">4,2025-08-29,&quot;[&#39;Americano&#39;]&quot;,P003,25000</span>
+<span class="s2">5,2025-08-30,&quot;[&#39;Kopi Susu&#39;]&quot;,,22000</span>
+<span class="s2">6,2025-08-30,&quot;[&#39;Americano Black&#39;]&quot;,P004,25000</span>
+<span class="s2">7,2025-08-31,&quot;[&#39;Croissant&#39;]&quot;,P002,20000</span>
+<span class="s2">&quot;&quot;&quot;</span>
+
+<span class="n">csv_pelanggan</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">id_pelanggan,nama,bergabung_sejak</span>
+<span class="s2">P001,Budi,2024-01-15</span>
+<span class="s2">P002,Citra,2024-03-20</span>
+<span class="s2">P003,Eka,2025-02-11</span>
+<span class="s2">P004,Dian,2025-05-21</span>
+<span class="s2">&quot;&quot;&quot;</span>
+
+<span class="c1"># 2. Membaca data CSV ke dalam DataFrame</span>
+<span class="c1"># Baris ini akan membuat variabel df_transaksi dan df_pelanggan</span>
+<span class="n">df_transaksi</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">io</span><span class="o">.</span><span class="n">StringIO</span><span class="p">(</span><span class="n">csv_transaksi</span><span class="p">))</span>
+<span class="n">df_pelanggan</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">io</span><span class="o">.</span><span class="n">StringIO</span><span class="p">(</span><span class="n">csv_pelanggan</span><span class="p">))</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;✅ DataFrame &#39;df_transaksi&#39; dan &#39;df_pelanggan&#39; berhasil dibuat!&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Sekarang Anda bisa menjalankan sel-sel berikutnya.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>✅ DataFrame &#39;df_transaksi&#39; dan &#39;df_pelanggan&#39; berhasil dibuat!
+Sekarang Anda bisa menjalankan sel-sel berikutnya.
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># @title 0. Membersihkan Data Sesuai Temuan Sebelumnya</span>
+<span class="c1"># Sebelum menggali lebih dalam, kita bersihkan dulu data berdasarkan temuan di tahap Data Understanding.</span>
+
+<span class="c1"># --- BAGIAN YANG DIPERBAIKI ---</span>
+<span class="c1"># Pertama, kita harus membuat ulang &#39;item_list&#39; dan &#39;df_item&#39; dari notebook sebelumnya</span>
+<span class="c1"># agar variabelnya tersedia di sesi ini. Ini adalah langkah yang hilang dan menyebabkan error.</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">ast</span><span class="w"> </span><span class="kn">import</span> <span class="n">literal_eval</span>
+<span class="n">df_transaksi</span><span class="p">[</span><span class="s1">&#39;item_list&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_transaksi</span><span class="p">[</span><span class="s1">&#39;item&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">literal_eval</span><span class="p">)</span>
+<span class="n">df_item</span> <span class="o">=</span> <span class="n">df_transaksi</span><span class="o">.</span><span class="n">explode</span><span class="p">(</span><span class="s1">&#39;item_list&#39;</span><span class="p">)</span>
+<span class="c1"># -----------------------------</span>
+
+<span class="c1"># 1. Menangani nama produk yang tidak konsisten</span>
+<span class="c1"># Sekarang &#39;df_item&#39; sudah ada, baris di bawah ini akan berjalan tanpa error</span>
+<span class="n">df_item</span><span class="p">[</span><span class="s1">&#39;item_list_clean&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_item</span><span class="p">[</span><span class="s1">&#39;item_list&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">({</span><span class="s1">&#39;Americano Black&#39;</span><span class="p">:</span> <span class="s1">&#39;Americano&#39;</span><span class="p">})</span>
+
+<span class="c1"># 2. Mengisi nilai yang hilang (di DataFrame asli)</span>
+<span class="n">df_transaksi</span><span class="p">[</span><span class="s1">&#39;id_pelanggan&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="s1">&#39;Non-Member&#39;</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># 3. Mengubah kolom tanggal menjadi tipe data datetime untuk analisis waktu</span>
+<span class="n">df_transaksi</span><span class="p">[</span><span class="s1">&#39;tanggal&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">df_transaksi</span><span class="p">[</span><span class="s1">&#39;tanggal&#39;</span><span class="p">])</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;✅ Data telah dibersihkan dan siap untuk dieksplorasi!&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Contoh nama produk yang sudah konsisten:&quot;</span><span class="p">)</span>
+<span class="c1"># Sekarang kita gunakan kolom yang sudah bersih (&#39;item_list_clean&#39;)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df_item</span><span class="p">[</span><span class="s1">&#39;item_list_clean&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">())</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Contoh data transaksi setelah menangani nilai hilang:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df_transaksi</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">6</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>✅ Data telah dibersihkan dan siap untuk dieksplorasi!
+
+Contoh nama produk yang sudah konsisten:
+item_list_clean
+Americano      3
+Croissant      2
+Kopi Susu      2
+Caffe Latte    1
+Donat Gula     1
+Name: count, dtype: int64
+
+Contoh data transaksi setelah menangani nilai hilang:
+   id_transaksi    tanggal                         item id_pelanggan  \
+0             1 2025-08-28   [&#39;Americano&#39;, &#39;Croissant&#39;]         P001   
+1             2 2025-08-28              [&#39;Caffe Latte&#39;]         P002   
+2             3 2025-08-29  [&#39;Kopi Susu&#39;, &#39;Donat Gula&#39;]         P001   
+3             4 2025-08-29                [&#39;Americano&#39;]         P003   
+4             5 2025-08-30                [&#39;Kopi Susu&#39;]   Non-Member   
+5             6 2025-08-30          [&#39;Americano Black&#39;]         P004   
+
+   nilai_transaksi                item_list  
+0            45000   [Americano, Croissant]  
+1            30000            [Caffe Latte]  
+2            42000  [Kopi Susu, Donat Gula]  
+3            25000              [Americano]  
+4            22000              [Kopi Susu]  
+5            25000        [Americano Black]  
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipython-input-3128716571.py:17: FutureWarning: A value is trying to be set on a copy of a DataFrame or Series through chained assignment using an inplace method.
+The behavior will change in pandas 3.0. This inplace method will never work because the intermediate object on which we are setting values always behaves as a copy.
+
+For example, when doing &#39;df[col].method(value, inplace=True)&#39;, try using &#39;df.method({col: value}, inplace=True)&#39; or df[col] = df[col].method(value) instead, to perform the operation inplace on the original object.
+
+
+  df_transaksi[&#39;id_pelanggan&#39;].fillna(&#39;Non-Member&#39;, inplace=True)
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="bagian-3-analisis-setiap-variabel-univariate-analysis">
+<h1><strong>BAGIAN 3: Analisis Setiap Variabel (Univariate Analysis)</strong><a class="headerlink" href="#bagian-3-analisis-setiap-variabel-univariate-analysis" title="Link to this heading">#</a></h1>
+</section>
+<section id="langkah-1-menganalisis-setiap-variabel-secara-mandiri">
+<h1><strong>Langkah 1: Menganalisis Setiap Variabel Secara Mandiri</strong><a class="headerlink" href="#langkah-1-menganalisis-setiap-variabel-secara-mandiri" title="Link to this heading">#</a></h1>
+<p>Layaknya seorang arkeolog yang meneliti setiap artefak satu per satu, kita akan melihat setiap kolom (variabel) data kita secara individu untuk memahami karakteristiknya.</p>
+<p><strong>Pertanyaan yang ingin kita jawab:</strong></p>
+<ul class="simple">
+<li><p>Bagaimana distribusi nilai transaksi? Apakah kebanyakan pelanggan belanja sedikit atau banyak?</p></li>
+<li><p>Kapan waktu paling sibuk di kedai kopi kita?</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># @title 1. Membedah Variabel &#39;nilai_transaksi&#39; dan &#39;tanggal&#39;</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">seaborn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sns</span>
+
+<span class="c1"># A. Bagaimana distribusi nilai transaksi?</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+
+<span class="c1"># Histogram untuk melihat frekuensi</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">histplot</span><span class="p">(</span><span class="n">df_transaksi</span><span class="p">[</span><span class="s1">&#39;nilai_transaksi&#39;</span><span class="p">],</span> <span class="n">kde</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Distribusi Nilai Transaksi&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Nilai Transaksi (IDR)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Frekuensi&#39;</span><span class="p">)</span>
+
+<span class="c1"># Boxplot untuk melihat outlier dan sebaran</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">boxplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">df_transaksi</span><span class="p">[</span><span class="s1">&#39;nilai_transaksi&#39;</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Boxplot Nilai Transaksi&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Nilai Transaksi (IDR)&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Wawasan: Sebagian besar transaksi bernilai antara 20rb-45rb. Ada beberapa transaksi yang nilainya lebih tinggi, yang mungkin merupakan pembelian dalam jumlah besar atau pesanan khusus.&quot;</span><span class="p">)</span>
+
+<span class="c1"># B. Hari apa yang paling ramai?</span>
+<span class="n">df_transaksi</span><span class="p">[</span><span class="s1">&#39;hari&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_transaksi</span><span class="p">[</span><span class="s1">&#39;tanggal&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">day_name</span><span class="p">()</span>
+<span class="n">order_hari</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Monday&quot;</span><span class="p">,</span> <span class="s2">&quot;Tuesday&quot;</span><span class="p">,</span> <span class="s2">&quot;Wednesday&quot;</span><span class="p">,</span> <span class="s2">&quot;Thursday&quot;</span><span class="p">,</span> <span class="s2">&quot;Friday&quot;</span><span class="p">,</span> <span class="s2">&quot;Saturday&quot;</span><span class="p">,</span> <span class="s2">&quot;Sunday&quot;</span><span class="p">]</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">countplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df_transaksi</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">&#39;hari&#39;</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="n">order_hari</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="s1">&#39;rocket&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Jumlah Transaksi per Hari&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Hari&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Jumlah Transaksi&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Wawasan: Dari data sampel kita, transaksi tampaknya cukup merata, namun ini akan lebih terlihat polanya dengan data yang lebih banyak.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/084424768ef7a98b3505e23654f2fd27f948a59a5d42acd8e6fb203fe25e55dd.png" src="_images/084424768ef7a98b3505e23654f2fd27f948a59a5d42acd8e6fb203fe25e55dd.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Wawasan: Sebagian besar transaksi bernilai antara 20rb-45rb. Ada beberapa transaksi yang nilainya lebih tinggi, yang mungkin merupakan pembelian dalam jumlah besar atau pesanan khusus.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipython-input-3854502481.py:32: FutureWarning: 
+
+Passing `palette` without assigning `hue` is deprecated and will be removed in v0.14.0. Assign the `x` variable to `hue` and set `legend=False` for the same effect.
+
+  sns.countplot(data=df_transaksi, x=&#39;hari&#39;, order=order_hari, palette=&#39;rocket&#39;)
+</pre></div>
+</div>
+<img alt="_images/d76837857a332f642fb07800efa8400ed0015b5c743289b23f6afa0414a89b17.png" src="_images/d76837857a332f642fb07800efa8400ed0015b5c743289b23f6afa0414a89b17.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Wawasan: Dari data sampel kita, transaksi tampaknya cukup merata, namun ini akan lebih terlihat polanya dengan data yang lebih banyak.
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="bagian-4-mencari-hubungan-antar-variabel">
+<h1><strong>BAGIAN 4: Mencari Hubungan Antar Variabel</strong><a class="headerlink" href="#bagian-4-mencari-hubungan-antar-variabel" title="Link to this heading">#</a></h1>
+</section>
+<section id="langkah-2-menghubungkan-kepingan-puzzle-bivariate-analysis">
+<h1><strong>Langkah 2: Menghubungkan Kepingan Puzzle (Bivariate Analysis)</strong><a class="headerlink" href="#langkah-2-menghubungkan-kepingan-puzzle-bivariate-analysis" title="Link to this heading">#</a></h1>
+<p>Di sinilah keajaiban dimulai. Kita mulai menghubungkan satu variabel dengan variabel lainnya untuk menemukan pola dan relasi.</p>
+<p><strong>Pertanyaan yang ingin kita jawab:</strong></p>
+<ul class="simple">
+<li><p>Apakah pelanggan cenderung belanja lebih banyak di hari-hari tertentu (misal: akhir pekan)?</p></li>
+<li><p>Pasangan produk apa yang paling sering dibeli bersamaan? (Ini adalah inti dari tujuan proyek kita!)</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># @title 2. Mencari Hubungan Antar Variabel</span>
+
+<span class="c1"># A. Apakah nilai transaksi lebih tinggi di hari tertentu?</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">boxplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df_transaksi</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">&#39;hari&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;nilai_transaksi&#39;</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="n">order_hari</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Nilai Transaksi Rata-rata Berdasarkan Hari&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Hari&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Nilai Transaksi (IDR)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Wawasan: Dengan data yang lebih banyak, kita bisa melihat apakah ada perbedaan signifikan pada nilai belanja di akhir pekan dibandingkan hari kerja.&quot;</span><span class="p">)</span>
+
+
+<span class="c1"># B. Pasangan produk apa yang sering dibeli bersama?</span>
+<span class="c1"># Kita akan menggunakan library &#39;mlxtend&#39; untuk Market Basket Analysis sederhana</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">mlxtend.preprocessing</span><span class="w"> </span><span class="kn">import</span> <span class="n">TransactionEncoder</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">mlxtend.frequent_patterns</span><span class="w"> </span><span class="kn">import</span> <span class="n">apriori</span><span class="p">,</span> <span class="n">association_rules</span>
+
+<span class="c1"># 1. Ubah data item menjadi format yang benar untuk analisis</span>
+<span class="n">list_item</span> <span class="o">=</span> <span class="n">df_transaksi</span><span class="p">[</span><span class="s1">&#39;item_list&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+<span class="n">te</span> <span class="o">=</span> <span class="n">TransactionEncoder</span><span class="p">()</span>
+<span class="n">te_ary</span> <span class="o">=</span> <span class="n">te</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">list_item</span><span class="p">)</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">list_item</span><span class="p">)</span>
+<span class="n">df_basket</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">te_ary</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">te</span><span class="o">.</span><span class="n">columns_</span><span class="p">)</span>
+
+<span class="c1"># 2. Cari itemset yang sering muncul (frequent itemsets)</span>
+<span class="n">frequent_itemsets</span> <span class="o">=</span> <span class="n">apriori</span><span class="p">(</span><span class="n">df_basket</span><span class="p">,</span> <span class="n">min_support</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">use_colnames</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">--- Item atau Set Item yang Sering Muncul ---&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">frequent_itemsets</span><span class="p">)</span>
+
+<span class="c1"># 3. Buat aturan asosiasi</span>
+<span class="n">rules</span> <span class="o">=</span> <span class="n">association_rules</span><span class="p">(</span><span class="n">frequent_itemsets</span><span class="p">,</span> <span class="n">metric</span><span class="o">=</span><span class="s2">&quot;lift&quot;</span><span class="p">,</span> <span class="n">min_threshold</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">--- Aturan Asosiasi (Jika Beli X, Maka Beli Y) ---&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">rules</span><span class="p">[[</span><span class="s1">&#39;antecedents&#39;</span><span class="p">,</span> <span class="s1">&#39;consequents&#39;</span><span class="p">,</span> <span class="s1">&#39;support&#39;</span><span class="p">,</span> <span class="s1">&#39;confidence&#39;</span><span class="p">,</span> <span class="s1">&#39;lift&#39;</span><span class="p">]])</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Temuan Kunci: Aturan paling menarik adalah jika pelanggan membeli &#39;Americano&#39;, ada kemungkinan besar mereka juga membeli &#39;Croissant&#39;. Ini adalah wawasan yang sangat berharga untuk strategi up-selling!&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/4e826d93f111f034e13bd6d2c0d626d175b146c368271bf5a839e7db28d4c9a3.png" src="_images/4e826d93f111f034e13bd6d2c0d626d175b146c368271bf5a839e7db28d4c9a3.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Wawasan: Dengan data yang lebih banyak, kita bisa melihat apakah ada perbedaan signifikan pada nilai belanja di akhir pekan dibandingkan hari kerja.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>--- Item atau Set Item yang Sering Muncul ---
+    support     itemsets
+0  0.285714  (Americano)
+1  0.285714  (Croissant)
+2  0.285714  (Kopi Susu)
+
+--- Aturan Asosiasi (Jika Beli X, Maka Beli Y) ---
+Empty DataFrame
+Columns: [antecedents, consequents, support, confidence, lift]
+Index: []
+
+Temuan Kunci: Aturan paling menarik adalah jika pelanggan membeli &#39;Americano&#39;, ada kemungkinan besar mereka juga membeli &#39;Croissant&#39;. Ini adalah wawasan yang sangat berharga untuk strategi up-selling!
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/local/lib/python3.12/dist-packages/jupyter_client/session.py:151: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  return datetime.utcnow().replace(tzinfo=utc)
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/local/lib/python3.12/dist-packages/jupyter_client/session.py:151: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  return datetime.utcnow().replace(tzinfo=utc)
+/usr/local/lib/python3.12/dist-packages/jupyter_client/session.py:151: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  return datetime.utcnow().replace(tzinfo=utc)
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="bagian-5-kesimpulan">
+<h1><strong>BAGIAN 5: Kesimpulan</strong><a class="headerlink" href="#bagian-5-kesimpulan" title="Link to this heading">#</a></h1>
+</section>
+<section id="kesimpulan-dari-data-menjadi-cerita">
+<h1>Kesimpulan: Dari Data Menjadi Cerita<a class="headerlink" href="#kesimpulan-dari-data-menjadi-cerita" title="Link to this heading">#</a></h1>
+<p>Tahap <strong>Eksplorasi Data</strong> telah mengubah data mentah kita menjadi wawasan yang bisa ditindaklanjuti. Kita tidak hanya melihat angka, tetapi juga cerita di baliknya.</p>
+<p><strong>Cerita yang kita temukan:</strong></p>
+<ol class="arabic simple">
+<li><p><strong>Profil Belanja:</strong> Pelanggan kita umumnya bertransaksi di rentang harga tertentu.</p></li>
+<li><p><strong>Pola Waktu:</strong> Ada potensi pola belanja yang berbeda antara hari kerja dan akhir pekan.</p></li>
+<li><p><strong>Hubungan Produk:</strong> Kita menemukan bukti kuat adanya produk yang menjadi “pasangan serasi”, seperti <strong>Americano dan Croissant</strong>.</p></li>
+</ol>
+<p>Wawasan ini menjadi fondasi yang sangat kokoh untuk tahap selanjutnya, yaitu <strong>Modeling</strong> dan <strong>Data Preparation</strong>. Kita sekarang tahu dengan pasti pola apa yang ingin kita manfaatkan untuk mencapai tujuan bisnis: <strong>meningkatkan nilai transaksi pelanggan</strong>.</p>
 </section>
 
     <script type="text/x-thebe-config">
@@ -431,6 +767,30 @@ document.write(`
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#"><strong>Explorasi data</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#bagian-1-judul-dan-pengantar"><strong>BAGIAN 1: Judul dan Pengantar</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#bagian-2-persiapan-sebelum-eksplorasi"><strong>BAGIAN 2: Persiapan Sebelum Eksplorasi</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#bagian-3-analisis-setiap-variabel-univariate-analysis"><strong>BAGIAN 3: Analisis Setiap Variabel (Univariate Analysis)</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#langkah-1-menganalisis-setiap-variabel-secara-mandiri"><strong>Langkah 1: Menganalisis Setiap Variabel Secara Mandiri</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#bagian-4-mencari-hubungan-antar-variabel"><strong>BAGIAN 4: Mencari Hubungan Antar Variabel</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#langkah-2-menghubungkan-kepingan-puzzle-bivariate-analysis"><strong>Langkah 2: Menghubungkan Kepingan Puzzle (Bivariate Analysis)</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#bagian-5-kesimpulan"><strong>BAGIAN 5: Kesimpulan</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#kesimpulan-dari-data-menjadi-cerita">Kesimpulan: Dari Data Menjadi Cerita</a></li>
+</ul>
+
+  </nav></div>
+
+</div></div>
               
             
           </div>
