@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Explorasi data &#8212; Tugas Proyek PSD</title>
+    <title>Data Understanding &#8212; Tugas Proyek PSD</title>
   
   
   
@@ -61,7 +61,7 @@
     <link rel="canonical" href="/PSD/Tugas3.html" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="prev" title="Data Understanding" href="Tugas2.html" />
+    <link rel="prev" title="Data Understanding – Coffee Shop Sales" href="Tugas2.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -180,9 +180,9 @@
             </li>
         </ul>
         <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="Tugas1.html"><strong>Memahami Bisnis</strong></a></li>
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="Tugas2.html"><strong>Data Understanding</strong></a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
-<li class="toctree-l2 current active"><a class="current reference internal" href="#"><strong>Explorasi data</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="Tugas1.html"><strong>Business Understanding – Coffee Shop Sales</strong></a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="Tugas2.html"><strong>Data Understanding – Coffee Shop Sales</strong></a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#"><strong>Data Understanding</strong></a></li>
 </ul>
 </details></li>
 </ul>
@@ -357,7 +357,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
 </div></div>
       
     </div>
@@ -368,11 +370,26 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Explorasi data</h1>
+    <h1>Data Understanding</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#upload-file-dataset"><strong>1. Upload File Dataset</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#membaca-data"><strong>2. Membaca Data</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#melihat-sekilas-data"><strong>3. Melihat Sekilas Data</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#statistik-deskriptif"><strong>4. Statistik Deskriptif</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#membuat-kolom-revenue"><strong>5. Membuat Kolom Revenue</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-data-dasar"><strong>6. Analisis Data Dasar</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualisasi-dasar"><strong>7. Visualisasi Dasar</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#insight-awal"><strong>8. Insight Awal</strong></a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -382,74 +399,46 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="explorasi-data">
-<h1><strong>Explorasi data</strong><a class="headerlink" href="#explorasi-data" title="Link to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="data-understanding">
+<h1><strong>Data Understanding</strong><a class="headerlink" href="#data-understanding" title="Link to this heading">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># @title Instal Library</span>
-<span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>sqlalchemy<span class="w"> </span>psycopg2-binary<span class="w"> </span>pandas
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">seaborn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sns</span>
+<span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>openpyxl
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: sqlalchemy in /usr/local/lib/python3.12/dist-packages (2.0.43)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Collecting psycopg2-binary
-  Downloading psycopg2_binary-2.9.10-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (4.9 kB)
-Requirement already satisfied: pandas in /usr/local/lib/python3.12/dist-packages (2.2.2)
-Requirement already satisfied: greenlet&gt;=1 in /usr/local/lib/python3.12/dist-packages (from sqlalchemy) (3.2.4)
-Requirement already satisfied: typing-extensions&gt;=4.6.0 in /usr/local/lib/python3.12/dist-packages (from sqlalchemy) (4.15.0)
-Requirement already satisfied: numpy&gt;=1.26.0 in /usr/local/lib/python3.12/dist-packages (from pandas) (2.0.2)
-Requirement already satisfied: python-dateutil&gt;=2.8.2 in /usr/local/lib/python3.12/dist-packages (from pandas) (2.9.0.post0)
-Requirement already satisfied: pytz&gt;=2020.1 in /usr/local/lib/python3.12/dist-packages (from pandas) (2025.2)
-Requirement already satisfied: tzdata&gt;=2022.7 in /usr/local/lib/python3.12/dist-packages (from pandas) (2025.2)
-Requirement already satisfied: six&gt;=1.5 in /usr/local/lib/python3.12/dist-packages (from python-dateutil&gt;=2.8.2-&gt;pandas) (1.17.0)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading psycopg2_binary-2.9.10-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (3.0 MB)
-?25l   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">0.0/3.0 MB</span> <span class=" -Color -Color-Red">?</span> eta <span class=" -Color -Color-Cyan">-:--:--</span>
-   ━╸━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">0.1/3.0 MB</span> <span class=" -Color -Color-Red">3.5 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:01</span>
-   ━━━━━━━━━━━╸━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">0.9/3.0 MB</span> <span class=" -Color -Color-Red">13.0 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:01</span>
-   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╸ <span class=" -Color -Color-Green">3.0/3.0 MB</span> <span class=" -Color -Color-Red">32.6 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:01</span>
-   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">3.0/3.0 MB</span> <span class=" -Color -Color-Red">24.9 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:00</span>
-?25h
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Installing collected packages: psycopg2-binary
-Successfully installed psycopg2-binary-2.9.10
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: openpyxl in /usr/local/lib/python3.12/dist-packages (3.1.5)
+Requirement already satisfied: et-xmlfile in /usr/local/lib/python3.12/dist-packages (from openpyxl) (2.0.0)
 </pre></div>
 </div>
 </div>
 </div>
+<section id="upload-file-dataset">
+<h2><strong>1. Upload File Dataset</strong><a class="headerlink" href="#upload-file-dataset" title="Link to this heading">#</a></h2>
+<p>Pada bagian ini, kita melakukan upload file dataset (<em>coffee_shop_sales.csv</em>) ke Google Colab. File inilah yang akan digunakan untuk analisis lebih lanjut.</p>
+<hr class="docutils" />
+</section>
+<section id="membaca-data">
+<h2><strong>2. Membaca Data</strong><a class="headerlink" href="#membaca-data" title="Link to this heading">#</a></h2>
+<p>Dataset yang sudah di-upload dibaca menggunakan <strong>pandas</strong> (<code class="docutils literal notranslate"><span class="pre">pd.read_csv</span></code>). Hasilnya disimpan dalam sebuah DataFrame <code class="docutils literal notranslate"><span class="pre">df</span></code> agar mudah diolah.</p>
+<hr class="docutils" />
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># @title Upload CSV dan Kirim ke Database</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">sqlalchemy</span><span class="w"> </span><span class="kn">import</span> <span class="n">create_engine</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">io</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">google.colab</span><span class="w"> </span><span class="kn">import</span> <span class="n">files</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">google.colab</span><span class="w"> </span><span class="kn">import</span> <span class="n">files</span>
 <span class="n">uploaded</span> <span class="o">=</span> <span class="n">files</span><span class="o">.</span><span class="n">upload</span><span class="p">()</span>
-
-<span class="n">nama_file</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="nb">iter</span><span class="p">(</span><span class="n">uploaded</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">File &#39;Coffee Shop Sales&#39; berhasil diupload.&quot;</span><span class="p">)</span>
-<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="n">io</span><span class="o">.</span><span class="n">BytesIO</span><span class="p">(</span><span class="n">uploaded</span><span class="p">[</span><span class="n">nama_file</span><span class="p">]))</span>
-
-<span class="n">connection_string</span> <span class="o">=</span> <span class="s2">&quot;postgresql://neondb_owner:npg_XKHsQGF9g5ua@ep-withered-king-a1wuzur6-pooler.ap-southeast-1.aws.neon.tech/neondb?sslmode=require&amp;channel_binding=require&quot;</span>
-<span class="n">engine</span> <span class="o">=</span> <span class="n">create_engine</span><span class="p">(</span><span class="n">connection_string</span><span class="p">)</span>
-
-<span class="n">nama_tabel</span> <span class="o">=</span> <span class="s1">&#39;sales_kopi&#39;</span>
-<span class="n">df</span><span class="o">.</span><span class="n">to_sql</span><span class="p">(</span><span class="n">nama_tabel</span><span class="p">,</span> <span class="n">engine</span><span class="p">,</span> <span class="n">if_exists</span><span class="o">=</span><span class="s1">&#39;replace&#39;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">✅ Sukses! Data dari &#39;</span><span class="si">{</span><span class="n">nama_file</span><span class="si">}</span><span class="s2">&#39; telah diupload ke tabel &#39;</span><span class="si">{</span><span class="n">nama_tabel</span><span class="si">}</span><span class="s2">&#39; di database cloud-mu.&quot;</span><span class="p">)</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s2">&quot;Coffee Shop Sales.xlsx&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-     <input type="file" id="files-2e80a10a-6161-4b3b-8099-882eb6562438" name="files[]" multiple disabled
+     <input type="file" id="files-142d27fd-1db7-45e8-83d2-2672a392f127" name="files[]" multiple disabled
         style="border:none" />
-     <output id="result-2e80a10a-6161-4b3b-8099-882eb6562438">
+     <output id="result-142d27fd-1db7-45e8-83d2-2672a392f127">
       Upload widget is only available when the cell has been executed in the
       current browser session. Please rerun this cell to enable.
       </output>
@@ -630,12 +619,10 @@ scope.google.colab._files = {
 })(self);
 </script> </div><div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">KeyboardInterrupt</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
-<span class="nn">/tmp/ipython-input-2605495773.py</span> in <span class="ni">&lt;cell line: 0&gt;</span><span class="nt">()</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="kn">import</span><span class="w"> </span><span class="nn">io</span>
-<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="kn">from</span><span class="w"> </span><span class="nn">google.colab</span><span class="w"> </span><span class="kn">import</span> <span class="n">files</span>
-<span class="ne">----&gt; </span><span class="mi">6</span> <span class="n">uploaded</span> <span class="o">=</span> <span class="n">files</span><span class="o">.</span><span class="n">upload</span><span class="p">()</span>
-<span class="g g-Whitespace">      </span><span class="mi">7</span> 
-<span class="g g-Whitespace">      </span><span class="mi">8</span> <span class="n">nama_file</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="nb">iter</span><span class="p">(</span><span class="n">uploaded</span><span class="p">))</span>
+<span class="nn">/tmp/ipython-input-2753104456.py</span> in <span class="ni">&lt;cell line: 0&gt;</span><span class="nt">()</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="kn">from</span><span class="w"> </span><span class="nn">google.colab</span><span class="w"> </span><span class="kn">import</span> <span class="n">files</span>
+<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">uploaded</span> <span class="o">=</span> <span class="n">files</span><span class="o">.</span><span class="n">upload</span><span class="p">()</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s2">&quot;Coffee Shop Sales.xlsx&quot;</span><span class="p">)</span>
 
 <span class="nn">/usr/local/lib/python3.12/dist-packages/google/colab/files.py</span> in <span class="ni">upload</span><span class="nt">(target_dir)</span>
 <span class="g g-Whitespace">     </span><span class="mi">70</span>   <span class="s2">&quot;&quot;&quot;</span>
@@ -670,458 +657,30 @@ scope.google.colab._files = {
 </div>
 </div>
 </div>
+</section>
+<section id="melihat-sekilas-data">
+<h2><strong>3. Melihat Sekilas Data</strong><a class="headerlink" href="#melihat-sekilas-data" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">df.shape</span></code></strong> → menampilkan ukuran data (jumlah baris dan kolom).</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">df.info()</span></code></strong> → menunjukkan tipe data tiap kolom dan apakah ada missing values.</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">df.isnull().sum()</span></code></strong> → menghitung jumlah data kosong di setiap kolom.</p></li>
+</ul>
+<p>Tujuannya adalah untuk memahami struktur data dan mengecek kelengkapan informasi.</p>
+<hr class="docutils" />
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">query</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;SELECT * FROM </span><span class="si">{</span><span class="n">nama_tabel</span><span class="si">}</span><span class="s2"> LIMIT 5;&quot;</span>
-<span class="n">df_from_cloud</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_sql</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="n">engine</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Data berhasil dibaca kembali dari database Neon:&quot;</span><span class="p">)</span>
-<span class="n">display</span><span class="p">(</span><span class="n">df_from_cloud</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Shape:&quot;</span><span class="p">,</span> <span class="n">df</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Info:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">info</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Missing values per kolom:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Data berhasil dibaca kembali dari database Neon:
-</pre></div>
-</div>
-<div class="output text_html">
-  <div id="df-20351675-510a-4fbf-98d8-5244ea3dcc12" class="colab-df-container">
-    <div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Shape: (149116, 11)
 
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>transaction_id</th>
-      <th>transaction_date</th>
-      <th>transaction_time</th>
-      <th>transaction_qty</th>
-      <th>store_id</th>
-      <th>store_location</th>
-      <th>product_id</th>
-      <th>unit_price</th>
-      <th>product_category</th>
-      <th>product_type</th>
-      <th>product_detail</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>1</td>
-      <td>2023-01-01</td>
-      <td>07:06:11</td>
-      <td>2</td>
-      <td>5</td>
-      <td>Lower Manhattan</td>
-      <td>32</td>
-      <td>3.0</td>
-      <td>Coffee</td>
-      <td>Gourmet brewed coffee</td>
-      <td>Ethiopia Rg</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>2</td>
-      <td>2023-01-01</td>
-      <td>07:08:56</td>
-      <td>2</td>
-      <td>5</td>
-      <td>Lower Manhattan</td>
-      <td>57</td>
-      <td>3.1</td>
-      <td>Tea</td>
-      <td>Brewed Chai tea</td>
-      <td>Spicy Eye Opener Chai Lg</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>3</td>
-      <td>2023-01-01</td>
-      <td>07:14:04</td>
-      <td>2</td>
-      <td>5</td>
-      <td>Lower Manhattan</td>
-      <td>59</td>
-      <td>4.5</td>
-      <td>Drinking Chocolate</td>
-      <td>Hot chocolate</td>
-      <td>Dark chocolate Lg</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>4</td>
-      <td>2023-01-01</td>
-      <td>07:20:24</td>
-      <td>1</td>
-      <td>5</td>
-      <td>Lower Manhattan</td>
-      <td>22</td>
-      <td>2.0</td>
-      <td>Coffee</td>
-      <td>Drip coffee</td>
-      <td>Our Old Time Diner Blend Sm</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>5</td>
-      <td>2023-01-01</td>
-      <td>07:22:41</td>
-      <td>2</td>
-      <td>5</td>
-      <td>Lower Manhattan</td>
-      <td>57</td>
-      <td>3.1</td>
-      <td>Tea</td>
-      <td>Brewed Chai tea</td>
-      <td>Spicy Eye Opener Chai Lg</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-    <div class="colab-df-buttons">
-
-  <div class="colab-df-container">
-    <button class="colab-df-convert" onclick="convertToInteractive('df-20351675-510a-4fbf-98d8-5244ea3dcc12')"
-            title="Convert this dataframe to an interactive table."
-            style="display:none;">
-
-  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960">
-    <path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"/>
-  </svg>
-    </button>
-
-  <style>
-    .colab-df-container {
-      display:flex;
-      gap: 12px;
-    }
-
-    .colab-df-convert {
-      background-color: #E8F0FE;
-      border: none;
-      border-radius: 50%;
-      cursor: pointer;
-      display: none;
-      fill: #1967D2;
-      height: 32px;
-      padding: 0 0 0 0;
-      width: 32px;
-    }
-
-    .colab-df-convert:hover {
-      background-color: #E2EBFA;
-      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
-      fill: #174EA6;
-    }
-
-    .colab-df-buttons div {
-      margin-bottom: 4px;
-    }
-
-    [theme=dark] .colab-df-convert {
-      background-color: #3B4455;
-      fill: #D2E3FC;
-    }
-
-    [theme=dark] .colab-df-convert:hover {
-      background-color: #434B5C;
-      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
-      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
-      fill: #FFFFFF;
-    }
-  </style>
-
-    <script>
-      const buttonEl =
-        document.querySelector('#df-20351675-510a-4fbf-98d8-5244ea3dcc12 button.colab-df-convert');
-      buttonEl.style.display =
-        google.colab.kernel.accessAllowed ? 'block' : 'none';
-
-      async function convertToInteractive(key) {
-        const element = document.querySelector('#df-20351675-510a-4fbf-98d8-5244ea3dcc12');
-        const dataTable =
-          await google.colab.kernel.invokeFunction('convertToInteractive',
-                                                    [key], {});
-        if (!dataTable) return;
-
-        const docLinkHtml = 'Like what you see? Visit the ' +
-          '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
-          + ' to learn more about interactive tables.';
-        element.innerHTML = '';
-        dataTable['output_type'] = 'display_data';
-        await google.colab.output.renderOutput(dataTable, element);
-        const docLink = document.createElement('div');
-        docLink.innerHTML = docLinkHtml;
-        element.appendChild(docLink);
-      }
-    </script>
-  </div>
-
-
-    <div id="df-6fe1203f-9a59-42b9-8c8b-e5f08c4a156c">
-      <button class="colab-df-quickchart" onclick="quickchart('df-6fe1203f-9a59-42b9-8c8b-e5f08c4a156c')"
-                title="Suggest charts"
-                style="display:none;">
-
-<svg xmlns="http://www.w3.org/2000/svg" height="24px"viewBox="0 0 24 24"
-     width="24px">
-    <g>
-        <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/>
-    </g>
-</svg>
-      </button>
-
-<style>
-  .colab-df-quickchart {
-      --bg-color: #E8F0FE;
-      --fill-color: #1967D2;
-      --hover-bg-color: #E2EBFA;
-      --hover-fill-color: #174EA6;
-      --disabled-fill-color: #AAA;
-      --disabled-bg-color: #DDD;
-  }
-
-  [theme=dark] .colab-df-quickchart {
-      --bg-color: #3B4455;
-      --fill-color: #D2E3FC;
-      --hover-bg-color: #434B5C;
-      --hover-fill-color: #FFFFFF;
-      --disabled-bg-color: #3B4455;
-      --disabled-fill-color: #666;
-  }
-
-  .colab-df-quickchart {
-    background-color: var(--bg-color);
-    border: none;
-    border-radius: 50%;
-    cursor: pointer;
-    display: none;
-    fill: var(--fill-color);
-    height: 32px;
-    padding: 0;
-    width: 32px;
-  }
-
-  .colab-df-quickchart:hover {
-    background-color: var(--hover-bg-color);
-    box-shadow: 0 1px 2px rgba(60, 64, 67, 0.3), 0 1px 3px 1px rgba(60, 64, 67, 0.15);
-    fill: var(--button-hover-fill-color);
-  }
-
-  .colab-df-quickchart-complete:disabled,
-  .colab-df-quickchart-complete:disabled:hover {
-    background-color: var(--disabled-bg-color);
-    fill: var(--disabled-fill-color);
-    box-shadow: none;
-  }
-
-  .colab-df-spinner {
-    border: 2px solid var(--fill-color);
-    border-color: transparent;
-    border-bottom-color: var(--fill-color);
-    animation:
-      spin 1s steps(1) infinite;
-  }
-
-  @keyframes spin {
-    0% {
-      border-color: transparent;
-      border-bottom-color: var(--fill-color);
-      border-left-color: var(--fill-color);
-    }
-    20% {
-      border-color: transparent;
-      border-left-color: var(--fill-color);
-      border-top-color: var(--fill-color);
-    }
-    30% {
-      border-color: transparent;
-      border-left-color: var(--fill-color);
-      border-top-color: var(--fill-color);
-      border-right-color: var(--fill-color);
-    }
-    40% {
-      border-color: transparent;
-      border-right-color: var(--fill-color);
-      border-top-color: var(--fill-color);
-    }
-    60% {
-      border-color: transparent;
-      border-right-color: var(--fill-color);
-    }
-    80% {
-      border-color: transparent;
-      border-right-color: var(--fill-color);
-      border-bottom-color: var(--fill-color);
-    }
-    90% {
-      border-color: transparent;
-      border-bottom-color: var(--fill-color);
-    }
-  }
-</style>
-
-      <script>
-        async function quickchart(key) {
-          const quickchartButtonEl =
-            document.querySelector('#' + key + ' button');
-          quickchartButtonEl.disabled = true;  // To prevent multiple clicks.
-          quickchartButtonEl.classList.add('colab-df-spinner');
-          try {
-            const charts = await google.colab.kernel.invokeFunction(
-                'suggestCharts', [key], {});
-          } catch (error) {
-            console.error('Error during call to suggestCharts:', error);
-          }
-          quickchartButtonEl.classList.remove('colab-df-spinner');
-          quickchartButtonEl.classList.add('colab-df-quickchart-complete');
-        }
-        (() => {
-          let quickchartButtonEl =
-            document.querySelector('#df-6fe1203f-9a59-42b9-8c8b-e5f08c4a156c button');
-          quickchartButtonEl.style.display =
-            google.colab.kernel.accessAllowed ? 'block' : 'none';
-        })();
-      </script>
-    </div>
-
-  <div id="id_64cf763b-6573-486a-92c6-aa96ec7d705d">
-    <style>
-      .colab-df-generate {
-        background-color: #E8F0FE;
-        border: none;
-        border-radius: 50%;
-        cursor: pointer;
-        display: none;
-        fill: #1967D2;
-        height: 32px;
-        padding: 0 0 0 0;
-        width: 32px;
-      }
-
-      .colab-df-generate:hover {
-        background-color: #E2EBFA;
-        box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
-        fill: #174EA6;
-      }
-
-      [theme=dark] .colab-df-generate {
-        background-color: #3B4455;
-        fill: #D2E3FC;
-      }
-
-      [theme=dark] .colab-df-generate:hover {
-        background-color: #434B5C;
-        box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
-        filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
-        fill: #FFFFFF;
-      }
-    </style>
-    <button class="colab-df-generate" onclick="generateWithVariable('df_from_cloud')"
-            title="Generate code using this dataframe."
-            style="display:none;">
-
-  <svg xmlns="http://www.w3.org/2000/svg" height="24px"viewBox="0 0 24 24"
-       width="24px">
-    <path d="M7,19H8.4L18.45,9,17,7.55,7,17.6ZM5,21V16.75L18.45,3.32a2,2,0,0,1,2.83,0l1.4,1.43a1.91,1.91,0,0,1,.58,1.4,1.91,1.91,0,0,1-.58,1.4L9.25,21ZM18.45,9,17,7.55Zm-12,3A5.31,5.31,0,0,0,4.9,8.1,5.31,5.31,0,0,0,1,6.5,5.31,5.31,0,0,0,4.9,4.9,5.31,5.31,0,0,0,6.5,1,5.31,5.31,0,0,0,8.1,4.9,5.31,5.31,0,0,0,12,6.5,5.46,5.46,0,0,0,6.5,12Z"/>
-  </svg>
-    </button>
-    <script>
-      (() => {
-      const buttonEl =
-        document.querySelector('#id_64cf763b-6573-486a-92c6-aa96ec7d705d button.colab-df-generate');
-      buttonEl.style.display =
-        google.colab.kernel.accessAllowed ? 'block' : 'none';
-
-      buttonEl.onclick = () => {
-        google.colab.notebook.generateWithVariable('df_from_cloud');
-      }
-      })();
-    </script>
-  </div>
-
-    </div>
-  </div>
-</div></div>
-</div>
-<p><strong>BAGIAN 1: Setup dan Koneksi ke Database</strong></p>
-<p>Di diatasa, kita sudah berhasil memindahkan data penjualan dari file Excel ke sebuah cloud database. Sekarang, lupakan file statis! Kita akan berperan sebagai detektif bisnis yang sesungguhnya, dengan akses langsung ke “brankas” data kita di cloud.</p>
-<p><strong>Tujuan kita di tahap ini adalah:</strong></p>
-<ol class="arabic simple">
-<li><p><strong>Memahami Karakteristik Data:</strong> Siapa pelanggan kita? Apa yang mereka beli? Kapan mereka paling sering datang?</p></li>
-<li><p><strong>Menemukan Pola Tersembunyi:</strong> Apakah ada hubungan antara lokasi toko dengan produk yang laku?</p></li>
-<li><p><strong>Menjawab Pertanyaan Bisnis:</strong> Di mana peluang terbesar kita untuk meningkatkan penjualan?</p></li>
-</ol>
-<p>Kita akan menggunakan visualisasi data (grafik dan plot) untuk membuat data “bercerita”. Mari kita mulai!</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># @title 1. Setup Awal: Koneksi ke Database &amp; Memuat Data</span>
-<span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>sqlalchemy<span class="w"> </span>psycopg2-binary<span class="w"> </span>pandas<span class="w"> </span>matplotlib<span class="w"> </span>seaborn
-<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">sqlalchemy</span><span class="w"> </span><span class="kn">import</span> <span class="n">create_engine</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">seaborn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sns</span>
-
-<span class="n">connection_string</span> <span class="o">=</span> <span class="s2">&quot;postgresql://neondb_owner:npg_XKHsQGF9g5ua@ep-withered-king-a1wuzur6-pooler.ap-southeast-1.aws.neon.tech/neondb?sslmode=require&amp;channel_binding=require&quot;</span>
-
-<span class="k">try</span><span class="p">:</span>
-    <span class="n">engine</span> <span class="o">=</span> <span class="n">create_engine</span><span class="p">(</span><span class="n">connection_string</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;✅ Koneksi ke database berhasil!&quot;</span><span class="p">)</span>
-<span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot; Gagal terkoneksi: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Memuat data dari tabel &#39;coffee_shop_sales&#39;...&quot;</span><span class="p">)</span>
-<span class="n">query</span> <span class="o">=</span> <span class="s2">&quot;SELECT * FROM sales_kopi;&quot;</span>
-<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_sql</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="n">engine</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;✅ Data berhasil dimuat ke dalam DataFrame.&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Jumlah baris data: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Informasi tipe data awal:&quot;</span><span class="p">)</span>
-<span class="n">df</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">5 baris pertama dari data kita:&quot;</span><span class="p">)</span>
-<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: sqlalchemy in /usr/local/lib/python3.12/dist-packages (2.0.43)
-Requirement already satisfied: psycopg2-binary in /usr/local/lib/python3.12/dist-packages (2.9.10)
-Requirement already satisfied: pandas in /usr/local/lib/python3.12/dist-packages (2.2.2)
-Requirement already satisfied: matplotlib in /usr/local/lib/python3.12/dist-packages (3.10.0)
-Requirement already satisfied: seaborn in /usr/local/lib/python3.12/dist-packages (0.13.2)
-Requirement already satisfied: greenlet&gt;=1 in /usr/local/lib/python3.12/dist-packages (from sqlalchemy) (3.2.4)
-Requirement already satisfied: typing-extensions&gt;=4.6.0 in /usr/local/lib/python3.12/dist-packages (from sqlalchemy) (4.15.0)
-Requirement already satisfied: numpy&gt;=1.26.0 in /usr/local/lib/python3.12/dist-packages (from pandas) (2.0.2)
-Requirement already satisfied: python-dateutil&gt;=2.8.2 in /usr/local/lib/python3.12/dist-packages (from pandas) (2.9.0.post0)
-Requirement already satisfied: pytz&gt;=2020.1 in /usr/local/lib/python3.12/dist-packages (from pandas) (2025.2)
-Requirement already satisfied: tzdata&gt;=2022.7 in /usr/local/lib/python3.12/dist-packages (from pandas) (2025.2)
-Requirement already satisfied: contourpy&gt;=1.0.1 in /usr/local/lib/python3.12/dist-packages (from matplotlib) (1.3.3)
-Requirement already satisfied: cycler&gt;=0.10 in /usr/local/lib/python3.12/dist-packages (from matplotlib) (0.12.1)
-Requirement already satisfied: fonttools&gt;=4.22.0 in /usr/local/lib/python3.12/dist-packages (from matplotlib) (4.59.1)
-Requirement already satisfied: kiwisolver&gt;=1.3.1 in /usr/local/lib/python3.12/dist-packages (from matplotlib) (1.4.9)
-Requirement already satisfied: packaging&gt;=20.0 in /usr/local/lib/python3.12/dist-packages (from matplotlib) (25.0)
-Requirement already satisfied: pillow&gt;=8 in /usr/local/lib/python3.12/dist-packages (from matplotlib) (11.3.0)
-Requirement already satisfied: pyparsing&gt;=2.3.1 in /usr/local/lib/python3.12/dist-packages (from matplotlib) (3.2.3)
-Requirement already satisfied: six&gt;=1.5 in /usr/local/lib/python3.12/dist-packages (from python-dateutil&gt;=2.8.2-&gt;pandas) (1.17.0)
-✅ Koneksi ke database berhasil!
-
-Memuat data dari tabel &#39;coffee_shop_sales&#39;...
-✅ Data berhasil dimuat ke dalam DataFrame.
-
-Jumlah baris data: 149116
-
-Informasi tipe data awal:
+Info:
 &lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
 RangeIndex: 149116 entries, 0 to 149115
 Data columns (total 11 columns):
@@ -1140,382 +699,109 @@ Data columns (total 11 columns):
  10  product_detail    149116 non-null  object        
 dtypes: datetime64[ns](1), float64(1), int64(4), object(5)
 memory usage: 12.5+ MB
+None
 
-5 baris pertama dari data kita:
+Missing values per kolom:
+transaction_id      0
+transaction_date    0
+transaction_time    0
+transaction_qty     0
+store_id            0
+store_location      0
+product_id          0
+unit_price          0
+product_category    0
+product_type        0
+product_detail      0
+dtype: int64
 </pre></div>
 </div>
-<div class="output text_html">
-  <div id="df-06db98fa-de5f-465e-87ed-f01b28d4c222" class="colab-df-container">
-    <div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>transaction_id</th>
-      <th>transaction_date</th>
-      <th>transaction_time</th>
-      <th>transaction_qty</th>
-      <th>store_id</th>
-      <th>store_location</th>
-      <th>product_id</th>
-      <th>unit_price</th>
-      <th>product_category</th>
-      <th>product_type</th>
-      <th>product_detail</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>1</td>
-      <td>2023-01-01</td>
-      <td>07:06:11</td>
-      <td>2</td>
-      <td>5</td>
-      <td>Lower Manhattan</td>
-      <td>32</td>
-      <td>3.0</td>
-      <td>Coffee</td>
-      <td>Gourmet brewed coffee</td>
-      <td>Ethiopia Rg</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>2</td>
-      <td>2023-01-01</td>
-      <td>07:08:56</td>
-      <td>2</td>
-      <td>5</td>
-      <td>Lower Manhattan</td>
-      <td>57</td>
-      <td>3.1</td>
-      <td>Tea</td>
-      <td>Brewed Chai tea</td>
-      <td>Spicy Eye Opener Chai Lg</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>3</td>
-      <td>2023-01-01</td>
-      <td>07:14:04</td>
-      <td>2</td>
-      <td>5</td>
-      <td>Lower Manhattan</td>
-      <td>59</td>
-      <td>4.5</td>
-      <td>Drinking Chocolate</td>
-      <td>Hot chocolate</td>
-      <td>Dark chocolate Lg</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>4</td>
-      <td>2023-01-01</td>
-      <td>07:20:24</td>
-      <td>1</td>
-      <td>5</td>
-      <td>Lower Manhattan</td>
-      <td>22</td>
-      <td>2.0</td>
-      <td>Coffee</td>
-      <td>Drip coffee</td>
-      <td>Our Old Time Diner Blend Sm</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>5</td>
-      <td>2023-01-01</td>
-      <td>07:22:41</td>
-      <td>2</td>
-      <td>5</td>
-      <td>Lower Manhattan</td>
-      <td>57</td>
-      <td>3.1</td>
-      <td>Tea</td>
-      <td>Brewed Chai tea</td>
-      <td>Spicy Eye Opener Chai Lg</td>
-    </tr>
-  </tbody>
-</table>
 </div>
-    <div class="colab-df-buttons">
-
-  <div class="colab-df-container">
-    <button class="colab-df-convert" onclick="convertToInteractive('df-06db98fa-de5f-465e-87ed-f01b28d4c222')"
-            title="Convert this dataframe to an interactive table."
-            style="display:none;">
-
-  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960">
-    <path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"/>
-  </svg>
-    </button>
-
-  <style>
-    .colab-df-container {
-      display:flex;
-      gap: 12px;
-    }
-
-    .colab-df-convert {
-      background-color: #E8F0FE;
-      border: none;
-      border-radius: 50%;
-      cursor: pointer;
-      display: none;
-      fill: #1967D2;
-      height: 32px;
-      padding: 0 0 0 0;
-      width: 32px;
-    }
-
-    .colab-df-convert:hover {
-      background-color: #E2EBFA;
-      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
-      fill: #174EA6;
-    }
-
-    .colab-df-buttons div {
-      margin-bottom: 4px;
-    }
-
-    [theme=dark] .colab-df-convert {
-      background-color: #3B4455;
-      fill: #D2E3FC;
-    }
-
-    [theme=dark] .colab-df-convert:hover {
-      background-color: #434B5C;
-      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
-      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
-      fill: #FFFFFF;
-    }
-  </style>
-
-    <script>
-      const buttonEl =
-        document.querySelector('#df-06db98fa-de5f-465e-87ed-f01b28d4c222 button.colab-df-convert');
-      buttonEl.style.display =
-        google.colab.kernel.accessAllowed ? 'block' : 'none';
-
-      async function convertToInteractive(key) {
-        const element = document.querySelector('#df-06db98fa-de5f-465e-87ed-f01b28d4c222');
-        const dataTable =
-          await google.colab.kernel.invokeFunction('convertToInteractive',
-                                                    [key], {});
-        if (!dataTable) return;
-
-        const docLinkHtml = 'Like what you see? Visit the ' +
-          '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
-          + ' to learn more about interactive tables.';
-        element.innerHTML = '';
-        dataTable['output_type'] = 'display_data';
-        await google.colab.output.renderOutput(dataTable, element);
-        const docLink = document.createElement('div');
-        docLink.innerHTML = docLinkHtml;
-        element.appendChild(docLink);
-      }
-    </script>
-  </div>
-
-
-    <div id="df-16984f8a-39ce-4ca9-b569-01fd8e132dbc">
-      <button class="colab-df-quickchart" onclick="quickchart('df-16984f8a-39ce-4ca9-b569-01fd8e132dbc')"
-                title="Suggest charts"
-                style="display:none;">
-
-<svg xmlns="http://www.w3.org/2000/svg" height="24px"viewBox="0 0 24 24"
-     width="24px">
-    <g>
-        <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/>
-    </g>
-</svg>
-      </button>
-
-<style>
-  .colab-df-quickchart {
-      --bg-color: #E8F0FE;
-      --fill-color: #1967D2;
-      --hover-bg-color: #E2EBFA;
-      --hover-fill-color: #174EA6;
-      --disabled-fill-color: #AAA;
-      --disabled-bg-color: #DDD;
-  }
-
-  [theme=dark] .colab-df-quickchart {
-      --bg-color: #3B4455;
-      --fill-color: #D2E3FC;
-      --hover-bg-color: #434B5C;
-      --hover-fill-color: #FFFFFF;
-      --disabled-bg-color: #3B4455;
-      --disabled-fill-color: #666;
-  }
-
-  .colab-df-quickchart {
-    background-color: var(--bg-color);
-    border: none;
-    border-radius: 50%;
-    cursor: pointer;
-    display: none;
-    fill: var(--fill-color);
-    height: 32px;
-    padding: 0;
-    width: 32px;
-  }
-
-  .colab-df-quickchart:hover {
-    background-color: var(--hover-bg-color);
-    box-shadow: 0 1px 2px rgba(60, 64, 67, 0.3), 0 1px 3px 1px rgba(60, 64, 67, 0.15);
-    fill: var(--button-hover-fill-color);
-  }
-
-  .colab-df-quickchart-complete:disabled,
-  .colab-df-quickchart-complete:disabled:hover {
-    background-color: var(--disabled-bg-color);
-    fill: var(--disabled-fill-color);
-    box-shadow: none;
-  }
-
-  .colab-df-spinner {
-    border: 2px solid var(--fill-color);
-    border-color: transparent;
-    border-bottom-color: var(--fill-color);
-    animation:
-      spin 1s steps(1) infinite;
-  }
-
-  @keyframes spin {
-    0% {
-      border-color: transparent;
-      border-bottom-color: var(--fill-color);
-      border-left-color: var(--fill-color);
-    }
-    20% {
-      border-color: transparent;
-      border-left-color: var(--fill-color);
-      border-top-color: var(--fill-color);
-    }
-    30% {
-      border-color: transparent;
-      border-left-color: var(--fill-color);
-      border-top-color: var(--fill-color);
-      border-right-color: var(--fill-color);
-    }
-    40% {
-      border-color: transparent;
-      border-right-color: var(--fill-color);
-      border-top-color: var(--fill-color);
-    }
-    60% {
-      border-color: transparent;
-      border-right-color: var(--fill-color);
-    }
-    80% {
-      border-color: transparent;
-      border-right-color: var(--fill-color);
-      border-bottom-color: var(--fill-color);
-    }
-    90% {
-      border-color: transparent;
-      border-bottom-color: var(--fill-color);
-    }
-  }
-</style>
-
-      <script>
-        async function quickchart(key) {
-          const quickchartButtonEl =
-            document.querySelector('#' + key + ' button');
-          quickchartButtonEl.disabled = true;  // To prevent multiple clicks.
-          quickchartButtonEl.classList.add('colab-df-spinner');
-          try {
-            const charts = await google.colab.kernel.invokeFunction(
-                'suggestCharts', [key], {});
-          } catch (error) {
-            console.error('Error during call to suggestCharts:', error);
-          }
-          quickchartButtonEl.classList.remove('colab-df-spinner');
-          quickchartButtonEl.classList.add('colab-df-quickchart-complete');
-        }
-        (() => {
-          let quickchartButtonEl =
-            document.querySelector('#df-16984f8a-39ce-4ca9-b569-01fd8e132dbc button');
-          quickchartButtonEl.style.display =
-            google.colab.kernel.accessAllowed ? 'block' : 'none';
-        })();
-      </script>
-    </div>
-
-    </div>
-  </div>
-</div></div>
 </div>
-<p><strong>BAGIAN 2: Pembersihan dan Persiapan Data</strong></p>
-<p>Data mentah jarang sekali sempurna. Sebelum kita bisa menganalisisnya, kita perlu “merapikannya” terlebih dahulu. Kita juga akan membuat beberapa kolom baru (ini disebut <em>Feature Engineering</em>) untuk mempermudah analisis kita.</p>
-<p><strong>Tugas kita:</strong></p>
-<ol class="arabic simple">
-<li><p>Mengubah kolom tanggal dan waktu ke format yang benar.</p></li>
-<li><p>Membuat kolom baru seperti <code class="docutils literal notranslate"><span class="pre">total_penjualan</span></code>, <code class="docutils literal notranslate"><span class="pre">jam</span></code>, dan <code class="docutils literal notranslate"><span class="pre">hari</span></code>.</p></li>
-<li><p>Memeriksa apakah ada data yang hilang atau aneh.</p></li>
-</ol>
+</section>
+<section id="statistik-deskriptif">
+<h2><strong>4. Statistik Deskriptif</strong><a class="headerlink" href="#statistik-deskriptif" title="Link to this heading">#</a></h2>
+<p>Menggunakan <strong><code class="docutils literal notranslate"><span class="pre">df.describe()</span></code></strong>, kita mendapatkan ringkasan statistik untuk kolom numerik, seperti:</p>
+<ul class="simple">
+<li><p>Nilai minimum dan maksimum.</p></li>
+<li><p>Rata-rata (mean).</p></li>
+<li><p>Median (50%).</p></li>
+<li><p>Standar deviasi.</p></li>
+</ul>
+<p>Hal ini membantu melihat gambaran umum, misalnya rentang harga produk atau kuantitas transaksi.</p>
+<hr class="docutils" />
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># @title 2. Data Cleaning &amp; Feature Engineering</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Mengubah tipe data tanggal dan waktu...&quot;</span><span class="p">)</span>
-<span class="n">df</span><span class="p">[</span><span class="s1">&#39;transaction_datetime&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;transaction_date&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39; &#39;</span> <span class="o">+</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;transaction_time&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">))</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Membuat fitur-fitur baru...&quot;</span><span class="p">)</span>
-<span class="n">df</span><span class="p">[</span><span class="s1">&#39;hour&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;transaction_datetime&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">hour</span>
-<span class="n">df</span><span class="p">[</span><span class="s1">&#39;day_of_week&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;transaction_datetime&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">day_name</span><span class="p">()</span>
-<span class="n">df</span><span class="p">[</span><span class="s1">&#39;month&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;transaction_datetime&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">month_name</span><span class="p">()</span>
-<span class="n">df</span><span class="p">[</span><span class="s1">&#39;total_sales&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;transaction_qty&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;unit_price&#39;</span><span class="p">]</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Pengecekan data yang hilang:&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">DataFrame setelah dibersihkan dan ditambahkan fitur baru:&quot;</span><span class="p">)</span>
-<span class="n">display</span><span class="p">(</span><span class="n">df</span><span class="p">[[</span><span class="s1">&#39;transaction_datetime&#39;</span><span class="p">,</span> <span class="s1">&#39;hour&#39;</span><span class="p">,</span> <span class="s1">&#39;day_of_week&#39;</span><span class="p">,</span> <span class="s1">&#39;product_category&#39;</span><span class="p">,</span> <span class="s1">&#39;total_sales&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Statistik deskriptif numerik:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">describe</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Contoh data:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Mengubah tipe data tanggal dan waktu...
-Membuat fitur-fitur baru...
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Statistik deskriptif numerik:
+       transaction_id               transaction_date  transaction_qty  \
+count   149116.000000                         149116    149116.000000   
+mean     74737.371872  2023-04-15 11:50:32.173609984         1.438276   
+min          1.000000            2023-01-01 00:00:00         1.000000   
+25%      37335.750000            2023-03-06 00:00:00         1.000000   
+50%      74727.500000            2023-04-24 00:00:00         1.000000   
+75%     112094.250000            2023-05-30 00:00:00         2.000000   
+max     149456.000000            2023-06-30 00:00:00         8.000000   
+std      43153.600016                            NaN         0.542509   
 
-Pengecekan data yang hilang:
-transaction_id          0
-transaction_date        0
-transaction_time        0
-transaction_qty         0
-store_id                0
-store_location          0
-product_id              0
-unit_price              0
-product_category        0
-product_type            0
-product_detail          0
-transaction_datetime    0
-hour                    0
-day_of_week             0
-month                   0
-total_sales             0
-dtype: int64
+            store_id     product_id     unit_price        revenue  
+count  149116.000000  149116.000000  149116.000000  149116.000000  
+mean        5.342063      47.918607       3.382219       4.686367  
+min         3.000000       1.000000       0.800000       0.800000  
+25%         3.000000      33.000000       2.500000       3.000000  
+50%         5.000000      47.000000       3.000000       3.750000  
+75%         8.000000      60.000000       3.750000       6.000000  
+max         8.000000      87.000000      45.000000     360.000000  
+std         2.074241      17.930020       2.658723       4.227099  
 
-DataFrame setelah dibersihkan dan ditambahkan fitur baru:
+Contoh data:
+   transaction_id transaction_date transaction_time  transaction_qty  \
+0               1       2023-01-01         07:06:11                2   
+1               2       2023-01-01         07:08:56                2   
+2               3       2023-01-01         07:14:04                2   
+3               4       2023-01-01         07:20:24                1   
+4               5       2023-01-01         07:22:41                2   
+
+   store_id   store_location  product_id  unit_price    product_category  \
+0         5  Lower Manhattan          32         3.0              Coffee   
+1         5  Lower Manhattan          57         3.1                 Tea   
+2         5  Lower Manhattan          59         4.5  Drinking Chocolate   
+3         5  Lower Manhattan          22         2.0              Coffee   
+4         5  Lower Manhattan          57         3.1                 Tea   
+
+            product_type               product_detail  revenue day_of_week  
+0  Gourmet brewed coffee                  Ethiopia Rg      6.0      Sunday  
+1        Brewed Chai tea     Spicy Eye Opener Chai Lg      6.2      Sunday  
+2          Hot chocolate            Dark chocolate Lg      9.0      Sunday  
+3            Drip coffee  Our Old Time Diner Blend Sm      2.0      Sunday  
+4        Brewed Chai tea     Spicy Eye Opener Chai Lg      6.2      Sunday  
 </pre></div>
 </div>
+</div>
+</div>
+</section>
+<section id="membuat-kolom-revenue">
+<h2><strong>5. Membuat Kolom Revenue</strong><a class="headerlink" href="#membuat-kolom-revenue" title="Link to this heading">#</a></h2>
+<p>Kita menambahkan kolom baru bernama <strong><code class="docutils literal notranslate"><span class="pre">revenue</span></code></strong> sebagai hasil perkalian antara <code class="docutils literal notranslate"><span class="pre">transaction_qty</span></code> dan <code class="docutils literal notranslate"><span class="pre">unit_price</span></code>.
+Kolom ini penting karena merepresentasikan pendapatan yang dihasilkan dari setiap transaksi.</p>
+<hr class="docutils" />
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;revenue&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;transaction_qty&quot;</span><span class="p">]</span> <span class="o">*</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;unit_price&quot;</span><span class="p">]</span>
+<span class="n">df</span><span class="p">[[</span><span class="s2">&quot;transaction_qty&quot;</span><span class="p">,</span> <span class="s2">&quot;unit_price&quot;</span><span class="p">,</span> <span class="s2">&quot;revenue&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
 <div class="output text_html">
-  <div id="df-a3f26598-081c-4e1c-ba31-01e7662ee618" class="colab-df-container">
+  <div id="df-db9b6e8a-1171-4934-9b15-63c8798256a9" class="colab-df-container">
     <div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
@@ -1534,52 +820,40 @@ DataFrame setelah dibersihkan dan ditambahkan fitur baru:
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>transaction_datetime</th>
-      <th>hour</th>
-      <th>day_of_week</th>
-      <th>product_category</th>
-      <th>total_sales</th>
+      <th>transaction_qty</th>
+      <th>unit_price</th>
+      <th>revenue</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <th>0</th>
-      <td>2023-01-01 07:06:11</td>
-      <td>7</td>
-      <td>Sunday</td>
-      <td>Coffee</td>
+      <td>2</td>
+      <td>3.0</td>
       <td>6.0</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>2023-01-01 07:08:56</td>
-      <td>7</td>
-      <td>Sunday</td>
-      <td>Tea</td>
+      <td>2</td>
+      <td>3.1</td>
       <td>6.2</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>2023-01-01 07:14:04</td>
-      <td>7</td>
-      <td>Sunday</td>
-      <td>Drinking Chocolate</td>
+      <td>2</td>
+      <td>4.5</td>
       <td>9.0</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>2023-01-01 07:20:24</td>
-      <td>7</td>
-      <td>Sunday</td>
-      <td>Coffee</td>
+      <td>1</td>
+      <td>2.0</td>
       <td>2.0</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>2023-01-01 07:22:41</td>
-      <td>7</td>
-      <td>Sunday</td>
-      <td>Tea</td>
+      <td>2</td>
+      <td>3.1</td>
       <td>6.2</td>
     </tr>
   </tbody>
@@ -1588,7 +862,7 @@ DataFrame setelah dibersihkan dan ditambahkan fitur baru:
     <div class="colab-df-buttons">
 
   <div class="colab-df-container">
-    <button class="colab-df-convert" onclick="convertToInteractive('df-a3f26598-081c-4e1c-ba31-01e7662ee618')"
+    <button class="colab-df-convert" onclick="convertToInteractive('df-db9b6e8a-1171-4934-9b15-63c8798256a9')"
             title="Convert this dataframe to an interactive table."
             style="display:none;">
 
@@ -1640,12 +914,12 @@ DataFrame setelah dibersihkan dan ditambahkan fitur baru:
 
     <script>
       const buttonEl =
-        document.querySelector('#df-a3f26598-081c-4e1c-ba31-01e7662ee618 button.colab-df-convert');
+        document.querySelector('#df-db9b6e8a-1171-4934-9b15-63c8798256a9 button.colab-df-convert');
       buttonEl.style.display =
         google.colab.kernel.accessAllowed ? 'block' : 'none';
 
       async function convertToInteractive(key) {
-        const element = document.querySelector('#df-a3f26598-081c-4e1c-ba31-01e7662ee618');
+        const element = document.querySelector('#df-db9b6e8a-1171-4934-9b15-63c8798256a9');
         const dataTable =
           await google.colab.kernel.invokeFunction('convertToInteractive',
                                                     [key], {});
@@ -1665,8 +939,8 @@ DataFrame setelah dibersihkan dan ditambahkan fitur baru:
   </div>
 
 
-    <div id="df-3f788370-94f3-4090-8283-70ff43b9fcf8">
-      <button class="colab-df-quickchart" onclick="quickchart('df-3f788370-94f3-4090-8283-70ff43b9fcf8')"
+    <div id="df-d83750fd-5dcc-4e6e-bc81-b17acea76834">
+      <button class="colab-df-quickchart" onclick="quickchart('df-d83750fd-5dcc-4e6e-bc81-b17acea76834')"
                 title="Suggest charts"
                 style="display:none;">
 
@@ -1785,7 +1059,7 @@ DataFrame setelah dibersihkan dan ditambahkan fitur baru:
         }
         (() => {
           let quickchartButtonEl =
-            document.querySelector('#df-3f788370-94f3-4090-8283-70ff43b9fcf8 button');
+            document.querySelector('#df-d83750fd-5dcc-4e6e-bc81-b17acea76834 button');
           quickchartButtonEl.style.display =
             google.colab.kernel.accessAllowed ? 'block' : 'none';
         })();
@@ -1796,140 +1070,139 @@ DataFrame setelah dibersihkan dan ditambahkan fitur baru:
   </div>
 </div></div>
 </div>
-<p><strong>Langkah 3: Mengajukan Pertanyaan pada Data</strong></p>
-<p>Sekarang data kita sudah bersih dan kaya fitur, saatnya menjadi detektif! Kita akan mencoba menjawab beberapa pertanyaan bisnis penting menggunakan visualisasi.</p>
+</section>
+<section id="analisis-data-dasar">
+<h2><strong>6. Analisis Data Dasar</strong><a class="headerlink" href="#analisis-data-dasar" title="Link to this heading">#</a></h2>
+<p>Beberapa informasi dasar diekstrak, seperti:</p>
+<ul class="simple">
+<li><p><strong>Total revenue</strong> keseluruhan.</p></li>
+<li><p><strong>Rentang tanggal transaksi</strong> (periode data).</p></li>
+<li><p>Jumlah <strong>lokasi toko</strong> yang terlibat.</p></li>
+<li><p>Jumlah <strong>produk unik</strong> yang dijual.</p></li>
+</ul>
+<hr class="docutils" />
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># @title Pertanyaan 1: Kapan Waktu Paling Sibuk di Kedai Kopi?</span>
-
-<span class="n">sns</span><span class="o">.</span><span class="n">set_style</span><span class="p">(</span><span class="s2">&quot;whitegrid&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
-<span class="n">sns</span><span class="o">.</span><span class="n">countplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">&#39;hour&#39;</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="s1">&#39;viridis&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Jumlah Transaksi Berdasarkan Jam&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Jam dalam Sehari&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Jumlah Transaksi&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Wawasan: Terlihat ada dua puncak keramaian, yaitu di pagi hari (sekitar jam 8-10) dan sore hari (sekitar jam 3-5).&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
-<span class="n">order_hari</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Monday&quot;</span><span class="p">,</span> <span class="s2">&quot;Tuesday&quot;</span><span class="p">,</span> <span class="s2">&quot;Wednesday&quot;</span><span class="p">,</span> <span class="s2">&quot;Thursday&quot;</span><span class="p">,</span> <span class="s2">&quot;Friday&quot;</span><span class="p">,</span> <span class="s2">&quot;Saturday&quot;</span><span class="p">,</span> <span class="s2">&quot;Sunday&quot;</span><span class="p">]</span>
-<span class="n">sns</span><span class="o">.</span><span class="n">countplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">&#39;day_of_week&#39;</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="s1">&#39;plasma&#39;</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="n">order_hari</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Jumlah Transaksi Berdasarkan Hari&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Hari dalam Seminggu&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Jumlah Transaksi&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Wawasan: Jumlah transaksi cenderung konsisten sepanjang minggu, tidak ada perbedaan drastis antara hari kerja dan akhir pekan.&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">total_rev</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;revenue&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Total Revenue: $</span><span class="si">{</span><span class="n">total_rev</span><span class="si">:</span><span class="s2">,.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="n">df</span><span class="p">[</span><span class="s2">&quot;transaction_date&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;transaction_date&quot;</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Rentang tanggal:&quot;</span><span class="p">,</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;transaction_date&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="s2">&quot;sampai&quot;</span><span class="p">,</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;transaction_date&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Jumlah lokasi store unik:&quot;</span><span class="p">,</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;store_location&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">nunique</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Jumlah produk unik:&quot;</span><span class="p">,</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;product_id&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">nunique</span><span class="p">())</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipython-input-1130308940.py:6: FutureWarning: 
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Total Revenue: $698,812.33
 
-Passing `palette` without assigning `hue` is deprecated and will be removed in v0.14.0. Assign the `x` variable to `hue` and set `legend=False` for the same effect.
-
-  sns.countplot(data=df, x=&#39;hour&#39;, palette=&#39;viridis&#39;)
+Rentang tanggal: 2023-01-01 00:00:00 sampai 2023-06-30 00:00:00
+Jumlah lokasi store unik: 3
+Jumlah produk unik: 80
 </pre></div>
 </div>
-<img alt="_images/17d90dc418db185227f897344ec9b0a325e719672b16a8dd587bcca7dffd253d.png" src="_images/17d90dc418db185227f897344ec9b0a325e719672b16a8dd587bcca7dffd253d.png" />
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Wawasan: Terlihat ada dua puncak keramaian, yaitu di pagi hari (sekitar jam 8-10) dan sore hari (sekitar jam 3-5).
+</div>
+</div>
+</section>
+<section id="visualisasi-dasar">
+<h2><strong>7. Visualisasi Dasar</strong><a class="headerlink" href="#visualisasi-dasar" title="Link to this heading">#</a></h2>
+<p>Beberapa grafik dibuat untuk memahami pola data:</p>
+<ol class="arabic simple">
+<li><p><strong>Tren Revenue Harian</strong> → grafik garis untuk melihat pola naik/turun penjualan dari hari ke hari.</p></li>
+<li><p><strong>Revenue per Hari dalam Seminggu</strong> → grafik batang untuk mengetahui hari mana yang paling ramai atau sepi.</p></li>
+<li><p><strong>Revenue per Kategori Produk</strong> → grafik batang untuk mengetahui kategori (misalnya Coffee, Tea, Bakery) yang paling banyak menyumbang revenue.</p></li>
+<li><p><strong>Top 10 Produk Penyumbang Revenue</strong> → grafik batang horizontal untuk menampilkan produk-produk dengan kontribusi terbesar terhadap pendapatan.</p></li>
+</ol>
+<hr class="docutils" />
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+<span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;transaction_date&quot;</span><span class="p">)[</span><span class="s2">&quot;revenue&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Tren Revenue Harian&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Revenue&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Tanggal&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipython-input-1130308940.py:15: FutureWarning: 
-
-Passing `palette` without assigning `hue` is deprecated and will be removed in v0.14.0. Assign the `x` variable to `hue` and set `legend=False` for the same effect.
-
-  sns.countplot(data=df, x=&#39;day_of_week&#39;, palette=&#39;plasma&#39;, order=order_hari)
-</pre></div>
 </div>
-<img alt="_images/5bbe78594357ad2bd505b54ae4e795c266514d650d6051c7fdbc185458509545.png" src="_images/5bbe78594357ad2bd505b54ae4e795c266514d650d6051c7fdbc185458509545.png" />
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Wawasan: Jumlah transaksi cenderung konsisten sepanjang minggu, tidak ada perbedaan drastis antara hari kerja dan akhir pekan.
-</pre></div>
-</div>
+<div class="cell_output docutils container">
+<img alt="_images/d9a78530ffb862a39ddcdf034cdf37fccae8691bf7a6494a87a48c6a8d459f45.png" src="_images/d9a78530ffb862a39ddcdf034cdf37fccae8691bf7a6494a87a48c6a8d459f45.png" />
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># @title Pertanyaan 2: Produk &amp; Kategori Apa yang Paling Menghasilkan Uang?</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
-<span class="n">sales_by_category</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;product_category&#39;</span><span class="p">)[</span><span class="s1">&#39;total_sales&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-<span class="n">sns</span><span class="o">.</span><span class="n">barplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">sales_by_category</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">sales_by_category</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="s1">&#39;magma&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Total Penjualan Berdasarkan Kategori Produk&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Kategori Produk&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Total Penjualan ($)&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;day_of_week&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;transaction_date&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">day_name</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">barplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;day_of_week&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;revenue&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span> <span class="n">estimator</span><span class="o">=</span><span class="nb">sum</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="p">[</span>
+    <span class="s2">&quot;Monday&quot;</span><span class="p">,</span><span class="s2">&quot;Tuesday&quot;</span><span class="p">,</span><span class="s2">&quot;Wednesday&quot;</span><span class="p">,</span><span class="s2">&quot;Thursday&quot;</span><span class="p">,</span><span class="s2">&quot;Friday&quot;</span><span class="p">,</span><span class="s2">&quot;Saturday&quot;</span><span class="p">,</span><span class="s2">&quot;Sunday&quot;</span>
+<span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Revenue per Hari dalam Seminggu&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">rotation</span><span class="o">=</span><span class="mi">45</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Wawasan: Kategori &#39;Coffee&#39; jelas menjadi sumber pendapatan utama, diikuti oleh &#39;Tea&#39; dan &#39;Bakery&#39;.&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
-<span class="n">sales_by_product</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;product_detail&#39;</span><span class="p">)[</span><span class="s1">&#39;total_sales&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
-<span class="n">sns</span><span class="o">.</span><span class="n">barplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">sales_by_product</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">sales_by_product</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="s1">&#39;crest&#39;</span><span class="p">,</span> <span class="n">orient</span><span class="o">=</span><span class="s1">&#39;h&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Top 10 Produk dengan Penjualan Tertinggi&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Total Penjualan ($)&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Detail Produk&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Wawasan: Meskipun kategori umumnya Coffee, produk spesifik yang paling laris bervariasi. Ini adalah target yang bagus untuk promosi.&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipython-input-736009128.py:4: FutureWarning: 
-
-Passing `palette` without assigning `hue` is deprecated and will be removed in v0.14.0. Assign the `x` variable to `hue` and set `legend=False` for the same effect.
-
-  sns.barplot(x=sales_by_category.index, y=sales_by_category.values, palette=&#39;magma&#39;)
-</pre></div>
-</div>
-<img alt="_images/6a4365d75953529d02c99a71e0133e633dd4d9810a87dff783a524ab8e7585ef.png" src="_images/6a4365d75953529d02c99a71e0133e633dd4d9810a87dff783a524ab8e7585ef.png" />
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Wawasan: Kategori &#39;Coffee&#39; jelas menjadi sumber pendapatan utama, diikuti oleh &#39;Tea&#39; dan &#39;Bakery&#39;.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipython-input-736009128.py:14: FutureWarning: 
-
-Passing `palette` without assigning `hue` is deprecated and will be removed in v0.14.0. Assign the `y` variable to `hue` and set `legend=False` for the same effect.
-
-  sns.barplot(x=sales_by_product.values, y=sales_by_product.index, palette=&#39;crest&#39;, orient=&#39;h&#39;)
-</pre></div>
-</div>
-<img alt="_images/98d8214f9652ad437d5c032a35e7280a7923e73972fe41855b03d14ffbf709da.png" src="_images/98d8214f9652ad437d5c032a35e7280a7923e73972fe41855b03d14ffbf709da.png" />
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Wawasan: Meskipun kategori umumnya Coffee, produk spesifik yang paling laris bervariasi. Ini adalah target yang bagus untuk promosi.
-</pre></div>
-</div>
+<img alt="_images/4fff35c40cdcc52c414b7ed04bf33a08230f4f954ff55e50d354a9f90cc375b2.png" src="_images/4fff35c40cdcc52c414b7ed04bf33a08230f4f954ff55e50d354a9f90cc375b2.png" />
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># @title Pertanyaan 3: Bagaimana Tren Penjualan dari Waktu ke Waktu?</span>
-<span class="n">daily_sales</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="s1">&#39;D&#39;</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="s1">&#39;transaction_datetime&#39;</span><span class="p">)[</span><span class="s1">&#39;total_sales&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">7</span><span class="p">))</span>
-<span class="n">daily_sales</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Tren Penjualan Harian&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Tanggal&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Total Penjualan ($)&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">barplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;product_category&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;revenue&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span> <span class="n">estimator</span><span class="o">=</span><span class="nb">sum</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;product_category&quot;</span><span class="p">)[</span><span class="s2">&quot;revenue&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Revenue per Kategori Produk&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">rotation</span><span class="o">=</span><span class="mi">45</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Wawasan: Terdapat pola naik-turun yang konsisten (kemungkinan pola mingguan). Secara keseluruhan, tidak terlihat tren naik atau turun yang signifikan dalam periode data ini, penjualan cenderung stabil.&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/0a54a8f77ed3132dfdbd26159516d255fb240dbcfc745a7e213e8d2391d176ef.png" src="_images/0a54a8f77ed3132dfdbd26159516d255fb240dbcfc745a7e213e8d2391d176ef.png" />
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Wawasan: Terdapat pola naik-turun yang konsisten (kemungkinan pola mingguan). Secara keseluruhan, tidak terlihat tren naik atau turun yang signifikan dalam periode data ini, penjualan cenderung stabil.
+<img alt="_images/6378a03550bfcc240e2122ec4bed380dec1f7dd681d7abb1ef3855b633f981fd.png" src="_images/6378a03550bfcc240e2122ec4bed380dec1f7dd681d7abb1ef3855b633f981fd.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">top_products</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;product_detail&quot;</span><span class="p">)[</span><span class="s2">&quot;revenue&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">barplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">top_products</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">top_products</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Top 10 Produk Penyumbang Revenue&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Revenue&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/88b05b77bfe6e5c0599e2fe481161a1730341cef4327182fb7eed374882789da.png" src="_images/88b05b77bfe6e5c0599e2fe481161a1730341cef4327182fb7eed374882789da.png" />
+</div>
+</div>
+</section>
+<section id="insight-awal">
+<h2><strong>8. Insight Awal</strong><a class="headerlink" href="#insight-awal" title="Link to this heading">#</a></h2>
+<p>Beberapa insight otomatis ditampilkan, seperti:</p>
+<ul class="simple">
+<li><p>Hari dengan <strong>revenue tertinggi</strong>.</p></li>
+<li><p><strong>Kategori produk</strong> dengan revenue terbesar.</p></li>
+<li><p><strong>Lokasi toko</strong> dengan performa penjualan terbaik.</p></li>
+</ul>
+<p>Insight ini menjadi dasar pemahaman bisnis sebelum masuk ke analisis yang lebih dalam.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Insight Awal:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;- Hari dengan revenue tertinggi:&quot;</span><span class="p">,</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;day_of_week&quot;</span><span class="p">)[</span><span class="s2">&quot;revenue&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">idxmax</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;- Kategori produk paling tinggi revenue:&quot;</span><span class="p">,</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;product_category&quot;</span><span class="p">)[</span><span class="s2">&quot;revenue&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">idxmax</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;- Lokasi dengan revenue terbesar:&quot;</span><span class="p">,</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;store_location&quot;</span><span class="p">)[</span><span class="s2">&quot;revenue&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">idxmax</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Insight Awal:
+- Hari dengan revenue tertinggi: Monday
+- Kategori produk paling tinggi revenue: Coffee
+- Lokasi dengan revenue terbesar: Hell&#39;s Kitchen
 </pre></div>
 </div>
 </div>
 </div>
-<p><strong>Langkah 4: Merangkum Temuan Menjadi Aksi</strong></p>
-<p>Setelah menggali data, kita berhasil menemukan beberapa “harta karun” berupa wawasan. Inilah ringkasan dan rekomendasi bisnis yang bisa kita berikan kepada pemilik Coffee Shop:</p>
-<p><strong>Wawasan Utama:</strong></p>
-<ol class="arabic simple">
-<li><p><strong>Pola Jam Sibuk:</strong> Toko sangat ramai pada <strong>pagi hari (sarapan/berangkat kerja)</strong> dan <strong>sore hari (pulang kerja/camilan)</strong>.</p></li>
-<li><p><strong>Kontributor Utama:</strong> Kategori <strong>Kopi</strong> adalah tulang punggung pendapatan, namun <strong>Teh</strong> dan <strong>Roti (Bakery)</strong> juga merupakan penyumbang yang signifikan.</p></li>
-<li><p><strong>Penjualan Stabil:</strong> Tren penjualan secara keseluruhan cukup stabil, yang menandakan bisnis yang sehat namun juga menunjukkan adanya ruang untuk bertumbuh.</p></li>
-</ol>
-<p><strong>Rekomendasi Aksi:</strong></p>
-<ul class="simple">
-<li><p><strong>Strategi Penjadwalan:</strong> Tambah jumlah barista yang bertugas pada jam sibuk (8-10 pagi dan 3-5 sore) untuk mengurangi waktu antrian dan meningkatkan kepuasan pelanggan.</p></li>
-<li><p><strong>Promosi Cerdas (Bundling):</strong> Buat promo “Paket Sarapan” (misal: diskon untuk pembelian Kopi + produk Bakery) yang berlaku pada jam 8-10 pagi untuk meningkatkan nilai transaksi rata-rata.</p></li>
-<li><p><strong>Fokus pada Produk Unggulan:</strong> Berikan sorotan lebih pada produk-produk yang masuk Top 10 penjualan. Pastikan stok selalu tersedia dan pertimbangkan untuk membuat variasi baru dari produk tersebut.</p></li>
-</ul>
-<p>Eksplorasi ini adalah langkah awal. Langkah selanjutnya adalah membangun model prediksi berdasarkan pola-pola yang telah kita temukan ini!</p>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -1968,7 +1241,7 @@ Passing `palette` without assigning `hue` is deprecated and will be removed in v
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><strong>Data Understanding</strong></p>
+        <p class="prev-next-title"><strong>Data Understanding – Coffee Shop Sales</strong></p>
       </div>
     </a>
 </div>
@@ -1977,6 +1250,28 @@ Passing `palette` without assigning `hue` is deprecated and will be removed in v
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#upload-file-dataset"><strong>1. Upload File Dataset</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#membaca-data"><strong>2. Membaca Data</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#melihat-sekilas-data"><strong>3. Melihat Sekilas Data</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#statistik-deskriptif"><strong>4. Statistik Deskriptif</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#membuat-kolom-revenue"><strong>5. Membuat Kolom Revenue</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-data-dasar"><strong>6. Analisis Data Dasar</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualisasi-dasar"><strong>7. Visualisasi Dasar</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#insight-awal"><strong>8. Insight Awal</strong></a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>

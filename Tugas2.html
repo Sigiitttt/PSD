@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Data Understanding &#8212; Tugas Proyek PSD</title>
+    <title>Data Understanding – Coffee Shop Sales &#8212; Tugas Proyek PSD</title>
   
   
   
@@ -61,8 +61,8 @@
     <link rel="canonical" href="/PSD/Tugas2.html" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Explorasi data" href="Tugas3.html" />
-    <link rel="prev" title="Memahami Bisnis" href="Tugas1.html" />
+    <link rel="next" title="Data Understanding" href="Tugas3.html" />
+    <link rel="prev" title="Business Understanding – Coffee Shop Sales" href="Tugas1.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -181,9 +181,9 @@
             </li>
         </ul>
         <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="Tugas1.html"><strong>Memahami Bisnis</strong></a></li>
-<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#"><strong>Data Understanding</strong></a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="Tugas3.html"><strong>Explorasi data</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="Tugas1.html"><strong>Business Understanding – Coffee Shop Sales</strong></a></li>
+<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#"><strong>Data Understanding – Coffee Shop Sales</strong></a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="Tugas3.html"><strong>Data Understanding</strong></a></li>
 </ul>
 </details></li>
 </ul>
@@ -358,7 +358,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
 </div></div>
       
     </div>
@@ -369,11 +371,23 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Data Understanding</h1>
+    <h1>Data Understanding – Coffee Shop Sales</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sumber-data">1. <strong>Sumber Data</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deskripsi-atribut">2. <strong>Deskripsi Atribut</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kualitas-data">3. <strong>Kualitas Data</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#eksplorasi-awal-eda-sederhana">4. <strong>Eksplorasi Awal (EDA Sederhana)</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#insight-awal-hipotesis">5. <strong>Insight Awal (Hipotesis)</strong></a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -383,83 +397,141 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="data-understanding">
-<h1><strong>Data Understanding</strong><a class="headerlink" href="#data-understanding" title="Link to this heading">#</a></h1>
-<p>Setelah kita tahu <strong>apa masalah bisnis</strong> yang mau diselesaikan di tahap <em>Business Understanding</em>, sekarang saatnya kita berkenalan lebih dekat dengan “bahan baku” utama kita: <strong>Data</strong>.</p>
-<p>Selamat datang di tahap kedua: <strong>Data Understanding</strong> (Memahami Data).</p>
-<p>Jika di tahap sebelumnya kita menjadi “dokter bisnis”, sekarang kita bertransformasi menjadi “detektif”. Tugas kita adalah menginvestigasi data yang kita miliki, mencari petunjuk, memahami karakternya, dan menemukan keanehan-keanehan yang mungkin tersembunyi.</p>
-<blockquote>
-<div><p><strong>Analogi Sederhana: Memasak dengan Bahan Baru</strong></p>
-<p>Bayangkan Anda seorang koki yang diberi sekotak bahan makanan misterius untuk dimasak. Apa yang akan Anda lakukan?</p>
-<p>Tentu Anda tidak akan langsung mencampurnya ke dalam panci. Anda akan membukanya satu per satu, mencium aromanya, mungkin mencicipi sedikit, melihat teksturnya, dan memisahkan mana bahan yang segar dan mana yang sudah kurang bagus.</p>
-<p>Tahap <strong>Data Understanding</strong> adalah persis seperti itu. Kita “mencicipi” dan “merasakan” data kita sebelum mengolahnya lebih lanjut.</p>
-</div></blockquote>
-<p>Tujuan dari tahap ini adalah untuk membangun pemahaman yang kuat tentang data, yang akan menjadi dasar untuk semua langkah teknis selanjutnya.</p>
-<hr class="docutils" />
-<p><strong>Langkah-langkah Praktis dalam Memahami Data (Lanjutan Studi Kasus: Kedai Kopi “Senja”)</strong></p>
-<p>Kita akan melanjutkan investigasi kita pada data dari <strong>Kedai Kopi Senja</strong>. Di tahap sebelumnya, kita tahu bahwa kita punya data transaksi dan data pelanggan.</p>
-<p><strong>Langkah 1: Mengumpulkan Data Awal (Initial Data Collection)</strong></p>
-<p>Ini adalah langkah paling awal: mengumpulkan semua data yang relevan dari berbagai sumber ke satu tempat.</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="data-understanding-coffee-shop-sales">
+<h1><strong>Data Understanding – Coffee Shop Sales</strong><a class="headerlink" href="#data-understanding-coffee-shop-sales" title="Link to this heading">#</a></h1>
+<section id="sumber-data">
+<h2>1. <strong>Sumber Data</strong><a class="headerlink" href="#sumber-data" title="Link to this heading">#</a></h2>
 <ul class="simple">
-<li><p><strong>Tindakan:</strong> Kita meminta akses ke database mesin kasir dan sistem program loyalitas Kedai Kopi Senja. Kita <em>meng-export</em> data tersebut, misalnya dalam format file CSV atau Excel.</p></li>
-<li><p><strong>Hasil:</strong> Kita sekarang punya dua file utama: <code class="docutils literal notranslate"><span class="pre">transaksi.csv</span></code> dan <code class="docutils literal notranslate"><span class="pre">pelanggan.csv</span></code>.</p></li>
-</ul>
-<p><strong>Langkah 2: Mendeskripsikan Data (Describe Data)</strong></p>
-<p>Setelah data terkumpul, kita perlu mendokumentasikan “kartu identitas” dari setiap set data.</p>
-<ul class="simple">
-<li><p><strong>Tindakan:</strong> Kita periksa kedua file tersebut.</p>
-<ul>
-<li><p><strong>Untuk <code class="docutils literal notranslate"><span class="pre">transaksi.csv</span></code>:</strong> Ada berapa baris (jumlah transaksi)? Ada berapa kolom? Apa saja nama kolomnya (<code class="docutils literal notranslate"><span class="pre">id_transaksi</span></code>, <code class="docutils literal notranslate"><span class="pre">tanggal</span></code>, <code class="docutils literal notranslate"><span class="pre">item</span></code>, <code class="docutils literal notranslate"><span class="pre">id_pelanggan</span></code>)? Apa tipe data di setiap kolom (teks, angka, tanggal)?</p></li>
-<li><p><strong>Untuk <code class="docutils literal notranslate"><span class="pre">pelanggan.csv</span></code>:</strong> Sama, kita periksa jumlah baris (jumlah pelanggan), nama kolom, dan tipe datanya.</p></li>
-</ul>
-</li>
-<li><p><strong>Hasil:</strong> Kita punya gambaran umum tentang volume dan format data. Misalnya, “Terdapat 15.000 baris transaksi dalam 6 bulan terakhir dan 850 pelanggan terdaftar.”</p></li>
-</ul>
-<p><strong>Langkah 3: Menjelajahi Data (Explore Data)</strong></p>
-<p>Inilah bagian paling seru dari pekerjaan detektif! Kita mulai “menginterogasi” data dengan statistik dan visualisasi sederhana untuk mencari pola atau wawasan awal.</p>
-<ul class="simple">
-<li><p><strong>Tindakan:</strong></p>
-<ol class="arabic simple">
-<li><p><strong>Statistik Deskriptif:</strong> Kita lihat statistik dasar dari data numerik. Misalnya, berapa rata-rata nilai transaksi? Berapa transaksi terbesar dan terkecil?</p></li>
-<li><p><strong>Melihat Distribusi:</strong> Produk apa yang paling laris? Hari apa yang paling ramai (Senin, Minggu)? Jam berapa puncak keramaian kedai kopi? Kita bisa membuat grafik batang sederhana untuk melihatnya.</p></li>
-<li><p><strong>Mencari Hubungan Awal:</strong> Apakah ada hubungan antara hari dan jenis produk yang dibeli? (misalnya, di akhir pekan lebih banyak yang beli minuman non-kopi?).</p></li>
-</ol>
-</li>
-<li><p><strong>Hasil (Contoh Temuan):</strong></p>
-<ul>
-<li><p>“Wow, ternyata <strong>Kopi Susu Gula Aren</strong> adalah produk terlaris, terjual 3x lebih banyak dari Americano.”</p></li>
-<li><p>“Puncak keramaian terjadi pada jam 8-10 pagi dan jam 3-5 sore.”</p></li>
-<li><p>“Transaksi di hari Sabtu dan Minggu rata-rata nilainya lebih tinggi daripada hari kerja.”</p></li>
-</ul>
-</li>
-</ul>
-<p><strong>Langkah 4: Memverifikasi Kualitas Data (Verify Data Quality)</strong></p>
-<p>Tidak ada data yang sempurna. Di tahap ini, kita mencari “cacat” atau masalah dalam data kita.</p>
-<ul class="simple">
-<li><p><strong>Tindakan:</strong></p>
-<ol class="arabic simple">
-<li><p><strong>Mencari Nilai yang Hilang (<em>Missing Values</em>):</strong> Apakah ada transaksi yang tidak tercatat <code class="docutils literal notranslate"><span class="pre">id_pelanggan</span></code>-nya? Kenapa?</p></li>
-<li><p><strong>Mencari Kesalahan atau Keanehan (<em>Anomalies/Errors</em>):</strong> Apakah ada nama produk yang salah ketik (misal: “Croissant”, “Croisant”, “Crossant”)? Apakah ada nilai transaksi yang minus atau nol?</p></li>
-<li><p><strong>Memeriksa Konsistensi:</strong> Apakah format tanggal sudah seragam di semua baris?</p></li>
-</ol>
-</li>
-<li><p><strong>Hasil (Contoh Temuan):</strong></p>
-<ul>
-<li><p>“Ditemukan 20% transaksi tidak memiliki <code class="docutils literal notranslate"><span class="pre">id_pelanggan</span></code>. Kemungkinan ini adalah transaksi dari pelanggan non-member.”</p></li>
-<li><p>“Nama produk ‘Americano’ terkadang ditulis sebagai ‘Americano Black’. Ini harus diseragamkan.”</p></li>
-<li><p>“Ada satu transaksi dengan nilai Rp 5.000.000, ini tidak wajar. Perlu diperiksa apakah ini salah input.”</p></li>
-</ul>
-</li>
+<li><p>Dataset: <em>Coffee Shop Sales (Maven Roasters [<a class="reference external" href="https://www.kaggle.com/datasets/ahmedabbas757/coffee-sales">https://www.kaggle.com/datasets/ahmedabbas757/coffee-sales</a>])</em> dari Kaggle.</p></li>
+<li><p>Data ini merepresentasikan transaksi penjualan di tiga lokasi coffee shop di New York City.</p></li>
+<li><p>Tujuan: untuk analisis perilaku penjualan dan praktik analisis bisnis.</p></li>
 </ul>
 <hr class="docutils" />
-<p>Kesimpulan: Kenapa Tahap Ini Penting?</p>
-<p>Melewatkan tahap <strong>Data Understanding</strong> adalah resep menuju bencana. Tanpa memahami data kita, kita bisa saja:</p>
+</section>
+<section id="deskripsi-atribut">
+<h2>2. <strong>Deskripsi Atribut</strong><a class="headerlink" href="#deskripsi-atribut" title="Link to this heading">#</a></h2>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>No</p></th>
+<th class="head"><p>Atribut</p></th>
+<th class="head"><p>Tipe Data</p></th>
+<th class="head"><p>Deskripsi</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">transaction_id</span></code></p></td>
+<td><p>Integer</p></td>
+<td><p>ID unik tiap transaksi</p></td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">transaction_date</span></code></p></td>
+<td><p>Date</p></td>
+<td><p>Tanggal transaksi (format MM/DD/YY)</p></td>
+</tr>
+<tr class="row-even"><td><p>3</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">transaction_time</span></code></p></td>
+<td><p>Time</p></td>
+<td><p>Waktu transaksi (format HH:MM:SS)</p></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">transaction_qty</span></code></p></td>
+<td><p>Integer</p></td>
+<td><p>Jumlah item yang dibeli dalam satu transaksi</p></td>
+</tr>
+<tr class="row-even"><td><p>5</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">store_id</span></code></p></td>
+<td><p>Integer</p></td>
+<td><p>ID unik lokasi coffee shop</p></td>
+</tr>
+<tr class="row-odd"><td><p>6</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">store_location</span></code></p></td>
+<td><p>Kategori</p></td>
+<td><p>Nama lokasi coffee shop (contoh: Lower Manhattan, Astoria, Hell’s Kitchen)</p></td>
+</tr>
+<tr class="row-even"><td><p>7</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">product_id</span></code></p></td>
+<td><p>Integer</p></td>
+<td><p>ID unik produk yang dijual</p></td>
+</tr>
+<tr class="row-odd"><td><p>8</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">unit_price</span></code></p></td>
+<td><p>Numerik</p></td>
+<td><p>Harga per unit produk (USD)</p></td>
+</tr>
+<tr class="row-even"><td><p>9</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">product_category</span></code></p></td>
+<td><p>Kategori</p></td>
+<td><p>Kategori produk (contoh: Coffee, Tea, Bakery, Merchandise)</p></td>
+</tr>
+<tr class="row-odd"><td><p>10</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">product_type</span></code></p></td>
+<td><p>Kategori</p></td>
+<td><p>Jenis produk dalam kategori (contoh: Espresso, Latte, Muffin, Tumbler)</p></td>
+</tr>
+<tr class="row-even"><td><p>11</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">product_detail</span></code></p></td>
+<td><p>Teks/Kategori</p></td>
+<td><p>Detail spesifik produk (contoh: “Espresso - Small”, “Blueberry Muffin”)</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<hr class="docutils" />
+</section>
+<section id="kualitas-data">
+<h2>3. <strong>Kualitas Data</strong><a class="headerlink" href="#kualitas-data" title="Link to this heading">#</a></h2>
 <ul class="simple">
-<li><p>Membuat model dari data yang salah atau “kotor”, yang akan menghasilkan kesimpulan yang salah (<em>garbage in, garbage out</em>).</p></li>
-<li><p>Kehilangan wawasan penting yang sebenarnya sudah terlihat dari eksplorasi data sederhana.</p></li>
-<li><p>Menghabiskan waktu berhari-hari untuk memperbaiki masalah di tahap selanjutnya, padahal masalah itu bisa dideteksi lebih awal di sini.</p></li>
+<li><p><strong>Completeness (Kelengkapan):</strong> dataset relatif lengkap, tidak ada atribut kosong yang penting.</p></li>
+<li><p><strong>Consistency (Konsistensi):</strong> format tanggal &amp; waktu konsisten, meski mungkin perlu diubah jadi tipe datetime untuk analisis.</p></li>
+<li><p><strong>Validity (Validitas):</strong></p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">transaction_qty</span></code> seharusnya bernilai positif.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">unit_price</span></code> juga tidak boleh bernilai negatif.</p></li>
 </ul>
-<p>Dengan menyelesaikan tahap ini, kita tidak hanya memahami data, tetapi juga mulai membangun intuisi tentang cerita apa yang bisa diungkapkan oleh data tersebut. Kita siap untuk tahap selanjutnya: <strong>menyiapkan data untuk dianalisis</strong>.</p>
+</li>
+<li><p><strong>Granularity (Kedetailan):</strong> data tersedia sampai ke level <strong>produk per transaksi</strong>, sehingga bisa dianalisis dari sisi penjualan harian, mingguan, lokasi, hingga produk.</p></li>
+</ul>
+<hr class="docutils" />
+</section>
+<section id="eksplorasi-awal-eda-sederhana">
+<h2>4. <strong>Eksplorasi Awal (EDA Sederhana)</strong><a class="headerlink" href="#eksplorasi-awal-eda-sederhana" title="Link to this heading">#</a></h2>
+<p>Beberapa hal yang bisa dieksplor dari dataset ini:</p>
+<ol class="arabic simple">
+<li><p><strong>Tren Penjualan Harian/Mingguan</strong></p>
+<ul class="simple">
+<li><p>Hitung total pendapatan per hari → lihat pola naik/turun.</p></li>
+</ul>
+</li>
+<li><p><strong>Hari Tersibuk</strong></p>
+<ul class="simple">
+<li><p>Kelompokkan transaksi berdasarkan hari dalam seminggu.</p></li>
+<li><p>Bandingkan weekdays vs weekends.</p></li>
+</ul>
+</li>
+<li><p><strong>Produk Paling Laris &amp; Paling Sepi</strong></p>
+<ul class="simple">
+<li><p>Hitung total penjualan berdasarkan <code class="docutils literal notranslate"><span class="pre">product_type</span></code> dan <code class="docutils literal notranslate"><span class="pre">product_category</span></code>.</p></li>
+</ul>
+</li>
+<li><p><strong>Pendapatan per Lokasi</strong></p>
+<ul class="simple">
+<li><p>Bandingkan performa penjualan tiap <code class="docutils literal notranslate"><span class="pre">store_location</span></code>.</p></li>
+</ul>
+</li>
+</ol>
+<hr class="docutils" />
+</section>
+<section id="insight-awal-hipotesis">
+<h2>5. <strong>Insight Awal (Hipotesis)</strong><a class="headerlink" href="#insight-awal-hipotesis" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Penjualan kemungkinan lebih tinggi di <strong>weekday pagi</strong> (jam orang kerja beli kopi).</p></li>
+<li><p>Produk <strong>kopi (Espresso, Latte, Cappuccino)</strong> mungkin jadi kontributor pendapatan terbesar.</p></li>
+<li><p>Lokasi di daerah <strong>kantor (misalnya Lower Manhattan)</strong> bisa lebih ramai dibanding area lain.</p></li>
+<li><p>Produk <strong>merchandise</strong> (contoh: tumbler, mug) mungkin jarang terjual tapi harganya tinggi → kontribusi ke revenue lumayan.</p></li>
+</ul>
+</section>
+<hr class="docutils" />
 <div class="toctree-wrapper compound">
 </div>
 </section>
@@ -500,7 +572,7 @@ document.write(`
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><strong>Memahami Bisnis</strong></p>
+        <p class="prev-next-title"><strong>Business Understanding – Coffee Shop Sales</strong></p>
       </div>
     </a>
     <a class="right-next"
@@ -508,7 +580,7 @@ document.write(`
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><strong>Explorasi data</strong></p>
+        <p class="prev-next-title"><strong>Data Understanding</strong></p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -518,6 +590,25 @@ document.write(`
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sumber-data">1. <strong>Sumber Data</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deskripsi-atribut">2. <strong>Deskripsi Atribut</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kualitas-data">3. <strong>Kualitas Data</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#eksplorasi-awal-eda-sederhana">4. <strong>Eksplorasi Awal (EDA Sederhana)</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#insight-awal-hipotesis">5. <strong>Insight Awal (Hipotesis)</strong></a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>

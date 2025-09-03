@@ -31,8 +31,8 @@ nbclient.exceptions.CellTimeoutError: A cell timed out while it was being execut
 The message was: Cell execution timed out.
 Here is a preview of the cell contents:
 -------------------
-['# @title Upload CSV dan Kirim ke Database', 'import pandas as pd', 'from sqlalchemy import create_engine', 'import io', 'from google.colab import files']
-...
-['', "nama_tabel = 'sales_kopi'", "df.to_sql(nama_tabel, engine, if_exists='replace', index=False)", '', 'print(f"\\n✅ Sukses! Data dari \'{nama_file}\' telah diupload ke tabel \'{nama_tabel}\' di database cloud-mu.")']
+from google.colab import files
+uploaded = files.upload()
+df = pd.read_excel("Coffee Shop Sales.xlsx")
 -------------------
 
