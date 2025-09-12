@@ -19,20 +19,28 @@ Traceback (most recent call last):
            ^^^^^^^^^^^^^^^
   File "/usr/local/lib/python3.12/dist-packages/nbclient/client.py", line 709, in async_execute
     await self.async_execute_cell(
-  File "/usr/local/lib/python3.12/dist-packages/nbclient/client.py", line 1005, in async_execute_cell
-    exec_reply = await self.task_poll_for_reply
-                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.12/dist-packages/nbclient/client.py", line 806, in _async_poll_for_reply
-    error_on_timeout_execute_reply = await self._async_handle_timeout(timeout, cell)
-                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.12/dist-packages/nbclient/client.py", line 856, in _async_handle_timeout
-    raise CellTimeoutError.error_from_timeout_and_cell(
-nbclient.exceptions.CellTimeoutError: A cell timed out while it was being executed, after 30 seconds.
-The message was: Cell execution timed out.
-Here is a preview of the cell contents:
--------------------
-['import pandas as pd', 'import matplotlib.pyplot as plt', '', '# Upload file di Colab', 'from google.colab import files']
-...
-['# Plot histogram', 'df.hist(figsize=(10, 8), edgecolor="black")', 'plt.suptitle("Histogram Fitur Iris Dataset")', 'plt.savefig("histograms.png", dpi=300)', 'plt.show()']
--------------------
+  File "/usr/local/lib/python3.12/dist-packages/nbclient/client.py", line 1062, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "/usr/local/lib/python3.12/dist-packages/nbclient/client.py", line 918, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+plt.figure(figsize=(12, 6))
+sns.boxplot(x='Class', y='petal length', data=df)
+plt.title('Boxplot Petal Length berdasarkan Spesies')
+plt.savefig('boxplot_petal_length.png')
+plt.show()
+------------------
+
+
+[0;31m---------------------------------------------------------------------------[0m
+[0;31mNameError[0m                                 Traceback (most recent call last)
+[0;32m/tmp/ipython-input-2950288104.py[0m in [0;36m<cell line: 0>[0;34m()[0m
+[0;32m----> 1[0;31m [0mplt[0m[0;34m.[0m[0mfigure[0m[0;34m([0m[0mfigsize[0m[0;34m=[0m[0;34m([0m[0;36m12[0m[0;34m,[0m [0;36m6[0m[0;34m)[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m      2[0m [0msns[0m[0;34m.[0m[0mboxplot[0m[0;34m([0m[0mx[0m[0;34m=[0m[0;34m'Class'[0m[0;34m,[0m [0my[0m[0;34m=[0m[0;34m'petal length'[0m[0;34m,[0m [0mdata[0m[0;34m=[0m[0mdf[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[1;32m      3[0m [0mplt[0m[0;34m.[0m[0mtitle[0m[0;34m([0m[0;34m'Boxplot Petal Length berdasarkan Spesies'[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[1;32m      4[0m [0mplt[0m[0;34m.[0m[0msavefig[0m[0;34m([0m[0;34m'boxplot_petal_length.png'[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[1;32m      5[0m [0mplt[0m[0;34m.[0m[0mshow[0m[0;34m([0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+
+[0;31mNameError[0m: name 'plt' is not defined
 
