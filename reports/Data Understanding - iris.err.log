@@ -25,22 +25,43 @@ Traceback (most recent call last):
     raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
 nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
 ------------------
-plt.figure(figsize=(12, 6))
+plt.figure(figsize=(16, 10))
+
+# 1. Petal Length
+plt.subplot(2, 2, 1)
 sns.boxplot(x='Class', y='petal length', data=df)
-plt.title('Boxplot Petal Length berdasarkan Spesies')
-plt.savefig('boxplot_petal_length.png')
+plt.title('Boxplot Petal Length')
+
+# 2. Petal Width
+plt.subplot(2, 2, 2)
+sns.boxplot(x='Class', y='petal width', data=df)
+plt.title('Boxplot Petal Width')
+
+# 3. Sepal Length
+plt.subplot(2, 2, 3)
+sns.boxplot(x='Class', y='sepal length', data=df)
+plt.title('Boxplot Sepal Length')
+
+# 4. Sepal Width
+plt.subplot(2, 2, 4)
+sns.boxplot(x='Class', y='sepal width', data=df)
+plt.title('Boxplot Sepal Width')
+
+plt.tight_layout()
+plt.savefig('boxplots_all.png', dpi=300)
 plt.show()
+
 ------------------
 
 
 [0;31m---------------------------------------------------------------------------[0m
 [0;31mNameError[0m                                 Traceback (most recent call last)
-[0;32m/tmp/ipython-input-2950288104.py[0m in [0;36m<cell line: 0>[0;34m()[0m
-[0;32m----> 1[0;31m [0mplt[0m[0;34m.[0m[0mfigure[0m[0;34m([0m[0mfigsize[0m[0;34m=[0m[0;34m([0m[0;36m12[0m[0;34m,[0m [0;36m6[0m[0;34m)[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
-[0m[1;32m      2[0m [0msns[0m[0;34m.[0m[0mboxplot[0m[0;34m([0m[0mx[0m[0;34m=[0m[0;34m'Class'[0m[0;34m,[0m [0my[0m[0;34m=[0m[0;34m'petal length'[0m[0;34m,[0m [0mdata[0m[0;34m=[0m[0mdf[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
-[1;32m      3[0m [0mplt[0m[0;34m.[0m[0mtitle[0m[0;34m([0m[0;34m'Boxplot Petal Length berdasarkan Spesies'[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
-[1;32m      4[0m [0mplt[0m[0;34m.[0m[0msavefig[0m[0;34m([0m[0;34m'boxplot_petal_length.png'[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
-[1;32m      5[0m [0mplt[0m[0;34m.[0m[0mshow[0m[0;34m([0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0;32m/tmp/ipython-input-751078896.py[0m in [0;36m<cell line: 0>[0;34m()[0m
+[0;32m----> 1[0;31m [0mplt[0m[0;34m.[0m[0mfigure[0m[0;34m([0m[0mfigsize[0m[0;34m=[0m[0;34m([0m[0;36m16[0m[0;34m,[0m [0;36m10[0m[0;34m)[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m      2[0m [0;34m[0m[0m
+[1;32m      3[0m [0;31m# 1. Petal Length[0m[0;34m[0m[0;34m[0m[0m
+[1;32m      4[0m [0mplt[0m[0;34m.[0m[0msubplot[0m[0;34m([0m[0;36m2[0m[0;34m,[0m [0;36m2[0m[0;34m,[0m [0;36m1[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[1;32m      5[0m [0msns[0m[0;34m.[0m[0mboxplot[0m[0;34m([0m[0mx[0m[0;34m=[0m[0;34m'Class'[0m[0;34m,[0m [0my[0m[0;34m=[0m[0;34m'petal length'[0m[0;34m,[0m [0mdata[0m[0;34m=[0m[0mdf[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
 
 [0;31mNameError[0m: name 'plt' is not defined
 
