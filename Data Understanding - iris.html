@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Data Understanding - iris &#8212; Tugas Proyek PSD</title>
+    <title>Data Understanding: Iris Dataset &#8212; Tugas Proyek PSD</title>
   
   
   
@@ -186,7 +186,7 @@
 <li class="toctree-l2"><a class="reference internal" href="Tugas3.html"><strong>Data Understanding</strong></a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#"><strong>Data Understanding - iris</strong></a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#"><strong>Data Understanding: Iris Dataset</strong></a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="explorasi%20data.html"><strong>Eksplorasi Data</strong></a></li>
 </ul>
 </details></li>
@@ -375,7 +375,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Data Understanding - iris</h1>
+    <h1>Data Understanding: Iris Dataset</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -385,10 +385,27 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-sumber-dan-pemuatan-data"><strong>a. Sumber dan Pemuatan Data</strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#b-deskripsi-atribut-kolom"><strong>b. Deskripsi Atribut/Kolom</strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#c-analisis-data-eksplorasi">**c. Analisis Data Eksplorasi **</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#d-temuan-utama-dan-wawasan-awal"><strong>d. Temuan Utama dan Wawasan Awal</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pendahuluan"><strong>Pendahuluan</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deskripsi-data"><strong>Deskripsi Data</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#statistik-deskriptif"><strong>Statistik Deskriptif</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#statistik-keseluruhan-dataset"><strong>Statistik Keseluruhan Dataset</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#statistik-berdasarkan-spesies"><strong>Statistik Berdasarkan Spesies</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#iris-setosa"><strong>Iris-setosa</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#iris-versicolor"><strong>Iris-versicolor</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#iris-virginica"><strong>Iris-virginica</strong></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matriks-korelasi"><strong>Matriks Korelasi</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualisasi-data"><strong>Visualisasi Data</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#histogram-untuk-setiap-fitur"><strong>1. Histogram untuk Setiap Fitur</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#boxplot-berdasarkan-spesies"><strong>2. Boxplot Berdasarkan Spesies</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scatter-plot">3. Scatter Plot</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pairplot">4. Pairplot</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#heatmap-korelasi"><strong>5. Heatmap Korelasi</strong></a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
             </nav>
         </div>
@@ -400,86 +417,682 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="data-understanding-iris">
-<h1><strong>Data Understanding - iris</strong><a class="headerlink" href="#data-understanding-iris" title="Link to this heading">#</a></h1>
-<p>Tahap pemahaman data bertujuan untuk mengenal karakteristik dasar dari dataset yang digunakan. Ini melibatkan pemahaman tentang sumber data, arti dari setiap kolom (fitur), dan statistik dasar untuk mendapatkan gambaran umum sebelum melangkah ke analisis yang lebih dalam.</p>
-<section id="a-sumber-dan-pemuatan-data">
-<h2><strong>a. Sumber dan Pemuatan Data</strong><a class="headerlink" href="#a-sumber-dan-pemuatan-data" title="Link to this heading">#</a></h2>
-<ul class="simple">
-<li><p><strong>Sumber Data</strong>: Dataset yang digunakan adalah <strong>Iris Flower Dataset</strong>, sebuah dataset klasik dalam dunia statistika dan <em>machine learning</em> yang diperkenalkan oleh Ronald Fisher pada tahun 1936. Dataset ini berisi data pengukuran dari tiga spesies bunga Iris.</p></li>
-<li><p><strong>Proses Pemuatan</strong>: Untuk proyek ini, data pertama kali dimuat ke dalam database <strong>MySQL</strong> dan <strong>PostgreSQL</strong>. Selanjutnya, data ditarik ke <strong>Power BI</strong> menggunakan konektor database untuk dianalisis dan divisualisasikan.</p></li>
-</ul>
+  <section class="tex2jax_ignore mathjax_ignore" id="data-understanding-iris-dataset">
+<h1><strong>Data Understanding: Iris Dataset</strong><a class="headerlink" href="#data-understanding-iris-dataset" title="Link to this heading">#</a></h1>
+<section id="pendahuluan">
+<h2><strong>Pendahuluan</strong><a class="headerlink" href="#pendahuluan" title="Link to this heading">#</a></h2>
+<p>Dataset Iris adalah salah satu dataset klasik dalam bidang data science dan machine learning. Dataset ini pertama kali diperkenalkan oleh ahli statistik Ronald Fisher pada tahun 1936 sebagai contoh untuk analisis diskriminan linier. Dataset ini berisi pengukuran dari 150 bunga iris dari tiga spesies: <em>Iris-setosa</em>, <em>Iris-versicolor</em>, dan <em>Iris-virginica</em>. Setiap sampel memiliki empat fitur pengukuran (dalam cm): panjang sepal (sepal_length), lebar sepal (sepal_width), panjang petal (petal_length), dan lebar petal (petal_width), serta label spesies.</p>
+<p>Dataset ini berisi data yang mencakup header dan 150 baris data (50 per spesies). Tidak ada nilai hilang (missing values), dan dataset ini seimbang (balanced).</p>
+<p>Sumber dataset: Kaggle (<a class="reference external" href="https://www.kaggle.com/datasets/data855/heart-disease?resource=download">https://www.kaggle.com/datasets/data855/heart-disease?resource=download</a>)</p>
 </section>
-<section id="b-deskripsi-atribut-kolom">
-<h2><strong>b. Deskripsi Atribut/Kolom</strong><a class="headerlink" href="#b-deskripsi-atribut-kolom" title="Link to this heading">#</a></h2>
-<p>Dataset ini terdiri dari 150 sampel data dengan 5 atribut utama.</p>
+<section id="deskripsi-data">
+<h2><strong>Deskripsi Data</strong><a class="headerlink" href="#deskripsi-data" title="Link to this heading">#</a></h2>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">SepalLengthCm</span></code> (Tipe: Desimal): Panjang kelopak luar bunga dalam satuan sentimeter.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">SepalWidthCm</span></code> (Tipe: Desimal): Lebar kelopak luar bunga dalam satuan sentimeter.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">PetalLengthCm</span></code> (Tipe: Desimal): Panjang kelopak dalam bunga dalam satuan sentimeter.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">PetalWidthCm</span></code> (Tipe: Desimal): Lebar kelopak dalam bunga dalam satuan sentimeter.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">Species</span></code> (Tipe: Teks): Nama spesies bunga, yang terdiri dari tiga kelas unik:</p>
-<ol class="arabic simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">Iris-setosa</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">Iris-versicolor</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">Iris-virginica</span></code></p></li>
-</ol>
+<li><p><strong>Jumlah Baris</strong>: 150 (50 untuk setiap spesies).</p></li>
+<li><p><strong>Jumlah Kolom</strong>: 5.</p></li>
+<li><p><strong>Kolom dan Tipe Data</strong>:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">sepal_length</span></code>: Numerik (float), panjang sepal dalam cm.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">sepal_width</span></code>: Numerik (float), lebar sepal dalam cm.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">petal_length</span></code>: Numerik (float), panjang petal dalam cm.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">petal_width</span></code>: Numerik (float), lebar petal dalam cm.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">species</span></code>: Kategorikal (string), nama spesies bunga (Iris-setosa, Iris-versicolor, Iris-virginica).</p></li>
+</ul>
 </li>
+<li><p><strong>Missing Values</strong>: Tidak ada (0 untuk semua kolom).</p></li>
+<li><p><strong>Distribusi Kelas</strong>: Seimbang, dengan 50 sampel per spesies.</p></li>
+<li><p><strong>Duplikat</strong>: Tidak ada duplikat signifikan berdasarkan analisis awal.</p></li>
 </ul>
+<p>Dataset ini tidak memiliki outlier (nilai aneh) yang terlalu ekstrem, tapi ada variasi wajar antar jenis.</p>
 </section>
-<section id="c-analisis-data-eksplorasi">
-<h2>**c. Analisis Data Eksplorasi **<a class="headerlink" href="#c-analisis-data-eksplorasi" title="Link to this heading">#</a></h2>
-<p>Analisis awal dilakukan menggunakan Power BI untuk mendapatkan wawasan statistik dan visual.</p>
-<p><strong>i. Statistik Deskriptif</strong></p>
-<p>Tabel berikut merangkum statistik utama (nilai minimum, maksimum, dan rata-rata) untuk setiap fitur pengukuran.</p>
+<section id="statistik-deskriptif">
+<h2><strong>Statistik Deskriptif</strong><a class="headerlink" href="#statistik-deskriptif" title="Link to this heading">#</a></h2>
+<p>Saya hitung statistik dasar untuk melihat gambaran datanya. Ini termasuk rata-rata, standar deviasi (seberapa bervariasi), nilai terkecil, terbesar, dan kuartil (seperti median).</p>
+</section>
+<section id="statistik-keseluruhan-dataset">
+<h2><strong>Statistik Keseluruhan Dataset</strong><a class="headerlink" href="#statistik-keseluruhan-dataset" title="Link to this heading">#</a></h2>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
-<tr class="row-odd"><th class="head text-left"><p>Fitur</p></th>
-<th class="head text-left"><p>Minimum (cm)</p></th>
-<th class="head text-left"><p>Maksimum (cm)</p></th>
-<th class="head text-left"><p>Rata-rata (cm)</p></th>
+<tr class="row-odd"><th class="head"><p>Statistik</p></th>
+<th class="head"><p>sepal_length</p></th>
+<th class="head"><p>sepal_width</p></th>
+<th class="head"><p>petal_length</p></th>
+<th class="head"><p>petal_width</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td class="text-left"><p><strong>Sepal Length</strong></p></td>
-<td class="text-left"><p>4.30</p></td>
-<td class="text-left"><p>7.90</p></td>
-<td class="text-left"><p>5.84</p></td>
+<tr class="row-even"><td><p>count</p></td>
+<td><p>150</p></td>
+<td><p>150</p></td>
+<td><p>150</p></td>
+<td><p>150</p></td>
 </tr>
-<tr class="row-odd"><td class="text-left"><p><strong>Sepal Width</strong></p></td>
-<td class="text-left"><p>2.00</p></td>
-<td class="text-left"><p>4.40</p></td>
-<td class="text-left"><p>3.05</p></td>
+<tr class="row-odd"><td><p>mean</p></td>
+<td><p>5.843</p></td>
+<td><p>3.057</p></td>
+<td><p>3.758</p></td>
+<td><p>1.199</p></td>
 </tr>
-<tr class="row-even"><td class="text-left"><p><strong>Petal Length</strong></p></td>
-<td class="text-left"><p>1.00</p></td>
-<td class="text-left"><p>6.90</p></td>
-<td class="text-left"><p>3.76</p></td>
+<tr class="row-even"><td><p>std</p></td>
+<td><p>0.828</p></td>
+<td><p>0.436</p></td>
+<td><p>1.765</p></td>
+<td><p>0.762</p></td>
 </tr>
-<tr class="row-odd"><td class="text-left"><p><strong>Petal Width</strong></p></td>
-<td class="text-left"><p>0.10</p></td>
-<td class="text-left"><p>2.50</p></td>
-<td class="text-left"><p>1.20</p></td>
+<tr class="row-odd"><td><p>min</p></td>
+<td><p>4.3</p></td>
+<td><p>2.0</p></td>
+<td><p>1.0</p></td>
+<td><p>0.1</p></td>
+</tr>
+<tr class="row-even"><td><p>25%</p></td>
+<td><p>5.1</p></td>
+<td><p>2.8</p></td>
+<td><p>1.6</p></td>
+<td><p>0.3</p></td>
+</tr>
+<tr class="row-odd"><td><p>50%</p></td>
+<td><p>5.8</p></td>
+<td><p>3.0</p></td>
+<td><p>4.35</p></td>
+<td><p>1.3</p></td>
+</tr>
+<tr class="row-even"><td><p>75%</p></td>
+<td><p>6.4</p></td>
+<td><p>3.3</p></td>
+<td><p>5.1</p></td>
+<td><p>1.8</p></td>
+</tr>
+<tr class="row-odd"><td><p>max</p></td>
+<td><p>7.9</p></td>
+<td><p>4.4</p></td>
+<td><p>6.9</p></td>
+<td><p>2.5</p></td>
 </tr>
 </tbody>
 </table>
 </div>
-<p><strong>ii. Distribusi Kelas</strong></p>
-<p>Visualisasi distribusi kelas menunjukkan bahwa dataset ini <strong>seimbang (<em>balanced</em>)</strong>. Setiap spesies memiliki jumlah sampel yang sama persis.</p>
+<p><strong>Observasi</strong>:</p>
 <ul class="simple">
-<li><p><strong>Iris-setosa</strong>: 50 sampel</p></li>
-<li><p><strong>Iris-versicolor</strong>: 50 sampel</p></li>
-<li><p><strong>Iris-virginica</strong>: 50 sampel</p></li>
+<li><p>Fitur petal_length memiliki variabilitas tertinggi (std = 1.765), sementara sepal_width paling stabil (std = 0.436).</p></li>
+<li><p>Nilai rata-rata sepal_length lebih tinggi daripada fitur lainnya.</p></li>
 </ul>
-<p>Distribusi yang seimbang ini sangat ideal untuk tugas klasifikasi, karena model <em>machine learning</em> tidak akan cenderung bias pada salah satu kelas.</p>
 </section>
-<section id="d-temuan-utama-dan-wawasan-awal">
-<h2><strong>d. Temuan Utama dan Wawasan Awal</strong><a class="headerlink" href="#d-temuan-utama-dan-wawasan-awal" title="Link to this heading">#</a></h2>
-<ol class="arabic simple">
-<li><p><strong>Rentang Ukuran</strong>: Fitur kelopak dalam (<code class="docutils literal notranslate"><span class="pre">Petal</span> <span class="pre">Length</span></code> &amp; <code class="docutils literal notranslate"><span class="pre">Petal</span> <span class="pre">Width</span></code>) memiliki rentang nilai yang lebih lebar dan nilai minimum yang jauh lebih kecil dibandingkan kelopak luar (<code class="docutils literal notranslate"><span class="pre">Sepal</span> <span class="pre">Length</span></code> &amp; <code class="docutils literal notranslate"><span class="pre">Sepal</span> <span class="pre">Width</span></code>). Hal ini mengindikasikan bahwa ukuran kelopak dalam mungkin menjadi pembeda yang kuat antar spesies.</p></li>
-<li><p><strong>Kualitas Data</strong>: Dataset ini bersih dan lengkap (tidak ada nilai yang hilang) serta memiliki distribusi kelas yang seimbang, sehingga sangat siap untuk tahap pemodelan lebih lanjut.</p></li>
-<li><p><strong>Visualisasi Efektif</strong>: Penggunaan Power BI memungkinkan eksplorasi statistik kunci secara cepat dan efisien melalui visualisasi interaktif seperti <em>Card</em> dan <em>Bar Chart</em>.</p></li>
-</ol>
+<section id="statistik-berdasarkan-spesies">
+<h2><strong>Statistik Berdasarkan Spesies</strong><a class="headerlink" href="#statistik-berdasarkan-spesies" title="Link to this heading">#</a></h2>
+<p>Saya pisah berdasarkan species untuk lihat perbedaannya.</p>
+<section id="iris-setosa">
+<h3><strong>Iris-setosa</strong><a class="headerlink" href="#iris-setosa" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Statistik</p></th>
+<th class="head"><p>sepal_length</p></th>
+<th class="head"><p>sepal_width</p></th>
+<th class="head"><p>petal_length</p></th>
+<th class="head"><p>petal_width</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>count</p></td>
+<td><p>50</p></td>
+<td><p>50</p></td>
+<td><p>50</p></td>
+<td><p>50</p></td>
+</tr>
+<tr class="row-odd"><td><p>mean</p></td>
+<td><p>5.006</p></td>
+<td><p>3.428</p></td>
+<td><p>1.462</p></td>
+<td><p>0.246</p></td>
+</tr>
+<tr class="row-even"><td><p>std</p></td>
+<td><p>0.352</p></td>
+<td><p>0.379</p></td>
+<td><p>0.174</p></td>
+<td><p>0.105</p></td>
+</tr>
+<tr class="row-odd"><td><p>min</p></td>
+<td><p>4.3</p></td>
+<td><p>2.3</p></td>
+<td><p>1.0</p></td>
+<td><p>0.1</p></td>
+</tr>
+<tr class="row-even"><td><p>25%</p></td>
+<td><p>4.8</p></td>
+<td><p>3.2</p></td>
+<td><p>1.4</p></td>
+<td><p>0.2</p></td>
+</tr>
+<tr class="row-odd"><td><p>50%</p></td>
+<td><p>5.0</p></td>
+<td><p>3.4</p></td>
+<td><p>1.5</p></td>
+<td><p>0.2</p></td>
+</tr>
+<tr class="row-even"><td><p>75%</p></td>
+<td><p>5.2</p></td>
+<td><p>3.675</p></td>
+<td><p>1.575</p></td>
+<td><p>0.3</p></td>
+</tr>
+<tr class="row-odd"><td><p>max</p></td>
+<td><p>5.8</p></td>
+<td><p>4.4</p></td>
+<td><p>1.9</p></td>
+<td><p>0.6</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="iris-versicolor">
+<h3><strong>Iris-versicolor</strong><a class="headerlink" href="#iris-versicolor" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Statistik</p></th>
+<th class="head"><p>sepal_length</p></th>
+<th class="head"><p>sepal_width</p></th>
+<th class="head"><p>petal_length</p></th>
+<th class="head"><p>petal_width</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>count</p></td>
+<td><p>50</p></td>
+<td><p>50</p></td>
+<td><p>50</p></td>
+<td><p>50</p></td>
+</tr>
+<tr class="row-odd"><td><p>mean</p></td>
+<td><p>5.936</p></td>
+<td><p>2.770</p></td>
+<td><p>4.260</p></td>
+<td><p>1.326</p></td>
+</tr>
+<tr class="row-even"><td><p>std</p></td>
+<td><p>0.516</p></td>
+<td><p>0.314</p></td>
+<td><p>0.470</p></td>
+<td><p>0.198</p></td>
+</tr>
+<tr class="row-odd"><td><p>min</p></td>
+<td><p>4.9</p></td>
+<td><p>2.0</p></td>
+<td><p>3.0</p></td>
+<td><p>1.0</p></td>
+</tr>
+<tr class="row-even"><td><p>25%</p></td>
+<td><p>5.6</p></td>
+<td><p>2.525</p></td>
+<td><p>4.0</p></td>
+<td><p>1.2</p></td>
+</tr>
+<tr class="row-odd"><td><p>50%</p></td>
+<td><p>5.9</p></td>
+<td><p>2.8</p></td>
+<td><p>4.35</p></td>
+<td><p>1.3</p></td>
+</tr>
+<tr class="row-even"><td><p>75%</p></td>
+<td><p>6.3</p></td>
+<td><p>3.0</p></td>
+<td><p>4.6</p></td>
+<td><p>1.5</p></td>
+</tr>
+<tr class="row-odd"><td><p>max</p></td>
+<td><p>7.0</p></td>
+<td><p>3.4</p></td>
+<td><p>5.1</p></td>
+<td><p>1.8</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="iris-virginica">
+<h3><strong>Iris-virginica</strong><a class="headerlink" href="#iris-virginica" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Statistik</p></th>
+<th class="head"><p>sepal_length</p></th>
+<th class="head"><p>sepal_width</p></th>
+<th class="head"><p>petal_length</p></th>
+<th class="head"><p>petal_width</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>count</p></td>
+<td><p>50</p></td>
+<td><p>50</p></td>
+<td><p>50</p></td>
+<td><p>50</p></td>
+</tr>
+<tr class="row-odd"><td><p>mean</p></td>
+<td><p>6.588</p></td>
+<td><p>2.974</p></td>
+<td><p>5.552</p></td>
+<td><p>2.026</p></td>
+</tr>
+<tr class="row-even"><td><p>std</p></td>
+<td><p>0.636</p></td>
+<td><p>0.322</p></td>
+<td><p>0.552</p></td>
+<td><p>0.275</p></td>
+</tr>
+<tr class="row-odd"><td><p>min</p></td>
+<td><p>4.9</p></td>
+<td><p>2.2</p></td>
+<td><p>4.5</p></td>
+<td><p>1.4</p></td>
+</tr>
+<tr class="row-even"><td><p>25%</p></td>
+<td><p>6.225</p></td>
+<td><p>2.8</p></td>
+<td><p>5.1</p></td>
+<td><p>1.8</p></td>
+</tr>
+<tr class="row-odd"><td><p>50%</p></td>
+<td><p>6.5</p></td>
+<td><p>3.0</p></td>
+<td><p>5.55</p></td>
+<td><p>2.0</p></td>
+</tr>
+<tr class="row-even"><td><p>75%</p></td>
+<td><p>6.9</p></td>
+<td><p>3.175</p></td>
+<td><p>5.875</p></td>
+<td><p>2.3</p></td>
+</tr>
+<tr class="row-odd"><td><p>max</p></td>
+<td><p>7.9</p></td>
+<td><p>3.8</p></td>
+<td><p>6.9</p></td>
+<td><p>2.5</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>Observasi</strong>:</p>
+<ul class="simple">
+<li><p>Dari perbandingan ini, saya perhatikan Iris-setosa punya petal kecil banget dibanding yang lain, tapi sepalnya lebih lebar. Iris-virginica paling besar secara keseluruhan.</p></li>
+</ul>
+</section>
+</section>
+<section id="matriks-korelasi">
+<h2><strong>Matriks Korelasi</strong><a class="headerlink" href="#matriks-korelasi" title="Link to this heading">#</a></h2>
+<p>Saya hitung korelasi untuk lihat seberapa saling terkait fitur-fiturnya. Nilai 1 artinya sangat terkait positif, -1 negatif, 0 tidak terkait.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p></p></th>
+<th class="head"><p>sepal_length</p></th>
+<th class="head"><p>sepal_width</p></th>
+<th class="head"><p>petal_length</p></th>
+<th class="head"><p>petal_width</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>sepal_length</p></td>
+<td><p>1.000</p></td>
+<td><p>-0.118</p></td>
+<td><p>0.872</p></td>
+<td><p>0.818</p></td>
+</tr>
+<tr class="row-odd"><td><p>sepal_width</p></td>
+<td><p>-0.118</p></td>
+<td><p>1.000</p></td>
+<td><p>-0.428</p></td>
+<td><p>-0.366</p></td>
+</tr>
+<tr class="row-even"><td><p>petal_length</p></td>
+<td><p>0.872</p></td>
+<td><p>-0.428</p></td>
+<td><p>1.000</p></td>
+<td><p>0.963</p></td>
+</tr>
+<tr class="row-odd"><td><p>petal_width</p></td>
+<td><p>0.818</p></td>
+<td><p>-0.366</p></td>
+<td><p>0.963</p></td>
+<td><p>1.000</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>Observasi</strong>:</p>
+<ul class="simple">
+<li><p>Korelasi tinggi antara petal_length dan petal_width (0.963), menunjukkan keduanya sangat terkait.</p></li>
+<li><p>Sepal_length berkorelasi positif kuat dengan fitur petal.</p></li>
+<li><p>Sepal_width berkorelasi negatif dengan fitur lainnya, terutama petal.</p></li>
+</ul>
+</section>
+<section id="visualisasi-data">
+<h2><strong>Visualisasi Data</strong><a class="headerlink" href="#visualisasi-data" title="Link to this heading">#</a></h2>
+<p>Visualisasi membantu memahami distribusi dan hubungan data. Berikut saran dan contoh kode Python menggunakan Pandas, Matplotlib, dan Seaborn (jalankan di Jupyter Notebook atau script Python untuk generate gambar, lalu upload ke GitHub).</p>
+<section id="histogram-untuk-setiap-fitur">
+<h3><strong>1. Histogram untuk Setiap Fitur</strong><a class="headerlink" href="#histogram-untuk-setiap-fitur" title="Link to this heading">#</a></h3>
+<p>Menunjukkan distribusi nilai.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="c1"># Upload file di Colab</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">google.colab</span><span class="w"> </span><span class="kn">import</span> <span class="n">files</span>
+<span class="n">files</span><span class="o">.</span><span class="n">upload</span><span class="p">()</span>
+
+<span class="c1"># Baca data</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s2">&quot;data_iris.xlsx&quot;</span><span class="p">,</span> <span class="n">sheet_name</span><span class="o">=</span><span class="s2">&quot;Sheet1&quot;</span><span class="p">)</span>
+
+<span class="c1"># Plot histogram</span>
+<span class="n">df</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">8</span><span class="p">),</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s2">&quot;Histogram Fitur Iris Dataset&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;histograms.png&quot;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+     <input type="file" id="files-2c421f65-4159-497f-83b7-49f8460556b8" name="files[]" multiple disabled
+        style="border:none" />
+     <output id="result-2c421f65-4159-497f-83b7-49f8460556b8">
+      Upload widget is only available when the cell has been executed in the
+      current browser session. Please rerun this cell to enable.
+      </output>
+      <script>// Copyright 2017 Google LLC
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//      http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+/**
+ * @fileoverview Helpers for google.colab Python module.
+ */
+(function(scope) {
+function span(text, styleAttributes = {}) {
+  const element = document.createElement('span');
+  element.textContent = text;
+  for (const key of Object.keys(styleAttributes)) {
+    element.style[key] = styleAttributes[key];
+  }
+  return element;
+}
+
+// Max number of bytes which will be uploaded at a time.
+const MAX_PAYLOAD_SIZE = 100 * 1024;
+
+function _uploadFiles(inputId, outputId) {
+  const steps = uploadFilesStep(inputId, outputId);
+  const outputElement = document.getElementById(outputId);
+  // Cache steps on the outputElement to make it available for the next call
+  // to uploadFilesContinue from Python.
+  outputElement.steps = steps;
+
+  return _uploadFilesContinue(outputId);
+}
+
+// This is roughly an async generator (not supported in the browser yet),
+// where there are multiple asynchronous steps and the Python side is going
+// to poll for completion of each step.
+// This uses a Promise to block the python side on completion of each step,
+// then passes the result of the previous step as the input to the next step.
+function _uploadFilesContinue(outputId) {
+  const outputElement = document.getElementById(outputId);
+  const steps = outputElement.steps;
+
+  const next = steps.next(outputElement.lastPromiseValue);
+  return Promise.resolve(next.value.promise).then((value) => {
+    // Cache the last promise value to make it available to the next
+    // step of the generator.
+    outputElement.lastPromiseValue = value;
+    return next.value.response;
+  });
+}
+
+/**
+ * Generator function which is called between each async step of the upload
+ * process.
+ * @param {string} inputId Element ID of the input file picker element.
+ * @param {string} outputId Element ID of the output display.
+ * @return {!Iterable<!Object>} Iterable of next steps.
+ */
+function* uploadFilesStep(inputId, outputId) {
+  const inputElement = document.getElementById(inputId);
+  inputElement.disabled = false;
+
+  const outputElement = document.getElementById(outputId);
+  outputElement.innerHTML = '';
+
+  const pickedPromise = new Promise((resolve) => {
+    inputElement.addEventListener('change', (e) => {
+      resolve(e.target.files);
+    });
+  });
+
+  const cancel = document.createElement('button');
+  inputElement.parentElement.appendChild(cancel);
+  cancel.textContent = 'Cancel upload';
+  const cancelPromise = new Promise((resolve) => {
+    cancel.onclick = () => {
+      resolve(null);
+    };
+  });
+
+  // Wait for the user to pick the files.
+  const files = yield {
+    promise: Promise.race([pickedPromise, cancelPromise]),
+    response: {
+      action: 'starting',
+    }
+  };
+
+  cancel.remove();
+
+  // Disable the input element since further picks are not allowed.
+  inputElement.disabled = true;
+
+  if (!files) {
+    return {
+      response: {
+        action: 'complete',
+      }
+    };
+  }
+
+  for (const file of files) {
+    const li = document.createElement('li');
+    li.append(span(file.name, {fontWeight: 'bold'}));
+    li.append(span(
+        `(${file.type || 'n/a'}) - ${file.size} bytes, ` +
+        `last modified: ${
+            file.lastModifiedDate ? file.lastModifiedDate.toLocaleDateString() :
+                                    'n/a'} - `));
+    const percent = span('0% done');
+    li.appendChild(percent);
+
+    outputElement.appendChild(li);
+
+    const fileDataPromise = new Promise((resolve) => {
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        resolve(e.target.result);
+      };
+      reader.readAsArrayBuffer(file);
+    });
+    // Wait for the data to be ready.
+    let fileData = yield {
+      promise: fileDataPromise,
+      response: {
+        action: 'continue',
+      }
+    };
+
+    // Use a chunked sending to avoid message size limits. See b/62115660.
+    let position = 0;
+    do {
+      const length = Math.min(fileData.byteLength - position, MAX_PAYLOAD_SIZE);
+      const chunk = new Uint8Array(fileData, position, length);
+      position += length;
+
+      const base64 = btoa(String.fromCharCode.apply(null, chunk));
+      yield {
+        response: {
+          action: 'append',
+          file: file.name,
+          data: base64,
+        },
+      };
+
+      let percentDone = fileData.byteLength === 0 ?
+          100 :
+          Math.round((position / fileData.byteLength) * 100);
+      percent.textContent = `${percentDone}% done`;
+
+    } while (position < fileData.byteLength);
+  }
+
+  // All done.
+  yield {
+    response: {
+      action: 'complete',
+    }
+  };
+}
+
+scope.google = scope.google || {};
+scope.google.colab = scope.google.colab || {};
+scope.google.colab._files = {
+  _uploadFiles,
+  _uploadFilesContinue,
+};
+})(self);
+</script> </div><div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">KeyboardInterrupt</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
+<span class="nn">/tmp/ipython-input-1456129473.py</span> in <span class="ni">&lt;cell line: 0&gt;</span><span class="nt">()</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="c1"># Upload file di Colab</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="kn">from</span><span class="w"> </span><span class="nn">google.colab</span><span class="w"> </span><span class="kn">import</span> <span class="n">files</span>
+<span class="ne">----&gt; </span><span class="mi">6</span> <span class="n">files</span><span class="o">.</span><span class="n">upload</span><span class="p">()</span>
+<span class="g g-Whitespace">      </span><span class="mi">7</span> 
+<span class="g g-Whitespace">      </span><span class="mi">8</span> <span class="c1"># Baca data</span>
+
+<span class="nn">/usr/local/lib/python3.12/dist-packages/google/colab/files.py</span> in <span class="ni">upload</span><span class="nt">(target_dir)</span>
+<span class="g g-Whitespace">     </span><span class="mi">70</span>   <span class="s2">&quot;&quot;&quot;</span>
+<span class="g g-Whitespace">     </span><span class="mi">71</span><span class="s2"> </span>
+<span class="ne">---&gt; </span><span class="mi">72</span><span class="s2">   uploaded_files = _upload_files(multiple=True)</span>
+<span class="g g-Whitespace">     </span><span class="mi">73</span><span class="s2">   # Mapping from original filename to filename as saved locally.</span>
+<span class="g g-Whitespace">     </span><span class="mi">74</span><span class="s2">   local_filenames = dict()</span>
+
+<span class="nn">/usr/local/lib/python3.12/dist-packages/google/colab/files.py</span> in <span class="ni">_upload_files</span><span class="nt">(multiple)</span>
+<span class="g g-Whitespace">    </span><span class="mi">162</span><span class="s2"> </span>
+<span class="g g-Whitespace">    </span><span class="mi">163</span><span class="s2">   # First result is always an indication that the file picker has completed.</span>
+<span class="ne">--&gt; </span><span class="mi">164</span><span class="s2">   result = _output.eval_js(</span>
+<span class="g g-Whitespace">    </span><span class="mi">165</span><span class="s2">       &#39;google.colab._files._uploadFiles(&quot;</span><span class="si">{input_id}</span><span class="s2">&quot;, &quot;</span><span class="si">{output_id}</span><span class="s2">&quot;)&#39;.format(</span>
+<span class="g g-Whitespace">    </span><span class="mi">166</span><span class="s2">           input_id=input_id, output_id=output_id</span>
+
+<span class="nn">/usr/local/lib/python3.12/dist-packages/google/colab/output/_js.py</span> in <span class="ni">eval_js</span><span class="nt">(script, ignore_result, timeout_sec)</span>
+<span class="g g-Whitespace">     </span><span class="mi">38</span><span class="s2">   if ignore_result:</span>
+<span class="g g-Whitespace">     </span><span class="mi">39</span><span class="s2">     return</span>
+<span class="ne">---&gt; </span><span class="mi">40</span><span class="s2">   return _message.read_reply_from_input(request_id, timeout_sec)</span>
+<span class="g g-Whitespace">     </span><span class="mi">41</span><span class="s2"> </span>
+<span class="g g-Whitespace">     </span><span class="mi">42</span><span class="s2"> </span>
+
+<span class="nn">/usr/local/lib/python3.12/dist-packages/google/colab/_message.py</span> in <span class="ni">read_reply_from_input</span><span class="nt">(message_id, timeout_sec)</span>
+<span class="g g-Whitespace">     </span><span class="mi">94</span><span class="s2">     reply = _read_next_input_message()</span>
+<span class="g g-Whitespace">     </span><span class="mi">95</span><span class="s2">     if reply == _NOT_READY or not isinstance(reply, dict):</span>
+<span class="ne">---&gt; </span><span class="mi">96</span><span class="s2">       time.sleep(0.025)</span>
+<span class="g g-Whitespace">     </span><span class="mi">97</span><span class="s2">       continue</span>
+<span class="g g-Whitespace">     </span><span class="mi">98</span><span class="s2">     if (</span>
+
+<span class="ne">KeyboardInterrupt</span>: 
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="boxplot-berdasarkan-spesies">
+<h3><strong>2. Boxplot Berdasarkan Spesies</strong><a class="headerlink" href="#boxplot-berdasarkan-spesies" title="Link to this heading">#</a></h3>
+<p>Menunjukkan distribusi dan outlier.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">boxplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;Class&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;petal length&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Boxplot Petal Length berdasarkan Spesies&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;boxplot_petal_length.png&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/287071a146978409e7e3c10ddf34eca56945a384d66e443bc9d7e5841db0f34e.png" src="_images/287071a146978409e7e3c10ddf34eca56945a384d66e443bc9d7e5841db0f34e.png" />
+</div>
+</div>
+</section>
+<section id="scatter-plot">
+<h3>3. Scatter Plot<a class="headerlink" href="#scatter-plot" title="Link to this heading">#</a></h3>
+<p>Menunjukkan hubungan antar fitur, diwarnai berdasarkan spesies.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;sepal length&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;sepal width&#39;</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s1">&#39;Class&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Scatter Plot Sepal Length vs Width&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;scatter_sepal.png&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/343a3e71c51c7e4abf6a0667449128afa815e9e6c60bcb5aaa047089c6657b6b.png" src="_images/343a3e71c51c7e4abf6a0667449128afa815e9e6c60bcb5aaa047089c6657b6b.png" />
+</div>
+</div>
+</section>
+<section id="pairplot">
+<h3>4. Pairplot<a class="headerlink" href="#pairplot" title="Link to this heading">#</a></h3>
+<p>Visualisasi multivariate.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">pairplot</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s1">&#39;Class&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s1">&#39;Pairplot Iris Dataset&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;pairplot.png&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/75119787e09f5dd7ddf34cb5da029592109faa5910ff1f1753a9446556833c3c.png" src="_images/75119787e09f5dd7ddf34cb5da029592109faa5910ff1f1753a9446556833c3c.png" />
+</div>
+</div>
+<section id="heatmap-korelasi">
+<h4><strong>5. Heatmap Korelasi</strong><a class="headerlink" href="#heatmap-korelasi" title="Link to this heading">#</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">corr</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">corr</span><span class="p">(</span><span class="n">numeric_only</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">corr</span><span class="p">,</span> <span class="n">annot</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;coolwarm&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Heatmap Korelasi&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;correlation_heatmap.png&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/4fb384156b5f618a7080bdb14ee7a3f2ea566ebb61d4b33bcc3c63afb3595325.png" src="_images/4fb384156b5f618a7080bdb14ee7a3f2ea566ebb61d4b33bcc3c63afb3595325.png" />
+</div>
+</div>
+<p>Insight yang Saya Dapat
+Dari analisis saya:</p>
+<p>*Fitur petal lebih bagus buat bedain jenis bunga daripada sepal, karena * Iris-setosa petalnya kecil banget, sementara yang lain lebih besar dengan sedikit tumpang tindih.
+Petal_length dan petal_width sangat mirip, mungkin bisa digabung kalau perlu.
+Ada sedikit nilai aneh di sepal_width, tapi tidak masalah besar.
+Dataset ini seimbang, jadi cocok buat model tanpa bias.
+Selanjutnya, bisa dipakai untuk clustering atau klasifikasi, karena polanya mudah dilihat.</p>
+</section>
+</section>
 </section>
 <div class="toctree-wrapper compound">
 </div>
@@ -549,10 +1162,27 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-sumber-dan-pemuatan-data"><strong>a. Sumber dan Pemuatan Data</strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#b-deskripsi-atribut-kolom"><strong>b. Deskripsi Atribut/Kolom</strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#c-analisis-data-eksplorasi">**c. Analisis Data Eksplorasi **</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#d-temuan-utama-dan-wawasan-awal"><strong>d. Temuan Utama dan Wawasan Awal</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pendahuluan"><strong>Pendahuluan</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deskripsi-data"><strong>Deskripsi Data</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#statistik-deskriptif"><strong>Statistik Deskriptif</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#statistik-keseluruhan-dataset"><strong>Statistik Keseluruhan Dataset</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#statistik-berdasarkan-spesies"><strong>Statistik Berdasarkan Spesies</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#iris-setosa"><strong>Iris-setosa</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#iris-versicolor"><strong>Iris-versicolor</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#iris-virginica"><strong>Iris-virginica</strong></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matriks-korelasi"><strong>Matriks Korelasi</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualisasi-data"><strong>Visualisasi Data</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#histogram-untuk-setiap-fitur"><strong>1. Histogram untuk Setiap Fitur</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#boxplot-berdasarkan-spesies"><strong>2. Boxplot Berdasarkan Spesies</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scatter-plot">3. Scatter Plot</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pairplot">4. Pairplot</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#heatmap-korelasi"><strong>5. Heatmap Korelasi</strong></a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
   </nav></div>
 
