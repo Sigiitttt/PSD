@@ -19,20 +19,47 @@ Traceback (most recent call last):
            ^^^^^^^^^^^^^^^
   File "/usr/local/lib/python3.12/dist-packages/nbclient/client.py", line 709, in async_execute
     await self.async_execute_cell(
-  File "/usr/local/lib/python3.12/dist-packages/nbclient/client.py", line 1005, in async_execute_cell
-    exec_reply = await self.task_poll_for_reply
-                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.12/dist-packages/nbclient/client.py", line 806, in _async_poll_for_reply
-    error_on_timeout_execute_reply = await self._async_handle_timeout(timeout, cell)
-                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.12/dist-packages/nbclient/client.py", line 856, in _async_handle_timeout
-    raise CellTimeoutError.error_from_timeout_and_cell(
-nbclient.exceptions.CellTimeoutError: A cell timed out while it was being executed, after 30 seconds.
-The message was: Cell execution timed out.
-Here is a preview of the cell contents:
--------------------
-['# Import library', 'import pandas as pd', 'import matplotlib.pyplot as plt', 'import seaborn as sns', 'from sklearn.preprocessing import LabelEncoder']
-...
-['df = pd.read_csv(io.BytesIO(uploaded[filename]))', '', 'print("Nama file:", filename)', 'print("5 baris pertama:")', 'print(df.head())']
--------------------
+  File "/usr/local/lib/python3.12/dist-packages/nbclient/client.py", line 1062, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "/usr/local/lib/python3.12/dist-packages/nbclient/client.py", line 918, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+# ---- IDENTIFIKASI OUTLIER DENGAN IQR ----
+num_cols = ['sepal length','sepal width','petal length','petal width']
+
+outlier_indices = []
+for col in num_cols:
+    Q1 = df[col].quantile(0.25)
+    Q3 = df[col].quantile(0.75)
+    IQR = Q3 - Q1
+    lower = Q1 - 1.5 * IQR
+    upper = Q3 + 1.5 * IQR
+    outliers = df[(df[col] < lower) | (df[col] > upper)].index
+    outlier_indices.extend(outliers)
+
+# Buang duplikasi index outlier
+outlier_indices = list(set(outlier_indices))
+
+print(f"Jumlah data outlier (berdasarkan IQR): {len(outlier_indices)}")
+
+# Visualisasi boxplot untuk deteksi outlier
+plt.figure(figsize=(10,6))
+sns.boxplot(data=df[num_cols])
+plt.title("Boxplot Fitur untuk Deteksi Outlier")
+plt.show()
+
+------------------
+
+
+[0;31m---------------------------------------------------------------------------[0m
+[0;31mNameError[0m                                 Traceback (most recent call last)
+[0;32m/tmp/ipython-input-1644614442.py[0m in [0;36m<cell line: 0>[0;34m()[0m
+[1;32m      4[0m [0moutlier_indices[0m [0;34m=[0m [0;34m[[0m[0;34m][0m[0;34m[0m[0;34m[0m[0m
+[1;32m      5[0m [0;32mfor[0m [0mcol[0m [0;32min[0m [0mnum_cols[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+[0;32m----> 6[0;31m     [0mQ1[0m [0;34m=[0m [0mdf[0m[0;34m[[0m[0mcol[0m[0;34m][0m[0;34m.[0m[0mquantile[0m[0;34m([0m[0;36m0.25[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m      7[0m     [0mQ3[0m [0;34m=[0m [0mdf[0m[0;34m[[0m[0mcol[0m[0;34m][0m[0;34m.[0m[0mquantile[0m[0;34m([0m[0;36m0.75[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[1;32m      8[0m     [0mIQR[0m [0;34m=[0m [0mQ3[0m [0;34m-[0m [0mQ1[0m[0;34m[0m[0;34m[0m[0m
+
+[0;31mNameError[0m: name 'df' is not defined
 
