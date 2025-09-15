@@ -25,41 +25,80 @@ Traceback (most recent call last):
     raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
 nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
 ------------------
-# ---- IDENTIFIKASI OUTLIER DENGAN IQR ----
-num_cols = ['sepal length','sepal width','petal length','petal width']
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+from pycaret.anomaly import *
 
-outlier_indices = []
-for col in num_cols:
-    Q1 = df[col].quantile(0.25)
-    Q3 = df[col].quantile(0.75)
-    IQR = Q3 - Q1
-    lower = Q1 - 1.5 * IQR
-    upper = Q3 + 1.5 * IQR
-    outliers = df[(df[col] < lower) | (df[col] > upper)].index
-    outlier_indices.extend(outliers)
+# 1. Load Data
+data = pd.read_csv("data_iris.csv")
 
-# Buang duplikasi index outlier
-outlier_indices = list(set(outlier_indices))
+print("=== Informasi Dataset ===")
+print(data.info())
+print("\n=== 5 Data Teratas ===")
+print(data.head())
 
-print(f"Jumlah data outlier (berdasarkan IQR): {len(outlier_indices)}")
+# 2. Setup PyCaret (hanya fitur numerik)
+features = data.drop(columns=["id", "Class"])
+setup(data=features, session_id=123, verbose=False)
 
-# Visualisasi boxplot untuk deteksi outlier
-plt.figure(figsize=(10,6))
-sns.boxplot(data=df[num_cols])
-plt.title("Boxplot Fitur untuk Deteksi Outlier")
+abod = create_model("abod")
+results_abod = assign_model(abod)
+
+# Tambahkan hasil ke dataframe asli
+data_abod = data.copy()
+data_abod["Anomaly"] = results_abod["Anomaly"]
+
+print("\n=== Distribusi Outlier (ABOD) ===")
+print(data_abod["Anomaly"].value_counts())  # 0 = normal, 1 = outlier
+
+# Hitung jumlah normal & outlier
+n_outliers = (data_abod["Anomaly"] == 1).sum()
+n_normal = (data_abod["Anomaly"] == 0).sum()
+
+# Plot normal (hijau bulat)
+sns.scatterplot(
+    x=data_abod.loc[data_abod["Anomaly"]==0, "sepal length"],
+    y=data_abod.loc[data_abod["Anomaly"]==0, "sepal width"],
+    color="blue", alpha=0.6, s=50,
+    label=f"Normal ({n_normal})"
+)
+
+# Plot outlier (orange X besar)
+sns.scatterplot(
+    x=data_abod.loc[data_abod["Anomaly"]==1, "sepal length"],
+    y=data_abod.loc[data_abod["Anomaly"]==1, "sepal width"],
+    color="red", marker="X", s=120, alpha=0.9,
+    label=f"Outlier ({n_outliers})"
+)
+
+plt.title("Identifikasi Outlier dengan ABOD")
+plt.xlabel("Sepal Length")
+plt.ylabel("Sepal Width")
+plt.legend(title="Kategori")
+plt.grid(alpha=0.3)
+plt.savefig("outlier_abod.png")
 plt.show()
-
 ------------------
 
 
 [0;31m---------------------------------------------------------------------------[0m
-[0;31mNameError[0m                                 Traceback (most recent call last)
-[0;32m/tmp/ipython-input-1644614442.py[0m in [0;36m<cell line: 0>[0;34m()[0m
-[1;32m      4[0m [0moutlier_indices[0m [0;34m=[0m [0;34m[[0m[0;34m][0m[0;34m[0m[0;34m[0m[0m
-[1;32m      5[0m [0;32mfor[0m [0mcol[0m [0;32min[0m [0mnum_cols[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
-[0;32m----> 6[0;31m     [0mQ1[0m [0;34m=[0m [0mdf[0m[0;34m[[0m[0mcol[0m[0;34m][0m[0;34m.[0m[0mquantile[0m[0;34m([0m[0;36m0.25[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
-[0m[1;32m      7[0m     [0mQ3[0m [0;34m=[0m [0mdf[0m[0;34m[[0m[0mcol[0m[0;34m][0m[0;34m.[0m[0mquantile[0m[0;34m([0m[0;36m0.75[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
-[1;32m      8[0m     [0mIQR[0m [0;34m=[0m [0mQ3[0m [0;34m-[0m [0mQ1[0m[0;34m[0m[0;34m[0m[0m
+[0;31mModuleNotFoundError[0m                       Traceback (most recent call last)
+[0;32m/tmp/ipython-input-930273050.py[0m in [0;36m<cell line: 0>[0;34m()[0m
+[1;32m      2[0m [0;32mimport[0m [0mmatplotlib[0m[0;34m.[0m[0mpyplot[0m [0;32mas[0m [0mplt[0m[0;34m[0m[0;34m[0m[0m
+[1;32m      3[0m [0;32mimport[0m [0mseaborn[0m [0;32mas[0m [0msns[0m[0;34m[0m[0;34m[0m[0m
+[0;32m----> 4[0;31m [0;32mfrom[0m [0mpycaret[0m[0;34m.[0m[0manomaly[0m [0;32mimport[0m [0;34m*[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m      5[0m [0;34m[0m[0m
+[1;32m      6[0m [0;31m# 1. Load Data[0m[0;34m[0m[0;34m[0m[0m
 
-[0;31mNameError[0m: name 'df' is not defined
+[0;31mModuleNotFoundError[0m: No module named 'pycaret'
+
+[0;31m---------------------------------------------------------------------------[0;32m
+NOTE: If your import is failing due to a missing package, you can
+manually install dependencies using either !pip or !apt.
+
+To view examples of installing some common dependencies, click the
+"Open Examples" button below.
+[0;31m---------------------------------------------------------------------------[0m
+
 
