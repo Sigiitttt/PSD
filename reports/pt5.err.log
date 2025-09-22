@@ -25,35 +25,24 @@ Traceback (most recent call last):
     raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
 nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
 ------------------
-# LANGKAH 2: ANALISIS & PERSIAPAN DATA
-print("\n--- LANGKAH 2: Menganalisis dan Mempersiapkan Data ---")
-feature_columns = ['mcg', 'gvh', 'lip', 'chg', 'aac', 'alm1', 'alm2']
-target_column = 'localization_class'
+# Gabungkan dalam pipeline (urutan penting!)
+adasyn = ADASYN(random_state=42)
+ros = RandomOverSampler(sampling_strategy=sampling_strategy_step1, random_state=42)
+pipeline = Pipeline([('ros', ros), ('adasyn', adasyn)])
 
-X = df[feature_columns]
-y = df[target_column]
-print("\n[INFO] Ringkasan struktur data:")
-X.info()
-
-print("\n[ANALISIS] Distribusi kelas sebelum penyeimbangan:")
-print("Ini menunjukkan adanya ketidakseimbangan (imbalance) yang signifikan.")
-class_counts_before = y.value_counts()
-print(class_counts_before)
+# Jalankan proses resampling
+X_resampled, y_resampled = pipeline.fit_resample(X, y)
 ------------------
 
------ stdout -----
-
---- LANGKAH 2: Menganalisis dan Mempersiapkan Data ---
-------------------
 
 [0;31m---------------------------------------------------------------------------[0m
 [0;31mNameError[0m                                 Traceback (most recent call last)
-[0;32m/tmp/ipython-input-2320132956.py[0m in [0;36m<cell line: 0>[0;34m()[0m
-[1;32m      4[0m [0mtarget_column[0m [0;34m=[0m [0;34m'localization_class'[0m[0;34m[0m[0;34m[0m[0m
+[0;32m/tmp/ipython-input-1247001434.py[0m in [0;36m<cell line: 0>[0;34m()[0m
+[1;32m      1[0m [0;31m# Gabungkan dalam pipeline (urutan penting!)[0m[0;34m[0m[0;34m[0m[0m
+[0;32m----> 2[0;31m [0madasyn[0m [0;34m=[0m [0mADASYN[0m[0;34m([0m[0mrandom_state[0m[0;34m=[0m[0;36m42[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m      3[0m [0mros[0m [0;34m=[0m [0mRandomOverSampler[0m[0;34m([0m[0msampling_strategy[0m[0;34m=[0m[0msampling_strategy_step1[0m[0;34m,[0m [0mrandom_state[0m[0;34m=[0m[0;36m42[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[1;32m      4[0m [0mpipeline[0m [0;34m=[0m [0mPipeline[0m[0;34m([0m[0;34m[[0m[0;34m([0m[0;34m'ros'[0m[0;34m,[0m [0mros[0m[0;34m)[0m[0;34m,[0m [0;34m([0m[0;34m'adasyn'[0m[0;34m,[0m [0madasyn[0m[0;34m)[0m[0;34m][0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
 [1;32m      5[0m [0;34m[0m[0m
-[0;32m----> 6[0;31m [0mX[0m [0;34m=[0m [0mdf[0m[0;34m[[0m[0mfeature_columns[0m[0;34m][0m[0;34m[0m[0;34m[0m[0m
-[0m[1;32m      7[0m [0my[0m [0;34m=[0m [0mdf[0m[0;34m[[0m[0mtarget_column[0m[0;34m][0m[0;34m[0m[0;34m[0m[0m
-[1;32m      8[0m [0mprint[0m[0;34m([0m[0;34m"\n[INFO] Ringkasan struktur data:"[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
 
-[0;31mNameError[0m: name 'df' is not defined
+[0;31mNameError[0m: name 'ADASYN' is not defined
 
