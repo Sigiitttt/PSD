@@ -25,60 +25,35 @@ Traceback (most recent call last):
     raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
 nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
 ------------------
-# Impor library yang dibutuhkan
-import pandas as pd
-import mysql.connector
-from sklearn.preprocessing import StandardScaler
-from sklearn.decomposition import PCA
-from imblearn.over_sampling import ADASYN, RandomOverSampler
-from imblearn.pipeline import Pipeline
-import matplotlib.pyplot as plt
-import seaborn as sns
-import numpy as np
-import warnings
+# LANGKAH 2: ANALISIS & PERSIAPAN DATA
+print("\n--- LANGKAH 2: Menganalisis dan Mempersiapkan Data ---")
+feature_columns = ['mcg', 'gvh', 'lip', 'chg', 'aac', 'alm1', 'alm2']
+target_column = 'localization_class'
 
-warnings.filterwarnings("ignore", category=FutureWarning)
-plt.style.use('seaborn-v0_8-whitegrid')
+X = df[feature_columns]
+y = df[target_column]
+print("\n[INFO] Ringkasan struktur data:")
+X.info()
 
-# LANGKAH 1: KONEKSI KE DATABASE MYSQL
-print("--- LANGKAH 1: Menghubungkan ke Database ---")
-db_config = {
-    'host': 'localhost',
-    'user': 'root',
-    'password': '',
-    'database': 'pertemuan5'
-}
-table_name = 'ecoli'
-try:
-    conn = mysql.connector.connect(**db_config)
-    query = f"SELECT * FROM {table_name}"
-    df = pd.read_sql(query, conn)
-    conn.close()
-    print(f"✅ Koneksi berhasil! {len(df)} baris data dari tabel '{table_name}' telah dimuat.")
-
-except mysql.connector.Error as e:
-    print(f"❌ Error saat koneksi ke MySQL: {e}")
-    exit()
+print("\n[ANALISIS] Distribusi kelas sebelum penyeimbangan:")
+print("Ini menunjukkan adanya ketidakseimbangan (imbalance) yang signifikan.")
+class_counts_before = y.value_counts()
+print(class_counts_before)
 ------------------
 
+----- stdout -----
+
+--- LANGKAH 2: Menganalisis dan Mempersiapkan Data ---
+------------------
 
 [0;31m---------------------------------------------------------------------------[0m
-[0;31mModuleNotFoundError[0m                       Traceback (most recent call last)
-[0;32m/tmp/ipython-input-4164113966.py[0m in [0;36m<cell line: 0>[0;34m()[0m
-[1;32m      1[0m [0;31m# Impor library yang dibutuhkan[0m[0;34m[0m[0;34m[0m[0m
-[1;32m      2[0m [0;32mimport[0m [0mpandas[0m [0;32mas[0m [0mpd[0m[0;34m[0m[0;34m[0m[0m
-[0;32m----> 3[0;31m [0;32mimport[0m [0mmysql[0m[0;34m.[0m[0mconnector[0m[0;34m[0m[0;34m[0m[0m
-[0m[1;32m      4[0m [0;32mfrom[0m [0msklearn[0m[0;34m.[0m[0mpreprocessing[0m [0;32mimport[0m [0mStandardScaler[0m[0;34m[0m[0;34m[0m[0m
-[1;32m      5[0m [0;32mfrom[0m [0msklearn[0m[0;34m.[0m[0mdecomposition[0m [0;32mimport[0m [0mPCA[0m[0;34m[0m[0;34m[0m[0m
+[0;31mNameError[0m                                 Traceback (most recent call last)
+[0;32m/tmp/ipython-input-2320132956.py[0m in [0;36m<cell line: 0>[0;34m()[0m
+[1;32m      4[0m [0mtarget_column[0m [0;34m=[0m [0;34m'localization_class'[0m[0;34m[0m[0;34m[0m[0m
+[1;32m      5[0m [0;34m[0m[0m
+[0;32m----> 6[0;31m [0mX[0m [0;34m=[0m [0mdf[0m[0;34m[[0m[0mfeature_columns[0m[0;34m][0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m      7[0m [0my[0m [0;34m=[0m [0mdf[0m[0;34m[[0m[0mtarget_column[0m[0;34m][0m[0;34m[0m[0;34m[0m[0m
+[1;32m      8[0m [0mprint[0m[0;34m([0m[0;34m"\n[INFO] Ringkasan struktur data:"[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
 
-[0;31mModuleNotFoundError[0m: No module named 'mysql'
-
-[0;31m---------------------------------------------------------------------------[0;32m
-NOTE: If your import is failing due to a missing package, you can
-manually install dependencies using either !pip or !apt.
-
-To view examples of installing some common dependencies, click the
-"Open Examples" button below.
-[0;31m---------------------------------------------------------------------------[0m
-
+[0;31mNameError[0m: name 'df' is not defined
 
