@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Profile &#8212; Tugas Proyek PSD</title>
+    <title>Proyek UTS PSD &#8212; Tugas Proyek PSD</title>
   
   
   
@@ -57,11 +57,11 @@
     <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'intro';</script>
-    <link rel="canonical" href="/PSD/intro.html" />
+    <script>DOCUMENTATION_OPTIONS.pagename = 'UTS-PSD';</script>
+    <link rel="canonical" href="/PSD/UTS-PSD.html" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Business Understanding – Coffee Shop Sales" href="Tugas1.html" />
+    <link rel="prev" title="Analisis Data: Penanganan Imbalance &amp; Perbandingan Klasifikasi pada Dataset Ecoli" href="tugas6.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -124,8 +124,6 @@
       
       
       
-        
-      
       <div class="bd-sidebar-primary bd-sidebar">
         
 
@@ -144,7 +142,7 @@
     
   
 
-<a class="navbar-brand logo" href="#">
+<a class="navbar-brand logo" href="intro.html">
   
   
   
@@ -175,13 +173,13 @@
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
-            <li class="toctree-l1 current active">
-                <a class="reference internal" href="#">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
                     Profile
                 </a>
             </li>
         </ul>
-        <ul class="nav bd-sidenav">
+        <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="Tugas1.html"><strong>Business Understanding – Coffee Shop Sales</strong></a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="Tugas2.html"><strong>Data Understanding – Coffee Shop Sales</strong></a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="Tugas3.html"><strong>Data Understanding</strong></a></li>
@@ -200,7 +198,7 @@
 
 
 <li class="toctree-l1"><a class="reference internal" href="tugas6.html"><strong>Analisis Data: Penanganan Imbalance &amp; Perbandingan Klasifikasi pada Dataset Ecoli</strong></a></li>
-<li class="toctree-l1"><a class="reference internal" href="UTS-PSD.html"><strong>Proyek UTS PSD</strong></a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#"><strong>Proyek UTS PSD</strong></a></li>
 </ul>
 
     </div>
@@ -272,7 +270,7 @@
       
       
       
-      <li><a href="https://github.com/Sigiitttt/PSD/issues/new?title=Issue%20on%20page%20%2Fintro.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/Sigiitttt/PSD/issues/new?title=Issue%20on%20page%20%2FUTS-PSD.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -302,7 +300,7 @@
       
       
       
-      <li><a href="_sources/intro.md" target="_blank"
+      <li><a href="_sources/UTS-PSD.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -312,7 +310,7 @@
 <span class="btn__icon-container">
   <i class="fas fa-file"></i>
   </span>
-<span class="btn__text-container">.md</span>
+<span class="btn__text-container">.ipynb</span>
 </a>
 </li>
       
@@ -373,7 +371,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
 </div></div>
       
     </div>
@@ -384,11 +384,25 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Profile</h1>
+    <h1>Proyek UTS PSD</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#workflow-1-deteksi-outlier-outlier-detection"><strong>Workflow 1: Deteksi Outlier (Outlier Detection)</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#diagram-alur-kerja"><strong>Diagram Alur Kerja</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#langkah-langkah-analisis"><strong>Langkah-langkah Analisis</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#workflow-2-analisis-dataset-tidak-seimbang-unbalanced-dataset"><strong>Workflow 2: Analisis Dataset Tidak Seimbang (Unbalanced Dataset)</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1"><strong>Langkah-langkah Analisis</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hasil-dan-interpretasi"><strong>Hasil dan Interpretasi</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kesimpulan"><strong>Kesimpulan</strong></a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -398,30 +412,71 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="profile">
-<h1>Profile<a class="headerlink" href="#profile" title="Link to this heading">#</a></h1>
-<p>Halooo, saya Moch Sigit Aringga dengan NIM 230411100104 , mahasiswa Teknik Informatika semester 5 di Universitas Trunojoyo Madura. Website ini saya buat sebagai media untuk mengumpulkan dan menampilkan berbagai tugas kuliah yang telah saya kerjakan, khususnya di Mata kuliah Harapannya,Proyek Saint Data.Harapannya, website ini dapat menjadi dokumentasi pembelajaran sekaligus portofolio saya ke depannya.</p>
-<p>Check out the content pages bundled with this sample book to see more.</p>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="Tugas1.html"><strong>Business Understanding – Coffee Shop Sales</strong></a></li>
-<li class="toctree-l1"><a class="reference internal" href="Tugas2.html"><strong>Data Understanding – Coffee Shop Sales</strong></a></li>
-<li class="toctree-l1"><a class="reference internal" href="Data%20Understanding%20-%20iris.html"><strong>Data Understanding: Iris Dataset</strong></a></li>
-<li class="toctree-l1"><a class="reference internal" href="Data%20Understanding%20-%20iris.html#analisis-data-dan-identifikasi-outlier-pada-dataset-iris"><strong>Analisis Data dan Identifikasi Outlier pada Dataset Iris</strong></a></li>
-<li class="toctree-l1"><a class="reference internal" href="explorasi%20data%20power%20BI.html"><strong>Eksplorasi Data</strong></a></li>
-<li class="toctree-l1"><a class="reference internal" href="Preposesing-data-iris.html"><strong>Preprocessing Data IRIS: Penghapusan Outlier dengan Tiga Metode</strong></a></li>
-<li class="toctree-l1"><a class="reference internal" href="pt5.html"><strong>Menangani Imbalance Ecoli dengan ADASYN</strong></a></li>
-<li class="toctree-l1"><a class="reference internal" href="pt5.html#langkah-1-menganalisis-awal-data">Langkah 1: Menganalisis Awal Data</a></li>
-<li class="toctree-l1"><a class="reference internal" href="pt5.html#langkah-2-visualisasi-data-dengan-pca"><strong>Langkah 2: Visualisasi Data dengan PCA</strong></a></li>
-<li class="toctree-l1"><a class="reference internal" href="pt5.html#langkah-3-implementasi-smote">Langkah 3: Implementasi SMOTE</a></li>
-<li class="toctree-l1"><a class="reference internal" href="pt5.html#langkah-4-implementasi-adasyn"><strong>Langkah 4: Implementasi ADASYN</strong></a></li>
-<li class="toctree-l1"><a class="reference internal" href="pt5.html#langkah-5">Langkah 5</a></li>
-<li class="toctree-l1"><a class="reference internal" href="pt5.html#langkah-6-visualisasi-perbandingan-akhir"><strong>Langkah 6: Visualisasi Perbandingan Akhir</strong></a></li>
-<li class="toctree-l1"><a class="reference internal" href="pt5.html#kesimpulan-next-step"><strong>Kesimpulan &amp; Next Step</strong></a></li>
-<li class="toctree-l1"><a class="reference internal" href="tugas6.html"><strong>Analisis Data: Penanganan Imbalance &amp; Perbandingan Klasifikasi pada Dataset Ecoli</strong></a></li>
-<li class="toctree-l1"><a class="reference internal" href="UTS-PSD.html"><strong>Proyek UTS PSD</strong></a></li>
+  <section class="tex2jax_ignore mathjax_ignore" id="proyek-uts-psd">
+<h1><strong>Proyek UTS PSD</strong><a class="headerlink" href="#proyek-uts-psd" title="Link to this heading">#</a></h1>
+<p>Dokumentasi ini merinci dua alur kerja (workflow) analisis data yang dilakukan pada dataset E. coli menggunakan KNIME Analytics Platform. Proyek ini mencakup dua analisis utama: deteksi data anomali (outlier) dan penanganan dataset klasifikasi yang tidak seimbang (imbalanced dataset).</p>
+<ul class="simple">
+<li><p>Dataset: E. coli dari UCI Machine Learning Repository</p></li>
+<li><p>Tools: KNIME Analytics Platform, PostgreSQL</p></li>
+<li><p>Nama: Moch Sigit Aringga</p></li>
+<li><p>NIM: 230411100104</p></li>
 </ul>
-</div>
+<section id="workflow-1-deteksi-outlier-outlier-detection">
+<h2><strong>Workflow 1: Deteksi Outlier (Outlier Detection)</strong><a class="headerlink" href="#workflow-1-deteksi-outlier-outlier-detection" title="Link to this heading">#</a></h2>
+<p><strong>Tujuan</strong>
+untuk mengidentifikasi, menandai, dan memvisualisasikan data anomali (outlier) pada fitur-fitur numerik dari dataset E. coli. Deteksi outlier adalah langkah penting dalam pembersihan data untuk memastikan kualitas dan keandalan model di masa depan.</p>
+</section>
+<section id="diagram-alur-kerja">
+<h2><strong>Diagram Alur Kerja</strong><a class="headerlink" href="#diagram-alur-kerja" title="Link to this heading">#</a></h2>
+<p>Alur kerja ini dirancang untuk memproses data dari database, membersihkannya, mendeteksi outlier, dan menampilkan hasilnya secara visual.</p>
+<p>[Sisipkan gambar screenshot workflow outlier detection Anda di sini]</p>
+</section>
+<section id="langkah-langkah-analisis">
+<h2><strong>Langkah-langkah Analisis</strong><a class="headerlink" href="#langkah-langkah-analisis" title="Link to this heading">#</a></h2>
+<p>Pengambilan Data (DB Reader): Data E. coli diambil langsung dari database PostgreSQL.</p>
+<p>Pembersihan Data (Missing Value): Langkah pertama adalah menangani nilai yang hilang. Nilai kosong pada kolom numerik diisi dengan nilai rata-rata (Mean) untuk mencegah error pada analisis selanjutnya.</p>
+<p>Deteksi Outlier (Numeric Outliers): Fitur-fitur numerik dianalisis menggunakan metode Interquartile Range (IQR). Setiap nilai yang berada di luar rentang Q1 - 1.5<em>IQR dan Q3 + 1.5</em>IQR dianggap sebagai outlier dan nilainya diganti menjadi missing value (?).</p>
+<p>Pembuatan Penanda (Rule Engine): Sebuah kolom baru bernama prediction dibuat secara manual. Aturan ditetapkan: jika sebuah baris memiliki nilai missing (karena ditandai sebagai outlier), maka kolom prediction akan bernilai true, dan sebaliknya false.</p>
+<p>Pewarnaan (Color Manager): Data diberi warna berdasarkan kolom prediction. Data outlier (true) diberi warna merah, sedangkan data normal (false) diberi warna biru.</p>
+<p>Visualisasi (Scatter Plot): Hasilnya divisualisasikan menggunakan Scatter Plot untuk melihat sebaran data. Titik-titik outlier yang berwarna merah akan terlihat jelas terpisah dari data normal.</p>
+<p>📊 Hasil dan Interpretasi
+Visualisasi Scatter Plot berhasil menunjukkan titik-titik data yang merupakan outlier dengan warna yang berbeda. Ini membuktikan bahwa metode IQR efektif dalam mengidentifikasi data yang secara signifikan berbeda dari sisa populasi data.</p>
+<p>[Sisipkan gambar screenshot Scatter Plot akhir Anda yang sudah berwarna di sini]</p>
+</section>
+<section id="workflow-2-analisis-dataset-tidak-seimbang-unbalanced-dataset">
+<h2><strong>Workflow 2: Analisis Dataset Tidak Seimbang (Unbalanced Dataset)</strong><a class="headerlink" href="#workflow-2-analisis-dataset-tidak-seimbang-unbalanced-dataset" title="Link to this heading">#</a></h2>
+<p><strong>Tujuan</strong></p>
+<p>Workflow ini bertujuan untuk menunjukkan masalah yang timbul dari dataset klasifikasi yang tidak seimbang dan membuktikan efektivitas teknik oversampling SMOTE (Synthetic Minority Over-sampling Technique) dalam meningkatkan performa model klasifikasi (Decision Tree).</p>
+<p>Masalah Ketidakseimbangan Data
+Dataset E. coli memiliki 8 kelas localization_class dengan distribusi yang sangat tidak merata. Kelas mayoritas (cp) memiliki jumlah sampel yang jauh lebih banyak daripada kelas-kelas minoritas (imS, imL). Hal ini menyebabkan model cenderung “bias” dan mengabaikan kelas minoritas.</p>
+<p>[Sisipkan gambar screenshot output Value Counter yang menunjukkan distribusi kelas di sini]</p>
+<p>Diagram Alur Kerja
+Alur kerja ini dirancang dengan dua cabang paralel untuk membandingkan performa model sebelum dan sesudah penyeimbangan data.</p>
+<p>[Sisipkan gambar screenshot workflow unbalanced dataset Anda di sini]</p>
+</section>
+<section id="id1">
+<h2><strong>Langkah-langkah Analisis</strong><a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
+<p>Persiapan Data: Sama seperti workflow pertama, data dibersihkan menggunakan Missing Value. Selain itu, node String to Nominal digunakan pada kolom localization_class untuk memastikan tipe datanya dikenali sebagai kolom kelas.</p>
+<p>Pembagian Data (Partitioning): Data yang sudah bersih dibagi menjadi dua bagian: 70% untuk data latih (training) dan 30% untuk data uji (testing).</p>
+<p>Alur A (Tanpa Balancing): Data latih yang asli (tidak seimbang) digunakan untuk melatih model Decision Tree.</p>
+<p>Alur B (Dengan Balancing): Data latih yang sama dimasukkan terlebih dahulu ke node SMOTE dengan opsi Oversample minority classes. Node ini menyeimbangkan data dengan membuat sampel sintetis untuk kelas minoritas hingga jumlahnya sama dengan kelas mayoritas. Data yang sudah seimbang ini kemudian digunakan untuk melatih model Decision Tree kedua.</p>
+<p>Pengujian dan Evaluasi (Predictor &amp; Scorer): Kedua model (dari Alur A dan B) diuji menggunakan data uji yang sama persis. Performanya diukur dan dibandingkan menggunakan node Scorer yang menghasilkan Confusion Matrix.</p>
+</section>
+<section id="hasil-dan-interpretasi">
+<h2><strong>Hasil dan Interpretasi</strong><a class="headerlink" href="#hasil-dan-interpretasi" title="Link to this heading">#</a></h2>
+<p>Perbandingan Confusion Matrix dari kedua alur menunjukkan perbedaan yang signifikan:</p>
+<p>Model Tanpa SMOTE: Menunjukkan performa yang sangat buruk pada kelas-kelas minoritas. Model gagal mengenali hampir semua sampel dari kelas seperti imS, omL, dan pp, meskipun akurasi keseluruhannya mungkin terlihat tinggi.</p>
+<p>Model Dengan SMOTE: Menunjukkan peningkatan drastis dalam kemampuan mengenali kelas minoritas. Nilai Recall dan jumlah tebakan benar (diagonal pada matriks) untuk kelas minoritas meningkat secara signifikan.</p>
+<p>Ini membuktikan bahwa teknik SMOTE berhasil mengurangi bias model dan membuatnya lebih adil dan efektif dalam menangani dataset yang tidak seimbang.</p>
+<p>[Sisipkan gambar perbandingan kedua Confusion Matrix (sebelum dan sesudah) di sini]</p>
+</section>
+<section id="kesimpulan">
+<h2><strong>Kesimpulan</strong><a class="headerlink" href="#kesimpulan" title="Link to this heading">#</a></h2>
+<p>Proyek ini berhasil mendemonstrasikan dua alur kerja analisis data fundamental menggunakan KNIME. Workflow pertama berhasil mengidentifikasi outlier sebagai bagian dari pembersihan data, sementara workflow kedua membuktikan bahwa penanganan dataset tidak seimbang melalui teknik SMOTE adalah langkah krusial untuk membangun model klasifikasi yang adil dan akurat.</p>
+<p>Referensi
+Workflow Outlier Detection di KNIME Hub: [Link ke Workflow Anda di KNIME Hub]</p>
+<p>Workflow Unbalanced Dataset di KNIME Hub: [Link ke Workflow Anda di KNIME Hub]</p>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -454,14 +509,14 @@ document.write(`
                 <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
-    <a class="right-next"
-       href="Tugas1.html"
-       title="next page">
+    <a class="left-prev"
+       href="tugas6.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><strong>Business Understanding – Coffee Shop Sales</strong></p>
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><strong>Analisis Data: Penanganan Imbalance &amp; Perbandingan Klasifikasi pada Dataset Ecoli</strong></p>
       </div>
-      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
                 </footer>
@@ -469,6 +524,27 @@ document.write(`
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#workflow-1-deteksi-outlier-outlier-detection"><strong>Workflow 1: Deteksi Outlier (Outlier Detection)</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#diagram-alur-kerja"><strong>Diagram Alur Kerja</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#langkah-langkah-analisis"><strong>Langkah-langkah Analisis</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#workflow-2-analisis-dataset-tidak-seimbang-unbalanced-dataset"><strong>Workflow 2: Analisis Dataset Tidak Seimbang (Unbalanced Dataset)</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1"><strong>Langkah-langkah Analisis</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hasil-dan-interpretasi"><strong>Hasil dan Interpretasi</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kesimpulan"><strong>Kesimpulan</strong></a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>
