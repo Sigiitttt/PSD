@@ -37,8 +37,12 @@ nbclient.exceptions.CellTimeoutError: A cell timed out while it was being execut
 The message was: Cell execution timed out.
 Here is a preview of the cell contents:
 -------------------
-['!pip install openeo', 'import openeo', 'import pandas as pd', 'import matplotlib.pyplot as plt', '']
-...
-['plt.xticks(rotation=45)', 'plt.grid(True)', 'plt.legend()', 'plt.tight_layout()', 'plt.show()']
+
+import openeo
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# 1. Koneksi ke Copernicus Data Space
+connection = openeo.connect("openeo.dataspace.copernicus.eu").authenticate_oidc()
 -------------------
 
