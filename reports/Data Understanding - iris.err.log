@@ -1,0 +1,100 @@
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/dist-packages/jupyter_cache/executors/utils.py", line 58, in single_nb_execution
+    executenb(
+  File "/usr/local/lib/python3.12/dist-packages/nbclient/client.py", line 1204, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/dist-packages/nbclient/util.py", line 84, in wrapped
+    return just_run(coro(*args, **kwargs))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/dist-packages/nbclient/util.py", line 62, in just_run
+    return loop.run_until_complete(coro)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/asyncio/base_events.py", line 691, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/dist-packages/nbclient/client.py", line 663, in async_execute
+    await self.async_execute_cell(
+  File "/usr/local/lib/python3.12/dist-packages/nbclient/client.py", line 965, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "/usr/local/lib/python3.12/dist-packages/nbclient/client.py", line 862, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+from pycaret.anomaly import *
+
+# 1. Load Data
+data = pd.read_csv("data_iris.csv")
+
+print("=== Informasi Dataset ===")
+print(data.info())
+print("\n=== 5 Data Teratas ===")
+print(data.head())
+
+# 2. Setup PyCaret (hanya fitur numerik)
+features = data.drop(columns=["id", "Class"])
+setup(data=features, session_id=123, verbose=False)
+
+abod = create_model("abod")
+results_abod = assign_model(abod)
+
+# Tambahkan hasil ke dataframe asli
+data_abod = data.copy()
+data_abod["Anomaly"] = results_abod["Anomaly"]
+
+print("\n=== Distribusi Outlier (ABOD) ===")
+print(data_abod["Anomaly"].value_counts())  # 0 = normal, 1 = outlier
+
+# Hitung jumlah normal & outlier
+n_outliers = (data_abod["Anomaly"] == 1).sum()
+n_normal = (data_abod["Anomaly"] == 0).sum()
+
+# Plot normal (hijau bulat)
+sns.scatterplot(
+    x=data_abod.loc[data_abod["Anomaly"]==0, "sepal length"],
+    y=data_abod.loc[data_abod["Anomaly"]==0, "sepal width"],
+    color="blue", alpha=0.6, s=50,
+    label=f"Normal ({n_normal})"
+)
+
+# Plot outlier (orange X besar)
+sns.scatterplot(
+    x=data_abod.loc[data_abod["Anomaly"]==1, "sepal length"],
+    y=data_abod.loc[data_abod["Anomaly"]==1, "sepal width"],
+    color="red", marker="X", s=120, alpha=0.9,
+    label=f"Outlier ({n_outliers})"
+)
+
+plt.title("Identifikasi Outlier dengan ABOD")
+plt.xlabel("Sepal Length")
+plt.ylabel("Sepal Width")
+plt.legend(title="Kategori")
+plt.grid(alpha=0.3)
+plt.savefig("outlier_abod.png")
+plt.show()
+------------------
+
+[0;31m---------------------------------------------------------------------------[0m
+[0;31mModuleNotFoundError[0m                       Traceback (most recent call last)
+[0;32m/tmp/ipython-input-930273050.py[0m in [0;36m<cell line: 0>[0;34m()[0m
+[1;32m      2[0m [0;32mimport[0m [0mmatplotlib[0m[0;34m.[0m[0mpyplot[0m [0;32mas[0m [0mplt[0m[0;34m[0m[0;34m[0m[0m
+[1;32m      3[0m [0;32mimport[0m [0mseaborn[0m [0;32mas[0m [0msns[0m[0;34m[0m[0;34m[0m[0m
+[0;32m----> 4[0;31m [0;32mfrom[0m [0mpycaret[0m[0;34m.[0m[0manomaly[0m [0;32mimport[0m [0;34m*[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m      5[0m [0;34m[0m[0m
+[1;32m      6[0m [0;31m# 1. Load Data[0m[0;34m[0m[0;34m[0m[0m
+
+[0;31mModuleNotFoundError[0m: No module named 'pycaret'
+
+[0;31m---------------------------------------------------------------------------[0;32m
+NOTE: If your import is failing due to a missing package, you can
+manually install dependencies using either !pip or !apt.
+
+To view examples of installing some common dependencies, click the
+"Open Examples" button below.
+[0;31m---------------------------------------------------------------------------[0m
+
+ModuleNotFoundError: No module named 'pycaret'
+
