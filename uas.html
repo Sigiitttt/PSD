@@ -1,0 +1,1347 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Business Understanding &#8212; Tugas Proyek PSD</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/sphinx_highlight.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'uas';</script>
+    <link rel="canonical" href="/PSD/uas.html" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Profile" href="intro.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logo.png" class="logo__image only-light" alt="Tugas Proyek PSD - Home"/>
+    <script>document.write(`<img src="_static/logo.png" class="logo__image only-dark" alt="Tugas Proyek PSD - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Profile
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#"><strong>Business Understanding</strong></a></li>
+
+
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/Sigiitttt/PSD" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/Sigiitttt/PSD/issues/new?title=Issue%20on%20page%20%2Fuas.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/uas.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Business Understanding</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#"><strong>Business Understanding</strong></a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#latar-belakang-masalah"><strong>1. Latar Belakang Masalah</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#permasalahan-bisnis-business-problem"><strong>2. Permasalahan Bisnis (Business Problem)</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tujuan-proyek-business-objectives"><strong>3. Tujuan Proyek (Business Objectives)</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#manfaat-bisnis-business-value"><strong>4. Manfaat Bisnis (Business Value)</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ruang-lingkup-proyek-scope"><strong>5. Ruang Lingkup Proyek (Scope)</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kriteria-keberhasilan-success-criteria"><strong>6. Kriteria Keberhasilan (Success Criteria)</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ringkasan-business-understanding"><strong>7. Ringkasan Business Understanding</strong></a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#data-understanding"><strong>Data Understanding</strong></a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deskripsi-dataset"><strong>1. Deskripsi Dataset</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#struktur-dan-karakteristik-data"><strong>2. Struktur dan Karakteristik Data</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deskripsi-label-target"><strong>3. Deskripsi Label / Target</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#distribusi-data"><strong>4. Distribusi Data</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tipe-dan-karakteristik-data"><strong>5. Tipe dan Karakteristik Data</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kualitas-data"><strong>6. Kualitas Data</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#eksplorasi-awal-data-initial-data-exploration"><strong>7. Eksplorasi Awal Data (Initial Data Exploration)</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tantangan-data-data-challenges"><strong>8. Tantangan Data (Data Challenges)</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ringkasan-data-understanding"><strong>9. Ringkasan Data Understanding</strong></a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#eda">EDA</a></li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="business-understanding">
+<h1><strong>Business Understanding</strong><a class="headerlink" href="#business-understanding" title="Permalink to this heading">#</a></h1>
+<section id="latar-belakang-masalah">
+<h2><strong>1. Latar Belakang Masalah</strong><a class="headerlink" href="#latar-belakang-masalah" title="Permalink to this heading">#</a></h2>
+<p>Perkembangan teknologi di bidang biomedis dan analitik data memungkinkan pemanfaatan sinyal fisiologis manusia sebagai sumber informasi untuk berbagai kebutuhan, seperti identifikasi individu, sistem keamanan, dan pemantauan kesehatan. Salah satu sinyal fisiologis yang banyak diteliti adalah surface Electromyography (sEMG), yaitu sinyal listrik yang dihasilkan oleh aktivitas otot dan direkam melalui permukaan kulit.</p>
+<p>Setiap individu memiliki karakteristik otot dan pola aktivitas listrik yang berbeda, sehingga sinyal sEMG berpotensi digunakan sebagai ciri biometrik. Namun, data sEMG bersifat kompleks, berdimensi tinggi, dan dipengaruhi oleh berbagai faktor, sehingga diperlukan pendekatan Data Science dan Machine Learning untuk mengekstraksi pola yang bermakna dari data tersebut.</p>
+<p>Dataset SemgHandSubjectCh2 menyediakan data sEMG berbasis spektrum daya dari beberapa subjek yang melakukan aktivitas genggaman tangan. Dataset ini dapat dimanfaatkan untuk membangun model klasifikasi yang mampu mengidentifikasi subjek berdasarkan karakteristik sinyal sEMG.</p>
+</section>
+<section id="permasalahan-bisnis-business-problem">
+<h2><strong>2. Permasalahan Bisnis (Business Problem)</strong><a class="headerlink" href="#permasalahan-bisnis-business-problem" title="Permalink to this heading">#</a></h2>
+<p>Dalam konteks dunia nyata, terdapat kebutuhan akan sistem yang mampu:</p>
+<ul class="simple">
+<li><p>Mengidentifikasi individu secara non-invasif</p></li>
+<li><p>Memanfaatkan sinyal fisiologis alami tanpa memerlukan input eksplisit dari pengguna</p></li>
+<li><p>Bekerja dengan data sinyal biologis yang kompleks</p></li>
+</ul>
+<p>Namun, tanpa analisis data yang tepat, sinyal sEMG sulit digunakan secara langsung karena:</p>
+<ul class="simple">
+<li><p>Memiliki variabilitas tinggi</p></li>
+<li><p>Bersifat non-linear</p></li>
+<li><p>Mengandung noise</p></li>
+</ul>
+<p>Oleh karena itu, diperlukan sistem berbasis Data Science yang mampu mengklasifikasikan identitas subjek secara akurat berdasarkan sinyal sEMG.</p>
+</section>
+<section id="tujuan-proyek-business-objectives">
+<h2><strong>3. Tujuan Proyek (Business Objectives)</strong><a class="headerlink" href="#tujuan-proyek-business-objectives" title="Permalink to this heading">#</a></h2>
+<p>Tujuan utama dari proyek ini adalah:</p>
+<blockquote>
+<div><p>Membangun dan mengevaluasi model klasifikasi berbasis Data Science yang mampu mengidentifikasi subjek berdasarkan sinyal sEMG Channel 2 dengan tingkat akurasi yang baik.</p>
+</div></blockquote>
+<p>Tujuan khusus meliputi:</p>
+<ol class="arabic simple">
+<li><p>Memahami karakteristik data sEMG berbasis spektrum daya</p></li>
+<li><p>Melakukan pra-pemrosesan data agar siap digunakan untuk pemodelan</p></li>
+<li><p>Membangun model klasifikasi multi-kelas (5 kelas subjek)</p></li>
+<li><p>Mengevaluasi performa model menggunakan metrik evaluasi yang sesuai</p></li>
+<li><p>Menentukan model terbaik berdasarkan hasil evaluasi</p></li>
+</ol>
+</section>
+<section id="manfaat-bisnis-business-value">
+<h2><strong>4. Manfaat Bisnis (Business Value)</strong><a class="headerlink" href="#manfaat-bisnis-business-value" title="Permalink to this heading">#</a></h2>
+<p>Hasil dari proyek ini diharapkan memberikan manfaat sebagai berikut:</p>
+<p><strong>Manfaat Praktis</strong></p>
+<ul class="simple">
+<li><p>Menjadi dasar pengembangan sistem identifikasi biometrik berbasis sEMG</p></li>
+<li><p>Mendukung penelitian di bidang biomedis, wearable devices, dan human–computer interaction</p></li>
+<li><p>Memberikan gambaran penerapan Data Science pada data sinyal fisiologis</p></li>
+</ul>
+<p><strong>Manfaat Akademis</strong></p>
+<ul class="simple">
+<li><p>Menjadi studi kasus penerapan metode klasifikasi machine learning</p></li>
+<li><p>Menambah pemahaman tentang pengolahan data time-series dan signal-based data</p></li>
+<li><p>Melatih kemampuan analisis data kompleks dalam konteks dunia nyata</p></li>
+</ul>
+</section>
+<section id="ruang-lingkup-proyek-scope">
+<h2><strong>5. Ruang Lingkup Proyek (Scope)</strong><a class="headerlink" href="#ruang-lingkup-proyek-scope" title="Permalink to this heading">#</a></h2>
+<p>Agar proyek tetap terfokus, ruang lingkup proyek dibatasi sebagai berikut:</p>
+<ul class="simple">
+<li><p>Dataset yang digunakan: SemgHandSubjectCh2</p></li>
+<li><p>Data yang dianalisis: hasil ekstraksi spektrum daya (bukan sinyal mentah)</p></li>
+<li><p>Channel yang digunakan: Channel 2</p></li>
+<li><p>Jumlah kelas: 5 subjek</p></li>
+<li><p>Metode yang digunakan: klasifikasi berbasis Machine Learning / Deep Learning</p></li>
+<li><p>Proyek ini tidak mencakup implementasi perangkat keras atau sistem real-time</p></li>
+</ul>
+</section>
+<section id="kriteria-keberhasilan-success-criteria">
+<h2><strong>6. Kriteria Keberhasilan (Success Criteria)</strong><a class="headerlink" href="#kriteria-keberhasilan-success-criteria" title="Permalink to this heading">#</a></h2>
+<p>Proyek dikatakan berhasil apabila:</p>
+<ol class="arabic simple">
+<li><p>Model mampu melakukan klasifikasi subjek dengan performa yang baik</p></li>
+<li><p>Nilai akurasi dan metrik evaluasi lainnya menunjukkan hasil yang konsisten</p></li>
+<li><p>Model dapat menggeneralisasi data uji dengan baik (tidak overfitting)</p></li>
+<li><p>Hasil analisis dapat dijelaskan secara logis dan ilmiah</p></li>
+</ol>
+</section>
+<section id="ringkasan-business-understanding">
+<h2><strong>7. Ringkasan Business Understanding</strong><a class="headerlink" href="#ringkasan-business-understanding" title="Permalink to this heading">#</a></h2>
+<p>Secara keseluruhan, proyek ini bertujuan untuk memanfaatkan data sEMG sebagai sumber informasi biometrik melalui pendekatan Data Science. Dengan membangun model klasifikasi yang tepat, diharapkan sistem dapat mengenali identitas subjek berdasarkan pola aktivitas otot tangan secara efektif.</p>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="data-understanding">
+<h1><strong>Data Understanding</strong><a class="headerlink" href="#data-understanding" title="Permalink to this heading">#</a></h1>
+<section id="deskripsi-dataset">
+<h2><strong>1. Deskripsi Dataset</strong><a class="headerlink" href="#deskripsi-dataset" title="Permalink to this heading">#</a></h2>
+<p>Dataset yang digunakan dalam proyek ini adalah SemgHandSubjectCh2, yang merupakan bagian dari dataset SEMG for Basic Hand Movements yang tersedia pada UCI Machine Learning Repository. Dataset ini berisi data surface Electromyography (sEMG) yang direkam dari aktivitas otot tangan manusia menggunakan sistem EMG dua kanal, di mana pada proyek ini hanya digunakan Channel 2.</p>
+<p>Data yang digunakan bukan berupa sinyal mentah, melainkan hasil ekstraksi spektrum daya (power spectrum) dari sinyal sEMG, sehingga data berada pada domain frekuensi.</p>
+<p><strong>sumber dataset</strong>   <a class="reference external" href="https://www.timeseriesclassification.com/description.php?Dataset=SemgHandSubjectCh2">https://www.timeseriesclassification.com/description.php?Dataset=SemgHandSubjectCh2</a></p>
+</section>
+<section id="struktur-dan-karakteristik-data">
+<h2><strong>2. Struktur dan Karakteristik Data</strong><a class="headerlink" href="#struktur-dan-karakteristik-data" title="Permalink to this heading">#</a></h2>
+<p>Dataset tidak berbentuk tabel seperti data tabular (CSV dengan kolom bernama), melainkan berbentuk data sinyal numerik.</p>
+<p>Struktur variabelnya adalah:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Karakteristik</p></th>
+<th class="head"><p>Nilai</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Jumlah data latih</p></td>
+<td><p>450 sampel</p></td>
+</tr>
+<tr class="row-odd"><td><p>Jumlah data uji</p></td>
+<td><p>450 sampel</p></td>
+</tr>
+<tr class="row-even"><td><p>Panjang setiap sampel</p></td>
+<td><p>1500 titik</p></td>
+</tr>
+<tr class="row-odd"><td><p>Jumlah dimensi</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-even"><td><p>Jumlah kelas</p></td>
+<td><p>5</p></td>
+</tr>
+<tr class="row-odd"><td><p>Jenis data</p></td>
+<td><p>Spectrogram / Power Spectrum</p></td>
+</tr>
+<tr class="row-even"><td><p>Channel</p></td>
+<td><p>Channel 2</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Setiap sampel data direpresentasikan sebagai vektor satu dimensi dengan panjang 1500 yang menggambarkan distribusi energi sinyal sEMG pada domain frekuensi.</p>
+</section>
+<section id="deskripsi-label-target">
+<h2><strong>3. Deskripsi Label / Target</strong><a class="headerlink" href="#deskripsi-label-target" title="Permalink to this heading">#</a></h2>
+<p>Label pada dataset SemgHandSubjectCh2 merepresentasikan identitas subjek, bukan jenis gerakan tangan. Adapun pembagian kelas adalah sebagai berikut:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Subjek</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Class 1</p></td>
+<td><p>Female 1</p></td>
+</tr>
+<tr class="row-odd"><td><p>Class 2</p></td>
+<td><p>Female 2</p></td>
+</tr>
+<tr class="row-even"><td><p>Class 3</p></td>
+<td><p>Female 3</p></td>
+</tr>
+<tr class="row-odd"><td><p>Class 4</p></td>
+<td><p>Male 1</p></td>
+</tr>
+<tr class="row-even"><td><p>Class 5</p></td>
+<td><p>Male 2</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Dengan demikian, permasalahan yang dihadapi dalam proyek ini adalah klasifikasi multi-kelas dengan lima kelas target.</p>
+</section>
+<section id="distribusi-data">
+<h2><strong>4. Distribusi Data</strong><a class="headerlink" href="#distribusi-data" title="Permalink to this heading">#</a></h2>
+<p>Dataset telah disediakan dalam bentuk data latih dan data uji terpisah, dengan jumlah sampel yang seimbang:</p>
+<ul class="simple">
+<li><p>450 data latih</p></li>
+<li><p>450 data uji</p></li>
+</ul>
+<p>Distribusi kelas pada dataset bersifat relatif seimbang, sehingga tidak diperlukan teknik penanganan ketidakseimbangan data seperti oversampling atau undersampling pada tahap awal.</p>
+<p>Selain itu, urutan data tidak memiliki makna tertentu, sehingga setiap sampel dianggap independen satu sama lain.</p>
+</section>
+<section id="tipe-dan-karakteristik-data">
+<h2><strong>5. Tipe dan Karakteristik Data</strong><a class="headerlink" href="#tipe-dan-karakteristik-data" title="Permalink to this heading">#</a></h2>
+<p>Berdasarkan bentuk dan sifatnya, data memiliki karakteristik sebagai berikut:</p>
+<ul class="simple">
+<li><p>Numerik kontinu</p></li>
+<li><p>Berdimensi tinggi (1500 fitur per sampel)</p></li>
+<li><p>Berbasis sinyal frekuensi</p></li>
+<li><p>Memiliki potensi korelasi antar fitur</p></li>
+</ul>
+<p>Karakteristik ini mengindikasikan perlunya:</p>
+<ul class="simple">
+<li><p>Normalisasi atau standarisasi data</p></li>
+<li><p>Teknik reduksi dimensi (opsional)</p></li>
+<li><p>Model yang mampu menangani data berdimensi tinggi</p></li>
+</ul>
+</section>
+<section id="kualitas-data">
+<h2><strong>6. Kualitas Data</strong><a class="headerlink" href="#kualitas-data" title="Permalink to this heading">#</a></h2>
+<p>Berdasarkan deskripsi dataset:</p>
+<ul class="simple">
+<li><p>Data tidak mengandung nilai kosong (<em>missing values</em>)</p></li>
+<li><p>Data telah melalui proses ekstraksi spektrum daya</p></li>
+<li><p>Noise relatif lebih rendah dibandingkan sinyal mentah</p></li>
+</ul>
+<p>Namun demikian, tetap diperlukan:</p>
+<ul class="simple">
+<li><p>Pemeriksaan nilai ekstrem (<em>outliers</em>)</p></li>
+<li><p>Analisis statistik dasar untuk memahami rentang nilai data</p></li>
+<li><p>Visualisasi data untuk memahami pola awal</p></li>
+</ul>
+</section>
+<section id="eksplorasi-awal-data-initial-data-exploration">
+<h2><strong>7. Eksplorasi Awal Data (Initial Data Exploration)</strong><a class="headerlink" href="#eksplorasi-awal-data-initial-data-exploration" title="Permalink to this heading">#</a></h2>
+<p>Pada tahap awal eksplorasi data, analisis yang dapat dilakukan meliputi:</p>
+<ol class="arabic simple">
+<li><p>Analisis statistik deskriptif (mean, standar deviasi, minimum, maksimum)</p></li>
+<li><p>Visualisasi sinyal spektrum daya untuk beberapa sampel dari tiap kelas</p></li>
+<li><p>Perbandingan pola spektrum antar subjek</p></li>
+<li><p>Analisis variansi fitur antar kelas</p></li>
+</ol>
+<p>Tujuan eksplorasi ini adalah untuk:</p>
+<ul class="simple">
+<li><p>Mengidentifikasi perbedaan karakteristik antar kelas</p></li>
+<li><p>Menilai kompleksitas data</p></li>
+<li><p>Menentukan pendekatan pemodelan yang tepat</p></li>
+</ul>
+</section>
+<section id="tantangan-data-data-challenges">
+<h2><strong>8. Tantangan Data (Data Challenges)</strong><a class="headerlink" href="#tantangan-data-data-challenges" title="Permalink to this heading">#</a></h2>
+<p>Beberapa tantangan utama dalam dataset ini antara lain:</p>
+<ul class="simple">
+<li><p>Dimensi data yang tinggi dibandingkan jumlah sampel</p></li>
+<li><p>Potensi redundansi antar fitur spektrum</p></li>
+<li><p>Variabilitas sinyal antar individu</p></li>
+<li><p>Risiko <em>overfitting</em> jika model terlalu kompleks</p></li>
+</ul>
+<p>Tantangan-tantangan ini menjadi pertimbangan penting dalam pemilihan metode dan strategi pemodelan.</p>
+</section>
+<section id="ringkasan-data-understanding">
+<h2><strong>9. Ringkasan Data Understanding</strong><a class="headerlink" href="#ringkasan-data-understanding" title="Permalink to this heading">#</a></h2>
+<p>Dataset SemgHandSubjectCh2 merupakan dataset sinyal sEMG berbasis spektrum daya dengan karakteristik numerik berdimensi tinggi dan target multi-kelas. Dataset ini cocok untuk diterapkan metode klasifikasi berbasis Data Science, dengan tetap memperhatikan tantangan seperti korelasi fitur dan risiko overfitting. Pemahaman yang baik terhadap karakteristik data menjadi dasar penting sebelum memasuki tahap <em>Data Preparation</em> dan <em>Modeling</em>.</p>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="eda">
+<h1>EDA<a class="headerlink" href="#eda" title="Permalink to this heading">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">seaborn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sns</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+
+<span class="n">pd</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="s1">&#39;display.max_columns&#39;</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s1">&#39;seaborn-v0_8-whitegrid&#39;</span><span class="p">)</span>
+
+<span class="n">train_path</span> <span class="o">=</span> <span class="s2">&quot;dataset/SemgHandSubjectCh2_TRAIN.ts&quot;</span>
+<span class="n">test_path</span>  <span class="o">=</span> <span class="s2">&quot;dataset/SemgHandSubjectCh2_TEST.ts&quot;</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">load_ts_file</span><span class="p">(</span><span class="n">file_path</span><span class="p">):</span>
+    <span class="n">encodings</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;utf-8&#39;</span><span class="p">,</span> <span class="s1">&#39;latin-1&#39;</span><span class="p">]</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="k">for</span> <span class="n">enc</span> <span class="ow">in</span> <span class="n">encodings</span><span class="p">:</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="n">enc</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+                <span class="n">is_data</span> <span class="o">=</span> <span class="kc">False</span>
+                <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">file</span><span class="p">:</span>
+                    <span class="n">line</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+                    <span class="k">if</span> <span class="ow">not</span> <span class="n">line</span> <span class="ow">or</span> <span class="n">line</span><span class="o">.</span><span class="n">startswith</span><span class="p">((</span><span class="s1">&#39;#&#39;</span><span class="p">,</span> <span class="s1">&#39;%&#39;</span><span class="p">)):</span> <span class="k">continue</span>
+
+                    <span class="k">if</span> <span class="n">line</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;@data&quot;</span><span class="p">):</span>
+                        <span class="n">is_data</span> <span class="o">=</span> <span class="kc">True</span>
+                        <span class="k">continue</span>
+
+                    <span class="k">if</span> <span class="ow">not</span> <span class="n">is_data</span><span class="p">:</span> <span class="k">continue</span>
+                    <span class="k">if</span> <span class="s1">&#39;:&#39;</span> <span class="ow">in</span> <span class="n">line</span><span class="p">:</span>
+                        <span class="n">parts</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;:&#39;</span><span class="p">)</span>
+                        <span class="n">features_str</span> <span class="o">=</span> <span class="n">parts</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+                        <span class="n">label_str</span> <span class="o">=</span> <span class="n">parts</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+
+                        <span class="n">values</span> <span class="o">=</span> <span class="n">features_str</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">)</span>
+                        <span class="n">values</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">label_str</span><span class="p">)</span>
+                    <span class="k">else</span><span class="p">:</span>
+                        <span class="n">values</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">)</span>
+
+                    <span class="n">data</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">values</span><span class="p">)</span>
+            <span class="k">break</span>
+        <span class="k">except</span> <span class="ne">UnicodeDecodeError</span><span class="p">:</span>
+            <span class="k">continue</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">data</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Gagal membaca file </span><span class="si">{</span><span class="n">file_path</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
+
+    <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+
+    <span class="n">X</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+
+    <span class="k">return</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span>
+
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span> <span class="o">=</span> <span class="n">load_ts_file</span><span class="p">(</span><span class="n">train_path</span><span class="p">)</span>
+    <span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">load_ts_file</span><span class="p">(</span><span class="n">test_path</span><span class="p">)</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;1. PEMERIKSAAN STRUKTUR DATA&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Shape (X_train): </span><span class="si">{</span><span class="n">X_train</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="c1"># if X_train.shape[1] == 1500:</span>
+    <span class="c1">#     print(&quot;✅ STRUKTUR BENAR: 1500 Fitur terdeteksi.&quot;)</span>
+    <span class="c1"># else:</span>
+    <span class="c1">#     print(f&quot;⚠️ PERINGATAN: Jumlah fitur {X_train.shape[1]} (Harapan: 1500).&quot;)</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Shape (y_train): </span><span class="si">{</span><span class="n">y_train</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;-&quot;</span> <span class="o">*</span> <span class="mi">20</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Contoh 5 baris pertama data latih (Subset kolom awal):&quot;</span><span class="p">)</span>
+    <span class="n">display</span><span class="p">(</span><span class="n">X_train</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="p">:</span><span class="mi">10</span><span class="p">]</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;2. PEMERIKSAAN KUALITAS DATA&quot;</span><span class="p">)</span>
+
+    <span class="n">null_counts</span> <span class="o">=</span> <span class="n">X_train</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Total Missing Values (NaN): </span><span class="si">{</span><span class="n">null_counts</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">unique_labels</span> <span class="o">=</span> <span class="n">y_train</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Label Kelas Unik: </span><span class="si">{</span><span class="nb">sorted</span><span class="p">(</span><span class="n">unique_labels</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">❌ ERROR: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>❌ ERROR: [Errno 2] No such file or directory: &#39;dataset/SemgHandSubjectCh2_TRAIN.ts&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;3. STATISTIK DESKRIPTIF GLOBAL&quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Nilai Minimum Global : </span><span class="si">{</span><span class="n">X_train</span><span class="o">.</span><span class="n">min</span><span class="p">()</span><span class="o">.</span><span class="n">min</span><span class="p">()</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Nilai Maksimum Global: </span><span class="si">{</span><span class="n">X_train</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Rata-rata Global     : </span><span class="si">{</span><span class="n">X_train</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Std Deviasi Global   : </span><span class="si">{</span><span class="n">X_train</span><span class="o">.</span><span class="n">std</span><span class="p">()</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="n">X_train</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">&gt;</span> <span class="mi">10</span> <span class="ow">or</span> <span class="n">X_train</span><span class="o">.</span><span class="n">min</span><span class="p">()</span><span class="o">.</span><span class="n">min</span><span class="p">()</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;👉 Insight: Rentang nilai bervariasi luas. Normalisasi (MinMax/Standard) SANGAT DISARANKAN nanti.&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;👉 Insight: Data tampaknya sudah dalam skala kecil.&quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;4. VISUALISASI SPEKTRUM PER KELAS (SUBJEK)&quot;</span><span class="p">)</span>
+
+<span class="n">classes</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">y_train</span><span class="o">.</span><span class="n">unique</span><span class="p">())</span>
+<span class="n">colors</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">color_palette</span><span class="p">(</span><span class="s2">&quot;husl&quot;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">classes</span><span class="p">))</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+
+<span class="c1"># Loop untuk setiap kelas (Subjek)</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">label</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">classes</span><span class="p">):</span>
+    <span class="c1"># Ambil semua sampel milik kelas tersebut</span>
+    <span class="c1"># Kita gunakan boolean indexing</span>
+    <span class="n">idx</span> <span class="o">=</span> <span class="n">y_train</span><span class="p">[</span><span class="n">y_train</span> <span class="o">==</span> <span class="n">label</span><span class="p">]</span><span class="o">.</span><span class="n">index</span>
+    <span class="n">class_data</span> <span class="o">=</span> <span class="n">X_train</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span>
+
+    <span class="c1"># Hitung Rata-rata Spektrum &amp; Standar Deviasi per titik frekuensi</span>
+    <span class="n">mean_spectrum</span> <span class="o">=</span> <span class="n">class_data</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">std_spectrum</span> <span class="o">=</span> <span class="n">class_data</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+    <span class="c1"># Plotting pada Subplot (biar rapi 5 baris ke bawah)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">classes</span><span class="p">),</span> <span class="mi">1</span><span class="p">,</span> <span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+
+    <span class="c1"># Plot area standar deviasi (Shading)</span>
+    <span class="n">x_axis</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">mean_spectrum</span><span class="p">))</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">fill_between</span><span class="p">(</span><span class="n">x_axis</span><span class="p">,</span>
+                     <span class="n">mean_spectrum</span> <span class="o">-</span> <span class="n">std_spectrum</span><span class="p">,</span>
+                     <span class="n">mean_spectrum</span> <span class="o">+</span> <span class="n">std_spectrum</span><span class="p">,</span>
+                     <span class="n">color</span><span class="o">=</span><span class="n">colors</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Std Dev (Variasi)&#39;</span><span class="p">)</span>
+
+    <span class="c1"># Plot garis rata-rata</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_axis</span><span class="p">,</span> <span class="n">mean_spectrum</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">colors</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;Rata-rata Subjek </span><span class="si">{</span><span class="n">label</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Profil Spektrum - Kelas </span><span class="si">{</span><span class="n">label</span><span class="si">}</span><span class="s2"> (</span><span class="si">{</span><span class="s1">&#39;Wanita&#39;</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="nb">int</span><span class="p">(</span><span class="n">label</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="s1">&#39;Pria&#39;</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">fontweight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Amplitudo Daya&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">classes</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">:</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Indeks Frekuensi (Fitur 0-1499)&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper right&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># --- Plot Overlay (Tumpuk) untuk membandingkan Pria vs Wanita ---</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Perbandingan Rata-rata Spektrum: Subjek 1 (Wanita) vs Subjek 4 (Pria)&quot;</span><span class="p">)</span>
+
+<span class="c1"># Ambil rata-rata Kelas 1</span>
+<span class="n">mean_c1</span> <span class="o">=</span> <span class="n">X_train</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">y_train</span> <span class="o">==</span> <span class="s1">&#39;1&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="c1"># Ambil rata-rata Kelas 4</span>
+<span class="n">mean_c4</span> <span class="o">=</span> <span class="n">X_train</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">y_train</span> <span class="o">==</span> <span class="s1">&#39;4&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">mean_c1</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Kelas 1 (Wanita)&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.8</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">mean_c4</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Kelas 4 (Pria)&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.8</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Indeks Frekuensi&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Amplitudo Daya&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3. STATISTIK DESKRIPTIF GLOBAL
+ 
+</pre></div>
+</div>
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="nn">/tmp/ipython-input-3853452259.py</span> in <span class="ni">&lt;cell line: 0&gt;</span><span class="nt">()</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> 
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">)</span>
+<span class="ne">----&gt; </span><span class="mi">4</span> <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Nilai Minimum Global : </span><span class="si">{</span><span class="n">X_train</span><span class="o">.</span><span class="n">min</span><span class="p">()</span><span class="o">.</span><span class="n">min</span><span class="p">()</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Nilai Maksimum Global: </span><span class="si">{</span><span class="n">X_train</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Rata-rata Global     : </span><span class="si">{</span><span class="n">X_train</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="ne">NameError</span>: name &#39;X_train&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Hasil Temuan</strong></p>
+<p>Berdasarkan hasil analisis statistik deskriptif, ditemukan perbedaan yang sangat ekstrem antara nilai minimum sebesar 0,005 dan nilai maksimum sebesar 2238,57, dengan nilai rata-rata (mean) hanya sebesar 16,8. Kondisi ini menunjukkan bahwa sebagian besar data berada pada nilai yang rendah, sementara hanya sedikit data yang memiliki nilai sangat tinggi, sehingga distribusi data bersifat condong (skewed). Karakteristik tersebut mengindikasikan adanya frekuensi dengan energi yang sangat besar dibandingkan frekuensi lainnya. Oleh karena itu, pada tahap preprocessing data diperlukan proses scaling, seperti Min-Max Scaling atau Standard Scaling, untuk menormalkan rentang nilai agar model dapat melakukan pembelajaran secara lebih efektif dan tidak terpengaruh oleh perbedaan skala yang ekstrem.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.decomposition</span><span class="w"> </span><span class="kn">import</span> <span class="n">PCA</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.manifold</span><span class="w"> </span><span class="kn">import</span> <span class="n">TSNE</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.preprocessing</span><span class="w"> </span><span class="kn">import</span> <span class="n">StandardScaler</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;5. DISTRIBUSI LABEL KELAS&quot;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">countplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">y_train</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="s2">&quot;viridis&quot;</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="n">y_train</span><span class="p">,</span> <span class="n">legend</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Jumlah Sampel per Subjek (Kelas)&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Label Subjek&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Jumlah Sampel&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">ax</span><span class="o">.</span><span class="n">patches</span><span class="p">:</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="nb">int</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">get_height</span><span class="p">())</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">get_x</span><span class="p">()</span> <span class="o">+</span> <span class="n">p</span><span class="o">.</span><span class="n">get_width</span><span class="p">()</span> <span class="o">/</span> <span class="mf">2.</span><span class="p">,</span> <span class="n">p</span><span class="o">.</span><span class="n">get_height</span><span class="p">()),</span>
+                <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">xytext</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span> <span class="n">textcoords</span><span class="o">=</span><span class="s1">&#39;offset points&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;7. HEATMAP KORELASI (SUBSET 50 FITUR PERTAMA)&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;👉 Mengambil 50 fitur pertama saja agar visualisasi tidak berat/lag.&quot;</span><span class="p">)</span>
+
+<span class="n">subset_features</span> <span class="o">=</span> <span class="n">X_train</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="p">:</span><span class="mi">50</span><span class="p">]</span>
+<span class="n">corr_matrix</span> <span class="o">=</span> <span class="n">subset_features</span><span class="o">.</span><span class="n">corr</span><span class="p">()</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">corr_matrix</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;coolwarm&#39;</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Korelasi Antar 50 Fitur Frekuensi Pertama&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.decomposition</span><span class="w"> </span><span class="kn">import</span> <span class="n">PCA</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.manifold</span><span class="w"> </span><span class="kn">import</span> <span class="n">TSNE</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.preprocessing</span><span class="w"> </span><span class="kn">import</span> <span class="n">StandardScaler</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;8. VISUALISASI 2D (PCA &amp; t-SNE)&quot;</span><span class="p">)</span>
+
+<span class="n">scaler</span> <span class="o">=</span> <span class="n">StandardScaler</span><span class="p">()</span>
+<span class="n">X_scaled</span> <span class="o">=</span> <span class="n">scaler</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span>
+
+<span class="n">pca</span> <span class="o">=</span> <span class="n">PCA</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">X_pca</span> <span class="o">=</span> <span class="n">pca</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X_scaled</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;PCA selesai. Variance Explained: </span><span class="si">{</span><span class="n">pca</span><span class="o">.</span><span class="n">explained_variance_ratio_</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">*</span><span class="mi">100</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">%&quot;</span><span class="p">)</span>
+<span class="n">tsne</span> <span class="o">=</span> <span class="n">TSNE</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">,</span> <span class="n">perplexity</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
+<span class="n">X_tsne</span> <span class="o">=</span> <span class="n">tsne</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X_scaled</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot; t-SNE selesai.&quot;</span><span class="p">)</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">18</span><span class="p">,</span> <span class="mi">7</span><span class="p">))</span>
+
+<span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">X_pca</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span> <span class="n">y</span><span class="o">=</span><span class="n">X_pca</span><span class="p">[:,</span><span class="mi">1</span><span class="p">],</span> <span class="n">hue</span><span class="o">=</span><span class="n">y_train</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="s2">&quot;bright&quot;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">s</span><span class="o">=</span><span class="mi">80</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.8</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Visualisasi PCA (Linear)</span><span class="se">\n</span><span class="s2">(Memisahkan berdasarkan Variansi Global)&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">fontweight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;PC 1&quot;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;PC 2&quot;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
+
+<span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">X_tsne</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span> <span class="n">y</span><span class="o">=</span><span class="n">X_tsne</span><span class="p">[:,</span><span class="mi">1</span><span class="p">],</span> <span class="n">hue</span><span class="o">=</span><span class="n">y_train</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="s2">&quot;bright&quot;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">s</span><span class="o">=</span><span class="mi">80</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.8</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Visualisasi t-SNE (Non-Linear)</span><span class="se">\n</span><span class="s2">(Mencari kedekatan pola lokal)&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">fontweight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Dimension 1&quot;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Dimension 2&quot;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.ensemble</span><span class="w"> </span><span class="kn">import</span> <span class="n">IsolationForest</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.decomposition</span><span class="w"> </span><span class="kn">import</span> <span class="n">PCA</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">seaborn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sns</span>
+
+<span class="k">try</span><span class="p">:</span>
+    <span class="k">if</span> <span class="s1">&#39;X_train_final&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="nb">locals</span><span class="p">():</span>
+        <span class="n">X_train_check</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;processed_data/X_train_final.npy&#39;</span><span class="p">)</span>
+        <span class="n">y_train_check</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;processed_data/y_train_final.npy&#39;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">X_train_check</span> <span class="o">=</span> <span class="n">X_train_final</span>
+        <span class="n">y_train_check</span> <span class="o">=</span> <span class="n">y_train_final</span>
+<span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Data tidak ditemukan. Pastikan folder processed_data ada.&quot;</span><span class="p">)</span>
+
+<span class="n">iso</span> <span class="o">=</span> <span class="n">IsolationForest</span><span class="p">(</span><span class="n">contamination</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+<span class="n">y_outliers</span> <span class="o">=</span> <span class="n">iso</span><span class="o">.</span><span class="n">fit_predict</span><span class="p">(</span><span class="n">X_train_check</span><span class="p">)</span>
+
+<span class="n">outlier_index</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">y_outliers</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">total_outliers</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">outlier_index</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Ditemukan </span><span class="si">{</span><span class="n">total_outliers</span><span class="si">}</span><span class="s2"> data yang dicurigai sebagai OUTLIER.&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;   (Sekitar </span><span class="si">{</span><span class="n">total_outliers</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">X_train_check</span><span class="p">)</span><span class="o">*</span><span class="mi">100</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">% dari total data)&quot;</span><span class="p">)</span>
+
+<span class="n">outlier_labels</span> <span class="o">=</span> <span class="n">y_train_check</span><span class="p">[</span><span class="n">outlier_index</span><span class="p">]</span>
+<span class="n">unique</span><span class="p">,</span> <span class="n">counts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">outlier_labels</span><span class="p">,</span> <span class="n">return_counts</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">label_names</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Subjek 1&#39;</span><span class="p">,</span> <span class="s1">&#39;Subjek 2&#39;</span><span class="p">,</span> <span class="s1">&#39;Subjek 3&#39;</span><span class="p">,</span> <span class="s1">&#39;Subjek 4&#39;</span><span class="p">,</span> <span class="s1">&#39;Subjek 5&#39;</span><span class="p">]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2"> Distribusi Outlier per Subjek:&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">u</span><span class="p">,</span> <span class="n">c</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">unique</span><span class="p">,</span> <span class="n">counts</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;   - </span><span class="si">{</span><span class="n">label_names</span><span class="p">[</span><span class="n">u</span><span class="p">]</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">c</span><span class="si">}</span><span class="s2"> sampel terdeteksi aneh.&quot;</span><span class="p">)</span>
+
+<span class="n">pca</span> <span class="o">=</span> <span class="n">PCA</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">X_pca_outlier</span> <span class="o">=</span> <span class="n">pca</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X_train_check</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X_pca_outlier</span><span class="p">[</span><span class="n">y_outliers</span> <span class="o">==</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">X_pca_outlier</span><span class="p">[</span><span class="n">y_outliers</span> <span class="o">==</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
+            <span class="n">c</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Normal&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X_pca_outlier</span><span class="p">[</span><span class="n">y_outliers</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">X_pca_outlier</span><span class="p">[</span><span class="n">y_outliers</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
+            <span class="n">c</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Outlier&#39;</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;X&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Visualisasi Posisi Outlier (Metode Isolation Forest)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;PCA 1&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;PCA 2&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="k">if</span> <span class="n">total_outliers</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="n">idx_sample_outlier</span> <span class="o">=</span> <span class="n">outlier_index</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="c1"># Ambil outlier pertama</span>
+    <span class="n">idx_sample_normal</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">y_outliers</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="c1"># Ambil normal pertama</span>
+
+    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+
+    <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X_train_check</span><span class="p">[</span><span class="n">idx_sample_normal</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Contoh Sinyal NORMAL (Index </span><span class="si">{</span><span class="n">idx_sample_normal</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span> <span class="c1"># Limit visual agar sebanding (sesuaikan jika perlu)</span>
+
+    <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X_train_check</span><span class="p">[</span><span class="n">idx_sample_outlier</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Contoh Sinyal OUTLIER (Index </span><span class="si">{</span><span class="n">idx_sample_outlier</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+
+    <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>#preprosesing</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">seaborn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sns</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+
+<span class="n">pd</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="s1">&#39;display.max_columns&#39;</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s1">&#39;seaborn-v0_8-whitegrid&#39;</span><span class="p">)</span>
+
+<span class="n">train_path</span> <span class="o">=</span> <span class="s2">&quot;dataset/SemgHandSubjectCh2_TRAIN.ts&quot;</span>
+<span class="n">test_path</span>  <span class="o">=</span> <span class="s2">&quot;dataset/SemgHandSubjectCh2_TEST.ts&quot;</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">load_ts_file</span><span class="p">(</span><span class="n">file_path</span><span class="p">):</span>
+    <span class="n">encodings</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;utf-8&#39;</span><span class="p">,</span> <span class="s1">&#39;latin-1&#39;</span><span class="p">]</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="k">for</span> <span class="n">enc</span> <span class="ow">in</span> <span class="n">encodings</span><span class="p">:</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="n">enc</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+                <span class="n">is_data</span> <span class="o">=</span> <span class="kc">False</span>
+                <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">file</span><span class="p">:</span>
+                    <span class="n">line</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+                    <span class="k">if</span> <span class="ow">not</span> <span class="n">line</span> <span class="ow">or</span> <span class="n">line</span><span class="o">.</span><span class="n">startswith</span><span class="p">((</span><span class="s1">&#39;#&#39;</span><span class="p">,</span> <span class="s1">&#39;%&#39;</span><span class="p">)):</span> <span class="k">continue</span>
+
+                    <span class="k">if</span> <span class="n">line</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;@data&quot;</span><span class="p">):</span>
+                        <span class="n">is_data</span> <span class="o">=</span> <span class="kc">True</span>
+                        <span class="k">continue</span>
+
+                    <span class="k">if</span> <span class="ow">not</span> <span class="n">is_data</span><span class="p">:</span> <span class="k">continue</span>
+
+                    <span class="k">if</span> <span class="s1">&#39;:&#39;</span> <span class="ow">in</span> <span class="n">line</span><span class="p">:</span>
+                        <span class="n">parts</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;:&#39;</span><span class="p">)</span>
+                        <span class="n">features_str</span> <span class="o">=</span> <span class="n">parts</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+                        <span class="n">label_str</span> <span class="o">=</span> <span class="n">parts</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+
+                        <span class="n">values</span> <span class="o">=</span> <span class="n">features_str</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">)</span>
+                        <span class="n">values</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">label_str</span><span class="p">)</span>
+                    <span class="k">else</span><span class="p">:</span>
+                        <span class="c1"># Jika tidak ada titik dua, asumsi dipisah koma semua</span>
+                        <span class="n">values</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">)</span>
+
+                    <span class="n">data</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">values</span><span class="p">)</span>
+            <span class="k">break</span>
+        <span class="k">except</span> <span class="ne">UnicodeDecodeError</span><span class="p">:</span>
+            <span class="k">continue</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">data</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Gagal membaca file </span><span class="si">{</span><span class="n">file_path</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
+
+    <span class="c1"># Konversi ke DataFrame</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+
+    <span class="n">X</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+
+    <span class="k">return</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span>
+
+<span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span> <span class="o">=</span> <span class="n">load_ts_file</span><span class="p">(</span><span class="n">train_path</span><span class="p">)</span>
+<span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">load_ts_file</span><span class="p">(</span><span class="n">test_path</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.preprocessing</span><span class="w"> </span><span class="kn">import</span> <span class="n">StandardScaler</span><span class="p">,</span> <span class="n">LabelEncoder</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;   TAHAP DATA PREPARATION   &quot;</span><span class="p">)</span>
+
+<span class="n">le</span> <span class="o">=</span> <span class="n">LabelEncoder</span><span class="p">()</span>
+
+<span class="n">y_train_encoded</span> <span class="o">=</span> <span class="n">le</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">y_train</span><span class="p">)</span>
+<span class="n">y_test_encoded</span> <span class="o">=</span> <span class="n">le</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">y_test</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot; Label Encoding Selesai.&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;   Mapping Kelas: </span><span class="si">{</span><span class="nb">dict</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">le</span><span class="o">.</span><span class="n">classes_</span><span class="p">,</span><span class="w"> </span><span class="n">le</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">le</span><span class="o">.</span><span class="n">classes_</span><span class="p">)))</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;   Contoh Label Lama : </span><span class="si">{</span><span class="n">y_train</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="mi">5</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;   Contoh Label Baru : </span><span class="si">{</span><span class="n">y_train_encoded</span><span class="p">[:</span><span class="mi">5</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="n">scaler</span> <span class="o">=</span> <span class="n">StandardScaler</span><span class="p">()</span>
+
+<span class="n">X_train_scaled</span> <span class="o">=</span> <span class="n">scaler</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span>
+<span class="n">X_test_scaled</span>  <span class="o">=</span> <span class="n">scaler</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2"> Feature Scaling (StandardScaler) Selesai.&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;   Mean sebelum scaling : </span><span class="si">{</span><span class="n">X_train</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;   Mean setelah scaling : </span><span class="si">{</span><span class="n">X_train_scaled</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;   Std  setelah scaling : </span><span class="si">{</span><span class="n">X_train_scaled</span><span class="o">.</span><span class="n">std</span><span class="p">()</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2"> &quot;</span><span class="p">)</span>
+
+<span class="n">X_train_final</span> <span class="o">=</span> <span class="n">X_train_scaled</span>
+<span class="n">X_test_final</span>  <span class="o">=</span> <span class="n">X_test_scaled</span>
+<span class="n">y_train_final</span> <span class="o">=</span> <span class="n">y_train_encoded</span>
+<span class="n">y_test_final</span>  <span class="o">=</span> <span class="n">y_test_encoded</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2"> DATA SIAP UNTUK PEMODELAN (MODELING)!&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;   Dimensi X_train_final: </span><span class="si">{</span><span class="n">X_train_final</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;   Dimensi y_train_final: </span><span class="si">{</span><span class="n">y_train_final</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X_before</span> <span class="o">=</span> <span class="n">X_train</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="mi">5</span><span class="p">,</span> <span class="p">:</span><span class="mi">10</span><span class="p">]</span>
+<span class="n">X_after</span>  <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
+    <span class="n">X_train_final</span><span class="p">[:</span><span class="mi">5</span><span class="p">,</span> <span class="p">:</span><span class="mi">10</span><span class="p">],</span>
+    <span class="n">columns</span><span class="o">=</span><span class="n">X_train</span><span class="o">.</span><span class="n">columns</span><span class="p">[:</span><span class="mi">10</span><span class="p">],</span>
+    <span class="n">index</span><span class="o">=</span><span class="n">X_train</span><span class="o">.</span><span class="n">index</span><span class="p">[:</span><span class="mi">5</span><span class="p">]</span>
+<span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2"> Data Sebelum Scaling:&quot;</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">X_before</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2"> Data Sesudah Scaling (StandardScaler):&quot;</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">X_after</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">comparison_stats</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+    <span class="s2">&quot;Mean Sebelum&quot;</span><span class="p">:</span> <span class="n">X_train</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="p">:</span><span class="mi">10</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span>
+    <span class="s2">&quot;Std Sebelum&quot;</span><span class="p">:</span> <span class="n">X_train</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="p">:</span><span class="mi">10</span><span class="p">]</span><span class="o">.</span><span class="n">std</span><span class="p">(),</span>
+    <span class="s2">&quot;Mean Sesudah&quot;</span><span class="p">:</span> <span class="n">X_train_final</span><span class="p">[:,</span> <span class="p">:</span><span class="mi">10</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">),</span>
+    <span class="s2">&quot;Std Sesudah&quot;</span><span class="p">:</span> <span class="n">X_train_final</span><span class="p">[:,</span> <span class="p">:</span><span class="mi">10</span><span class="p">]</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="p">})</span>
+
+<span class="n">display</span><span class="p">(</span><span class="n">comparison_stats</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">joblib</span>
+
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;   MENYIMPAN DATA (SAVING)   &quot;</span><span class="p">)</span>
+
+<span class="n">save_dir</span> <span class="o">=</span> <span class="s2">&quot;processed_data&quot;</span>
+<span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">save_dir</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">np</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">save_dir</span><span class="p">,</span> <span class="s1">&#39;X_train_final.npy&#39;</span><span class="p">),</span> <span class="n">X_train_final</span><span class="p">)</span>
+<span class="n">np</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">save_dir</span><span class="p">,</span> <span class="s1">&#39;X_test_final.npy&#39;</span><span class="p">),</span> <span class="n">X_test_final</span><span class="p">)</span>
+<span class="n">np</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">save_dir</span><span class="p">,</span> <span class="s1">&#39;y_train_final.npy&#39;</span><span class="p">),</span> <span class="n">y_train_final</span><span class="p">)</span>
+<span class="n">np</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">save_dir</span><span class="p">,</span> <span class="s1">&#39;y_test_final.npy&#39;</span><span class="p">),</span> <span class="n">y_test_final</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot; Data berhasil disimpan di folder: &#39;</span><span class="si">{</span><span class="n">save_dir</span><span class="si">}</span><span class="s2">/&#39;&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;   - </span><span class="si">{</span><span class="n">save_dir</span><span class="si">}</span><span class="s2">/X_train_final.npy&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;   - </span><span class="si">{</span><span class="n">save_dir</span><span class="si">}</span><span class="s2">/X_test_final.npy&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;   - </span><span class="si">{</span><span class="n">save_dir</span><span class="si">}</span><span class="s2">/y_train_final.npy&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;   - </span><span class="si">{</span><span class="n">save_dir</span><span class="si">}</span><span class="s2">/y_test_final.npy&quot;</span><span class="p">)</span>
+
+<span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="s2">&quot;models&quot;</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">joblib</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">scaler</span><span class="p">,</span> <span class="s1">&#39;models/scaler.pkl&#39;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Scaler berhasil disimpan di: models/scaler.pkl&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>#modeling</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.linear_model</span><span class="w"> </span><span class="kn">import</span> <span class="n">RidgeClassifierCV</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.metrics</span><span class="w"> </span><span class="kn">import</span> <span class="n">accuracy_score</span><span class="p">,</span> <span class="n">confusion_matrix</span><span class="p">,</span> <span class="n">classification_report</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">seaborn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sns</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
+
+<span class="k">try</span><span class="p">:</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">sktime.transformations.panel.rocket</span><span class="w"> </span><span class="kn">import</span> <span class="n">MiniRocket</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Library &#39;sktime&#39; terdeteksi.&quot;</span><span class="p">)</span>
+<span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Library &#39;sktime&#39; belum terinstall!&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Silakan jalankan di terminal: pip install sktime&quot;</span><span class="p">)</span>
+    <span class="c1"># Stop eksekusi jika library tidak ada</span>
+    <span class="k">raise</span>
+
+<span class="c1"># --- 1. DATA RESHAPING (PENTING!) ---</span>
+<span class="c1"># sktime MiniRocket butuh input 3D: (Jumlah Sampel, Jumlah Channel, Panjang Sinyal)</span>
+<span class="c1"># Data kita saat ini 2D: (450, 1500) -&gt; Kita ubah jadi (450, 1, 1500)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;   MINIROCKET + RIDGE CLASSIFIER   &quot;</span><span class="p">)</span>
+
+<span class="n">X_train_rocket</span> <span class="o">=</span> <span class="n">X_train_final</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">X_train_final</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="mi">1</span><span class="p">,</span> <span class="n">X_train_final</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">X_test_rocket</span>  <span class="o">=</span> <span class="n">X_test_final</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">X_test_final</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="mi">1</span><span class="p">,</span> <span class="n">X_test_final</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Dimensi Input MiniRocket (Train): </span><span class="si">{</span><span class="n">X_train_rocket</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Dimensi Input MiniRocket (Test) : </span><span class="si">{</span><span class="n">X_test_rocket</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># --- 2. TRANSFORMASI MINIROCKET ---</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2"> Sedang melakukan Transformasi MiniRocket (Ekstraksi Fitur)...&quot;</span><span class="p">)</span>
+<span class="n">start_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+
+<span class="n">minirocket</span> <span class="o">=</span> <span class="n">MiniRocket</span><span class="p">()</span>
+<span class="n">X_train_transform</span> <span class="o">=</span> <span class="n">minirocket</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X_train_rocket</span><span class="p">)</span>
+<span class="n">X_test_transform</span> <span class="o">=</span> <span class="n">minirocket</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X_test_rocket</span><span class="p">)</span>
+
+<span class="n">end_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Transformasi Selesai dalam </span><span class="si">{</span><span class="n">end_time</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">start_time</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> detik.&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;   Shape Baru Train: </span><span class="si">{</span><span class="n">X_train_transform</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2"> (Perhatikan jumlah fiturnya meledak jadi ~10.000!)&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2"> Sedang melatih Ridge ClassifierCV (Linear Model)...&quot;</span><span class="p">)</span>
+
+<span class="n">classifier</span> <span class="o">=</span> <span class="n">RidgeClassifierCV</span><span class="p">(</span><span class="n">alphas</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">logspace</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+<span class="n">classifier</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train_transform</span><span class="p">,</span> <span class="n">y_train_final</span><span class="p">)</span>
+
+<span class="c1"># --- 4. EVALUASI ---</span>
+<span class="n">y_pred_rocket</span> <span class="o">=</span> <span class="n">classifier</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test_transform</span><span class="p">)</span>
+<span class="n">acc_rocket</span> <span class="o">=</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test_final</span><span class="p">,</span> <span class="n">y_pred_rocket</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2"> HASIL AKHIR MINIROCKET:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;   Akurasi: </span><span class="si">{</span><span class="n">acc_rocket</span><span class="o">*</span><span class="mi">100</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">%&quot;</span><span class="p">)</span>
+
+<span class="c1"># --- 5. VISUALISASI HASIL ---</span>
+<span class="n">target_names_manual</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Subjek 1&#39;</span><span class="p">,</span> <span class="s1">&#39;Subjek 2&#39;</span><span class="p">,</span> <span class="s1">&#39;Subjek 3&#39;</span><span class="p">,</span> <span class="s1">&#39;Subjek 4&#39;</span><span class="p">,</span> <span class="s1">&#39;Subjek 5&#39;</span><span class="p">]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;-&quot;</span> <span class="o">*</span> <span class="mi">30</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">acc_rocket</span> <span class="o">&gt;</span> <span class="mf">0.8</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">classification_report</span><span class="p">(</span><span class="n">y_test_final</span><span class="p">,</span> <span class="n">y_pred_rocket</span><span class="p">,</span> <span class="n">target_names</span><span class="o">=</span><span class="n">target_names_manual</span><span class="p">))</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">cm</span> <span class="o">=</span> <span class="n">confusion_matrix</span><span class="p">(</span><span class="n">y_test_final</span><span class="p">,</span> <span class="n">y_pred_rocket</span><span class="p">)</span>
+
+<span class="c1"># Plot Heatmap</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">cm</span><span class="p">,</span> <span class="n">annot</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="s1">&#39;d&#39;</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;Greens&#39;</span><span class="p">,</span>
+            <span class="n">xticklabels</span><span class="o">=</span><span class="n">target_names_manual</span><span class="p">,</span> <span class="n">yticklabels</span><span class="o">=</span><span class="n">target_names_manual</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Prediksi Model&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Label Sebenarnya (Aktual)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Confusion Matrix - MiniRocket (Acc: </span><span class="si">{</span><span class="n">acc_rocket</span><span class="o">*</span><span class="mi">100</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">%)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="intro.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Profile</p>
+      </div>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#"><strong>Business Understanding</strong></a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#latar-belakang-masalah"><strong>1. Latar Belakang Masalah</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#permasalahan-bisnis-business-problem"><strong>2. Permasalahan Bisnis (Business Problem)</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tujuan-proyek-business-objectives"><strong>3. Tujuan Proyek (Business Objectives)</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#manfaat-bisnis-business-value"><strong>4. Manfaat Bisnis (Business Value)</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ruang-lingkup-proyek-scope"><strong>5. Ruang Lingkup Proyek (Scope)</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kriteria-keberhasilan-success-criteria"><strong>6. Kriteria Keberhasilan (Success Criteria)</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ringkasan-business-understanding"><strong>7. Ringkasan Business Understanding</strong></a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#data-understanding"><strong>Data Understanding</strong></a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deskripsi-dataset"><strong>1. Deskripsi Dataset</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#struktur-dan-karakteristik-data"><strong>2. Struktur dan Karakteristik Data</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deskripsi-label-target"><strong>3. Deskripsi Label / Target</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#distribusi-data"><strong>4. Distribusi Data</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tipe-dan-karakteristik-data"><strong>5. Tipe dan Karakteristik Data</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kualitas-data"><strong>6. Kualitas Data</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#eksplorasi-awal-data-initial-data-exploration"><strong>7. Eksplorasi Awal Data (Initial Data Exploration)</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tantangan-data-data-challenges"><strong>8. Tantangan Data (Data Challenges)</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ringkasan-data-understanding"><strong>9. Ringkasan Data Understanding</strong></a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#eda">EDA</a></li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Sigiitttt
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

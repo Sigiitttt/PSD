@@ -1,0 +1,108 @@
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/dist-packages/jupyter_cache/executors/utils.py", line 58, in single_nb_execution
+    executenb(
+  File "/usr/local/lib/python3.12/dist-packages/nbclient/client.py", line 1305, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/dist-packages/jupyter_core/utils/__init__.py", line 165, in wrapped
+    return loop.run_until_complete(inner)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/asyncio/base_events.py", line 691, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/dist-packages/nbclient/client.py", line 705, in async_execute
+    await self.async_execute_cell(
+  File "/usr/local/lib/python3.12/dist-packages/nbclient/client.py", line 1058, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "/usr/local/lib/python3.12/dist-packages/nbclient/client.py", line 914, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+print("3. STATISTIK DESKRIPTIF GLOBAL")
+
+print(" ")
+print(f"Nilai Minimum Global : {X_train.min().min():.4f}")
+print(f"Nilai Maksimum Global: {X_train.max().max():.4f}")
+print(f"Rata-rata Global     : {X_train.mean().mean():.4f}")
+print(f"Std Deviasi Global   : {X_train.std().mean():.4f}")
+
+if X_train.max().max() > 10 or X_train.min().min() < 0:
+    print("👉 Insight: Rentang nilai bervariasi luas. Normalisasi (MinMax/Standard) SANGAT DISARANKAN nanti.")
+else:
+    print("👉 Insight: Data tampaknya sudah dalam skala kecil.")
+
+print(" ")
+print("4. VISUALISASI SPEKTRUM PER KELAS (SUBJEK)")
+
+classes = sorted(y_train.unique())
+colors = sns.color_palette("husl", len(classes))
+
+plt.figure(figsize=(15, 10))
+
+# Loop untuk setiap kelas (Subjek)
+for i, label in enumerate(classes):
+    # Ambil semua sampel milik kelas tersebut
+    # Kita gunakan boolean indexing
+    idx = y_train[y_train == label].index
+    class_data = X_train.loc[idx]
+
+    # Hitung Rata-rata Spektrum & Standar Deviasi per titik frekuensi
+    mean_spectrum = class_data.mean(axis=0)
+    std_spectrum = class_data.std(axis=0)
+
+    # Plotting pada Subplot (biar rapi 5 baris ke bawah)
+    plt.subplot(len(classes), 1, i+1)
+
+    # Plot area standar deviasi (Shading)
+    x_axis = range(len(mean_spectrum))
+    plt.fill_between(x_axis,
+                     mean_spectrum - std_spectrum,
+                     mean_spectrum + std_spectrum,
+                     color=colors[i], alpha=0.3, label='Std Dev (Variasi)')
+
+    # Plot garis rata-rata
+    plt.plot(x_axis, mean_spectrum, color=colors[i], linewidth=2, label=f'Rata-rata Subjek {label}')
+
+    plt.title(f"Profil Spektrum - Kelas {label} ({'Wanita' if int(label) <= 3 else 'Pria'})", fontsize=10, fontweight='bold')
+    plt.ylabel("Amplitudo Daya")
+    if i == len(classes)-1:
+        plt.xlabel("Indeks Frekuensi (Fitur 0-1499)")
+    plt.legend(loc='upper right')
+    plt.grid(True, alpha=0.3)
+
+plt.tight_layout()
+plt.show()
+
+# --- Plot Overlay (Tumpuk) untuk membandingkan Pria vs Wanita ---
+plt.figure(figsize=(12, 6))
+plt.title("Perbandingan Rata-rata Spektrum: Subjek 1 (Wanita) vs Subjek 4 (Pria)")
+
+# Ambil rata-rata Kelas 1
+mean_c1 = X_train.loc[y_train == '1'].mean(axis=0)
+# Ambil rata-rata Kelas 4
+mean_c4 = X_train.loc[y_train == '4'].mean(axis=0)
+
+plt.plot(mean_c1, label='Kelas 1 (Wanita)', color='red', alpha=0.8)
+plt.plot(mean_c4, label='Kelas 4 (Pria)', color='blue', alpha=0.8)
+plt.legend()
+plt.xlabel("Indeks Frekuensi")
+plt.ylabel("Amplitudo Daya")
+plt.grid(True, alpha=0.3)
+plt.show()
+------------------
+
+----- stdout -----
+3. STATISTIK DESKRIPTIF GLOBAL
+------------------
+
+[0;31m---------------------------------------------------------------------------[0m
+[0;31mNameError[0m                                 Traceback (most recent call last)
+[0;32m/tmp/ipython-input-3853452259.py[0m in [0;36m<cell line: 0>[0;34m()[0m
+[1;32m      2[0m [0;34m[0m[0m
+[1;32m      3[0m [0mprint[0m[0;34m([0m[0;34m" "[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0;32m----> 4[0;31m [0mprint[0m[0;34m([0m[0;34mf"Nilai Minimum Global : {X_train.min().min():.4f}"[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m      5[0m [0mprint[0m[0;34m([0m[0;34mf"Nilai Maksimum Global: {X_train.max().max():.4f}"[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[1;32m      6[0m [0mprint[0m[0;34m([0m[0;34mf"Rata-rata Global     : {X_train.mean().mean():.4f}"[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+
+[0;31mNameError[0m: name 'X_train' is not defined
+
