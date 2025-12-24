@@ -415,7 +415,10 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ringkasan-data-understanding"><strong>9. Ringkasan Data Understanding</strong></a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#eda">EDA</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#eda">EDA</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hapus-outliyer"><strong>hapus outliyer</strong></a></li>
+</ul>
+</li>
 </ul>
 
             </nav>
@@ -662,6 +665,51 @@ document.write(`
 <h1>EDA<a class="headerlink" href="#eda" title="Permalink to this heading">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">google.colab</span><span class="w"> </span><span class="kn">import</span> <span class="n">drive</span>
+<span class="n">drive</span><span class="o">.</span><span class="n">mount</span><span class="p">(</span><span class="s1">&#39;/content/drive&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">KeyboardInterrupt</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
+<span class="nn">/tmp/ipython-input-1408506528.py</span> in <span class="ni">&lt;cell line: 0&gt;</span><span class="nt">()</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="kn">from</span><span class="w"> </span><span class="nn">google.colab</span><span class="w"> </span><span class="kn">import</span> <span class="n">drive</span>
+<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">drive</span><span class="o">.</span><span class="n">mount</span><span class="p">(</span><span class="s1">&#39;/content/drive&#39;</span><span class="p">)</span>
+
+<span class="nn">/usr/local/lib/python3.12/dist-packages/google/colab/drive.py</span> in <span class="ni">mount</span><span class="nt">(mountpoint, force_remount, timeout_ms, readonly)</span>
+<span class="g g-Whitespace">     </span><span class="mi">95</span> <span class="k">def</span><span class="w"> </span><span class="nf">mount</span><span class="p">(</span><span class="n">mountpoint</span><span class="p">,</span> <span class="n">force_remount</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">timeout_ms</span><span class="o">=</span><span class="mi">120000</span><span class="p">,</span> <span class="n">readonly</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<span class="g g-Whitespace">     </span><span class="mi">96</span><span class="w">   </span><span class="sd">&quot;&quot;&quot;Mount your Google Drive at the specified mountpoint path.&quot;&quot;&quot;</span>
+<span class="ne">---&gt; </span><span class="mi">97</span>   <span class="k">return</span> <span class="n">_mount</span><span class="p">(</span>
+<span class="g g-Whitespace">     </span><span class="mi">98</span>       <span class="n">mountpoint</span><span class="p">,</span>
+<span class="g g-Whitespace">     </span><span class="mi">99</span>       <span class="n">force_remount</span><span class="o">=</span><span class="n">force_remount</span><span class="p">,</span>
+
+<span class="nn">/usr/local/lib/python3.12/dist-packages/google/colab/drive.py</span> in <span class="ni">_mount</span><span class="nt">(mountpoint, force_remount, timeout_ms, ephemeral, readonly)</span>
+<span class="g g-Whitespace">    </span><span class="mi">132</span>   <span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">133</span>   <span class="k">if</span> <span class="n">ephemeral</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">134</span>     <span class="n">_message</span><span class="o">.</span><span class="n">blocking_request</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">135</span>         <span class="s1">&#39;request_auth&#39;</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">136</span>         <span class="n">request</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;authType&#39;</span><span class="p">:</span> <span class="s1">&#39;dfs_ephemeral&#39;</span><span class="p">},</span>
+
+<span class="nn">/usr/local/lib/python3.12/dist-packages/google/colab/_message.py</span> in <span class="ni">blocking_request</span><span class="nt">(request_type, request, timeout_sec, parent)</span>
+<span class="g g-Whitespace">    </span><span class="mi">174</span>       <span class="n">request_type</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="n">parent</span><span class="o">=</span><span class="n">parent</span><span class="p">,</span> <span class="n">expect_reply</span><span class="o">=</span><span class="kc">True</span>
+<span class="g g-Whitespace">    </span><span class="mi">175</span>   <span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">176</span>   <span class="k">return</span> <span class="n">read_reply_from_input</span><span class="p">(</span><span class="n">request_id</span><span class="p">,</span> <span class="n">timeout_sec</span><span class="p">)</span>
+
+<span class="nn">/usr/local/lib/python3.12/dist-packages/google/colab/_message.py</span> in <span class="ni">read_reply_from_input</span><span class="nt">(message_id, timeout_sec)</span>
+<span class="g g-Whitespace">     </span><span class="mi">94</span>     <span class="n">reply</span> <span class="o">=</span> <span class="n">_read_next_input_message</span><span class="p">()</span>
+<span class="g g-Whitespace">     </span><span class="mi">95</span>     <span class="k">if</span> <span class="n">reply</span> <span class="o">==</span> <span class="n">_NOT_READY</span> <span class="ow">or</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">reply</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
+<span class="ne">---&gt; </span><span class="mi">96</span>       <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.025</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">97</span>       <span class="k">continue</span>
+<span class="g g-Whitespace">     </span><span class="mi">98</span>     <span class="k">if</span> <span class="p">(</span>
+
+<span class="ne">KeyboardInterrupt</span>: 
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
@@ -671,8 +719,8 @@ document.write(`
 <span class="n">pd</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="s1">&#39;display.max_columns&#39;</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s1">&#39;seaborn-v0_8-whitegrid&#39;</span><span class="p">)</span>
 
-<span class="n">train_path</span> <span class="o">=</span> <span class="s2">&quot;dataset/SemgHandSubjectCh2_TRAIN.ts&quot;</span>
-<span class="n">test_path</span>  <span class="o">=</span> <span class="s2">&quot;dataset/SemgHandSubjectCh2_TEST.ts&quot;</span>
+<span class="n">train_path</span> <span class="o">=</span> <span class="s2">&quot;/content/drive/MyDrive/uaspsd/SemgHandSubjectCh2_TRAIN.ts&quot;</span>
+<span class="n">test_path</span>  <span class="o">=</span> <span class="s2">&quot;/content/drive/MyDrive/uaspsd/SemgHandSubjectCh2_TEST.ts&quot;</span>
 
 <span class="k">def</span><span class="w"> </span><span class="nf">load_ts_file</span><span class="p">(</span><span class="n">file_path</span><span class="p">):</span>
     <span class="n">encodings</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;utf-8&#39;</span><span class="p">,</span> <span class="s1">&#39;latin-1&#39;</span><span class="p">]</span>
@@ -745,7 +793,326 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>❌ ERROR: [Errno 2] No such file or directory: &#39;dataset/SemgHandSubjectCh2_TRAIN.ts&#39;
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1. PEMERIKSAAN STRUKTUR DATA
+Shape (X_train): (450, 1500)
+Shape (y_train): (450,)
+--------------------
+Contoh 5 baris pertama data latih (Subset kolom awal):
+</pre></div>
+</div>
+<div class="output text_html">
+  <div id="df-5c320b66-b6a4-455c-91ed-89ab209427cc" class="colab-df-container">
+    <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>0</th>
+      <th>1</th>
+      <th>2</th>
+      <th>3</th>
+      <th>4</th>
+      <th>5</th>
+      <th>6</th>
+      <th>7</th>
+      <th>8</th>
+      <th>9</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>4.727125</td>
+      <td>2.797737</td>
+      <td>3.636139</td>
+      <td>2.746511</td>
+      <td>0.971014</td>
+      <td>2.210892</td>
+      <td>3.344643</td>
+      <td>0.584697</td>
+      <td>2.450385</td>
+      <td>2.185442</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>3.710899</td>
+      <td>2.427400</td>
+      <td>1.624620</td>
+      <td>0.835390</td>
+      <td>1.268488</td>
+      <td>1.498597</td>
+      <td>0.799706</td>
+      <td>1.259650</td>
+      <td>0.412866</td>
+      <td>0.928109</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3.691784</td>
+      <td>7.646312</td>
+      <td>4.573417</td>
+      <td>6.589344</td>
+      <td>1.606932</td>
+      <td>5.105149</td>
+      <td>3.388973</td>
+      <td>6.454872</td>
+      <td>2.436382</td>
+      <td>6.159850</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>3.659098</td>
+      <td>1.348780</td>
+      <td>2.660728</td>
+      <td>1.951933</td>
+      <td>1.336938</td>
+      <td>2.802475</td>
+      <td>2.054903</td>
+      <td>2.298930</td>
+      <td>1.007570</td>
+      <td>0.718818</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>6.352287</td>
+      <td>3.688895</td>
+      <td>5.923694</td>
+      <td>4.516546</td>
+      <td>3.978157</td>
+      <td>4.106319</td>
+      <td>4.735417</td>
+      <td>5.000411</td>
+      <td>3.958317</td>
+      <td>3.482435</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+    <div class="colab-df-buttons">
+
+  <div class="colab-df-container">
+    <button class="colab-df-convert" onclick="convertToInteractive('df-5c320b66-b6a4-455c-91ed-89ab209427cc')"
+            title="Convert this dataframe to an interactive table."
+            style="display:none;">
+
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960">
+    <path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"/>
+  </svg>
+    </button>
+
+  <style>
+    .colab-df-container {
+      display:flex;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    .colab-df-buttons div {
+      margin-bottom: 4px;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+    <script>
+      const buttonEl =
+        document.querySelector('#df-5c320b66-b6a4-455c-91ed-89ab209427cc button.colab-df-convert');
+      buttonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+      async function convertToInteractive(key) {
+        const element = document.querySelector('#df-5c320b66-b6a4-455c-91ed-89ab209427cc');
+        const dataTable =
+          await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                    [key], {});
+        if (!dataTable) return;
+
+        const docLinkHtml = 'Like what you see? Visit the ' +
+          '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+          + ' to learn more about interactive tables.';
+        element.innerHTML = '';
+        dataTable['output_type'] = 'display_data';
+        await google.colab.output.renderOutput(dataTable, element);
+        const docLink = document.createElement('div');
+        docLink.innerHTML = docLinkHtml;
+        element.appendChild(docLink);
+      }
+    </script>
+  </div>
+
+
+    <div id="df-c8185f6c-3a33-4443-ada8-e3e10e5d6809">
+      <button class="colab-df-quickchart" onclick="quickchart('df-c8185f6c-3a33-4443-ada8-e3e10e5d6809')"
+                title="Suggest charts"
+                style="display:none;">
+
+<svg xmlns="http://www.w3.org/2000/svg" height="24px"viewBox="0 0 24 24"
+     width="24px">
+    <g>
+        <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/>
+    </g>
+</svg>
+      </button>
+
+<style>
+  .colab-df-quickchart {
+      --bg-color: #E8F0FE;
+      --fill-color: #1967D2;
+      --hover-bg-color: #E2EBFA;
+      --hover-fill-color: #174EA6;
+      --disabled-fill-color: #AAA;
+      --disabled-bg-color: #DDD;
+  }
+
+  [theme=dark] .colab-df-quickchart {
+      --bg-color: #3B4455;
+      --fill-color: #D2E3FC;
+      --hover-bg-color: #434B5C;
+      --hover-fill-color: #FFFFFF;
+      --disabled-bg-color: #3B4455;
+      --disabled-fill-color: #666;
+  }
+
+  .colab-df-quickchart {
+    background-color: var(--bg-color);
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: none;
+    fill: var(--fill-color);
+    height: 32px;
+    padding: 0;
+    width: 32px;
+  }
+
+  .colab-df-quickchart:hover {
+    background-color: var(--hover-bg-color);
+    box-shadow: 0 1px 2px rgba(60, 64, 67, 0.3), 0 1px 3px 1px rgba(60, 64, 67, 0.15);
+    fill: var(--button-hover-fill-color);
+  }
+
+  .colab-df-quickchart-complete:disabled,
+  .colab-df-quickchart-complete:disabled:hover {
+    background-color: var(--disabled-bg-color);
+    fill: var(--disabled-fill-color);
+    box-shadow: none;
+  }
+
+  .colab-df-spinner {
+    border: 2px solid var(--fill-color);
+    border-color: transparent;
+    border-bottom-color: var(--fill-color);
+    animation:
+      spin 1s steps(1) infinite;
+  }
+
+  @keyframes spin {
+    0% {
+      border-color: transparent;
+      border-bottom-color: var(--fill-color);
+      border-left-color: var(--fill-color);
+    }
+    20% {
+      border-color: transparent;
+      border-left-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+    }
+    30% {
+      border-color: transparent;
+      border-left-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+      border-right-color: var(--fill-color);
+    }
+    40% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+    }
+    60% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+    }
+    80% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+      border-bottom-color: var(--fill-color);
+    }
+    90% {
+      border-color: transparent;
+      border-bottom-color: var(--fill-color);
+    }
+  }
+</style>
+
+      <script>
+        async function quickchart(key) {
+          const quickchartButtonEl =
+            document.querySelector('#' + key + ' button');
+          quickchartButtonEl.disabled = true;  // To prevent multiple clicks.
+          quickchartButtonEl.classList.add('colab-df-spinner');
+          try {
+            const charts = await google.colab.kernel.invokeFunction(
+                'suggestCharts', [key], {});
+          } catch (error) {
+            console.error('Error during call to suggestCharts:', error);
+          }
+          quickchartButtonEl.classList.remove('colab-df-spinner');
+          quickchartButtonEl.classList.add('colab-df-quickchart-complete');
+        }
+        (() => {
+          let quickchartButtonEl =
+            document.querySelector('#df-c8185f6c-3a33-4443-ada8-e3e10e5d6809 button');
+          quickchartButtonEl.style.display =
+            google.colab.kernel.accessAllowed ? 'block' : 'none';
+        })();
+      </script>
+    </div>
+
+    </div>
+  </div>
+</div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2. PEMERIKSAAN KUALITAS DATA
+Total Missing Values (NaN): 0
+Label Kelas Unik: [&#39;1&#39;, &#39;2&#39;, &#39;3&#39;, &#39;4&#39;, &#39;5&#39;]
 </pre></div>
 </div>
 </div>
@@ -829,20 +1196,17 @@ document.write(`
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3. STATISTIK DESKRIPTIF GLOBAL
  
+Nilai Minimum Global : 0.0052
+Nilai Maksimum Global: 2238.5732
+Rata-rata Global     : 16.8005
+Std Deviasi Global   : 18.0148
+👉 Insight: Rentang nilai bervariasi luas. Normalisasi (MinMax/Standard) SANGAT DISARANKAN nanti.
+ 
+4. VISUALISASI SPEKTRUM PER KELAS (SUBJEK)
 </pre></div>
 </div>
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="nn">/tmp/ipython-input-3853452259.py</span> in <span class="ni">&lt;cell line: 0&gt;</span><span class="nt">()</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> 
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">)</span>
-<span class="ne">----&gt; </span><span class="mi">4</span> <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Nilai Minimum Global : </span><span class="si">{</span><span class="n">X_train</span><span class="o">.</span><span class="n">min</span><span class="p">()</span><span class="o">.</span><span class="n">min</span><span class="p">()</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Nilai Maksimum Global: </span><span class="si">{</span><span class="n">X_train</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Rata-rata Global     : </span><span class="si">{</span><span class="n">X_train</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-
-<span class="ne">NameError</span>: name &#39;X_train&#39; is not defined
-</pre></div>
-</div>
+<img alt="_images/334074eced0433fddc2bef8c149e57f8c4fd1357c6934819b5f220bd5b6b2908.png" src="_images/334074eced0433fddc2bef8c149e57f8c4fd1357c6934819b5f220bd5b6b2908.png" />
+<img alt="_images/9f108e5b3c3ebdfbebb3956ec91faae123c43db2ac271d9b1f4caabcea70bcea.png" src="_images/9f108e5b3c3ebdfbebb3956ec91faae123c43db2ac271d9b1f4caabcea70bcea.png" />
 </div>
 </div>
 <p><strong>Hasil Temuan</strong></p>
@@ -913,24 +1277,108 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>5. DISTRIBUSI LABEL KELAS
+</pre></div>
+</div>
+<img alt="_images/3a34fbb4c9f5709ba438b0eb5a906ac2b70597192cb2864ca56b7b0ea1b8ae1c.png" src="_images/3a34fbb4c9f5709ba438b0eb5a906ac2b70597192cb2864ca56b7b0ea1b8ae1c.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>7. HEATMAP KORELASI (SUBSET 50 FITUR PERTAMA)
+👉 Mengambil 50 fitur pertama saja agar visualisasi tidak berat/lag.
+</pre></div>
+</div>
+<img alt="_images/faaaf34cff27d4f386958ba5f8f07959a9dcdd1d639c0d7946ffc596fd765b02.png" src="_images/faaaf34cff27d4f386958ba5f8f07959a9dcdd1d639c0d7946ffc596fd765b02.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>8. VISUALISASI 2D (PCA &amp; t-SNE)
+PCA selesai. Variance Explained: 54.76%
+ t-SNE selesai.
+</pre></div>
+</div>
+<img alt="_images/338819b1974b86d30fab219e66e2a9a0bf294fbb25461336af0a02d60f30a8ac.png" src="_images/338819b1974b86d30fab219e66e2a9a0bf294fbb25461336af0a02d60f30a8ac.png" />
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.ensemble</span><span class="w"> </span><span class="kn">import</span> <span class="n">IsolationForest</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.decomposition</span><span class="w"> </span><span class="kn">import</span> <span class="n">PCA</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>sktime
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Collecting sktime
+  Downloading sktime-0.40.1-py3-none-any.whl.metadata (33 kB)
+Requirement already satisfied: joblib&lt;1.6,&gt;=1.2.0 in /usr/local/lib/python3.12/dist-packages (from sktime) (1.5.3)
+Requirement already satisfied: numpy&lt;2.4,&gt;=1.21 in /usr/local/lib/python3.12/dist-packages (from sktime) (2.0.2)
+Requirement already satisfied: packaging in /usr/local/lib/python3.12/dist-packages (from sktime) (25.0)
+Requirement already satisfied: pandas&lt;2.4.0,&gt;=1.1 in /usr/local/lib/python3.12/dist-packages (from sktime) (2.2.2)
+Collecting scikit-base&lt;0.14.0,&gt;=0.6.1 (from sktime)
+  Downloading scikit_base-0.13.0-py3-none-any.whl.metadata (8.8 kB)
+Requirement already satisfied: scikit-learn&lt;1.8.0,&gt;=0.24 in /usr/local/lib/python3.12/dist-packages (from sktime) (1.6.1)
+Requirement already satisfied: scipy&lt;2.0.0,&gt;=1.2 in /usr/local/lib/python3.12/dist-packages (from sktime) (1.16.3)
+Requirement already satisfied: python-dateutil&gt;=2.8.2 in /usr/local/lib/python3.12/dist-packages (from pandas&lt;2.4.0,&gt;=1.1-&gt;sktime) (2.9.0.post0)
+Requirement already satisfied: pytz&gt;=2020.1 in /usr/local/lib/python3.12/dist-packages (from pandas&lt;2.4.0,&gt;=1.1-&gt;sktime) (2025.2)
+Requirement already satisfied: tzdata&gt;=2022.7 in /usr/local/lib/python3.12/dist-packages (from pandas&lt;2.4.0,&gt;=1.1-&gt;sktime) (2025.3)
+Requirement already satisfied: threadpoolctl&gt;=3.1.0 in /usr/local/lib/python3.12/dist-packages (from scikit-learn&lt;1.8.0,&gt;=0.24-&gt;sktime) (3.6.0)
+Requirement already satisfied: six&gt;=1.5 in /usr/local/lib/python3.12/dist-packages (from python-dateutil&gt;=2.8.2-&gt;pandas&lt;2.4.0,&gt;=1.1-&gt;sktime) (1.17.0)
+Downloading sktime-0.40.1-py3-none-any.whl (36.3 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">36.3/36.3 MB</span> <span class=" -Color -Color-Red">51.5 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:00</span>
+?25hDownloading scikit_base-0.13.0-py3-none-any.whl (151 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">151.5/151.5 kB</span> <span class=" -Color -Color-Red">10.4 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:00</span>
+?25hInstalling collected packages: scikit-base, sktime
+Successfully installed scikit-base-0.13.0 sktime-0.40.1
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">seaborn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sns</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.ensemble</span><span class="w"> </span><span class="kn">import</span> <span class="n">IsolationForest</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.decomposition</span><span class="w"> </span><span class="kn">import</span> <span class="n">PCA</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.preprocessing</span><span class="w"> </span><span class="kn">import</span> <span class="n">LabelEncoder</span><span class="p">,</span> <span class="n">StandardScaler</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sktime.datasets</span><span class="w"> </span><span class="kn">import</span> <span class="n">load_from_tsfile</span> <span class="c1"># Kita butuh ini untuk load .ts</span>
 
+<span class="c1"># --- BAGIAN PERBAIKAN LOGIKA LOAD DATA ---</span>
 <span class="k">try</span><span class="p">:</span>
-    <span class="k">if</span> <span class="s1">&#39;X_train_final&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="nb">locals</span><span class="p">():</span>
-        <span class="n">X_train_check</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;processed_data/X_train_final.npy&#39;</span><span class="p">)</span>
-        <span class="n">y_train_check</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;processed_data/y_train_final.npy&#39;</span><span class="p">)</span>
-    <span class="k">else</span><span class="p">:</span>
+    <span class="c1"># Cek 1: Apakah data sudah ada di memori (dari cell sebelumnya)?</span>
+    <span class="k">if</span> <span class="s1">&#39;X_train_final&#39;</span> <span class="ow">in</span> <span class="nb">locals</span><span class="p">()</span> <span class="ow">and</span> <span class="s1">&#39;y_train_final&#39;</span> <span class="ow">in</span> <span class="nb">locals</span><span class="p">():</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;✅ Menggunakan data dari Memori (Variables found).&quot;</span><span class="p">)</span>
         <span class="n">X_train_check</span> <span class="o">=</span> <span class="n">X_train_final</span>
         <span class="n">y_train_check</span> <span class="o">=</span> <span class="n">y_train_final</span>
+
+    <span class="c1"># Cek 2: Apakah ada file tersimpan di folder processed_data?</span>
+    <span class="k">elif</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="s1">&#39;processed_data/X_train_final.npy&#39;</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;✅ Menggunakan data dari file .npy tersimpan.&quot;</span><span class="p">)</span>
+        <span class="n">X_train_check</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;processed_data/X_train_final.npy&#39;</span><span class="p">)</span>
+        <span class="n">y_train_check</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;processed_data/y_train_final.npy&#39;</span><span class="p">)</span>
+
+    <span class="c1"># Cek 3 (SOLUSI ERROR KAMU): Load baru dari file .ts mentah</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;⚠️ Data olahan tidak ditemukan. Meload ulang dari raw file: </span><span class="si">{</span><span class="n">train_path</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+        <span class="c1"># 1. Load Data .ts</span>
+        <span class="c1"># return_data_type=&quot;numpy3d&quot; menghasilkan (450, 1, 1500)</span>
+        <span class="n">X_raw</span><span class="p">,</span> <span class="n">y_raw</span> <span class="o">=</span> <span class="n">load_from_tsfile</span><span class="p">(</span><span class="n">train_path</span><span class="p">,</span> <span class="n">return_data_type</span><span class="o">=</span><span class="s2">&quot;numpy3d&quot;</span><span class="p">)</span>
+
+        <span class="c1"># 2. Reshape ke 2D untuk Isolation Forest (450, 1500)</span>
+        <span class="n">X_2d</span> <span class="o">=</span> <span class="n">X_raw</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">X_raw</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+
+        <span class="c1"># 3. Scaling (PENTING untuk Isolation Forest)</span>
+        <span class="n">scaler</span> <span class="o">=</span> <span class="n">StandardScaler</span><span class="p">()</span>
+        <span class="n">X_train_check</span> <span class="o">=</span> <span class="n">scaler</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X_2d</span><span class="p">)</span>
+
+        <span class="c1"># 4. Encoding Label</span>
+        <span class="n">le</span> <span class="o">=</span> <span class="n">LabelEncoder</span><span class="p">()</span>
+        <span class="n">y_train_check</span> <span class="o">=</span> <span class="n">le</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">y_raw</span><span class="p">)</span>
+
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;✅ Data raw berhasil diload, di-reshape, dan di-scale otomatis.&quot;</span><span class="p">)</span>
+
 <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Data tidak ditemukan. Pastikan folder processed_data ada.&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;❌ Error fatal: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="c1"># Hentikan eksekusi jika tetap gagal</span>
+    <span class="k">raise</span> <span class="n">e</span>
+
+<span class="c1"># --- MULAI PROSES OUTLIER DETECTION (KODE LAMA KAMU) ---</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Dimensi Data untuk Outlier Check: </span><span class="si">{</span><span class="n">X_train_check</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
 <span class="n">iso</span> <span class="o">=</span> <span class="n">IsolationForest</span><span class="p">(</span><span class="n">contamination</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
 <span class="n">y_outliers</span> <span class="o">=</span> <span class="n">iso</span><span class="o">.</span><span class="n">fit_predict</span><span class="p">(</span><span class="n">X_train_check</span><span class="p">)</span>
@@ -947,14 +1395,21 @@ document.write(`
 
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2"> Distribusi Outlier per Subjek:&quot;</span><span class="p">)</span>
 <span class="k">for</span> <span class="n">u</span><span class="p">,</span> <span class="n">c</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">unique</span><span class="p">,</span> <span class="n">counts</span><span class="p">):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;   - </span><span class="si">{</span><span class="n">label_names</span><span class="p">[</span><span class="n">u</span><span class="p">]</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">c</span><span class="si">}</span><span class="s2"> sampel terdeteksi aneh.&quot;</span><span class="p">)</span>
+    <span class="c1"># Pastikan index tidak out of bound (jaga-jaga label aneh)</span>
+    <span class="k">if</span> <span class="n">u</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">label_names</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;   - </span><span class="si">{</span><span class="n">label_names</span><span class="p">[</span><span class="n">u</span><span class="p">]</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">c</span><span class="si">}</span><span class="s2"> sampel terdeteksi aneh.&quot;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;   - Label </span><span class="si">{</span><span class="n">u</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">c</span><span class="si">}</span><span class="s2"> sampel.&quot;</span><span class="p">)</span>
 
+<span class="c1"># --- VISUALISASI PCA ---</span>
 <span class="n">pca</span> <span class="o">=</span> <span class="n">PCA</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
 <span class="n">X_pca_outlier</span> <span class="o">=</span> <span class="n">pca</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X_train_check</span><span class="p">)</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="c1"># Plot Normal (Biru)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X_pca_outlier</span><span class="p">[</span><span class="n">y_outliers</span> <span class="o">==</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">X_pca_outlier</span><span class="p">[</span><span class="n">y_outliers</span> <span class="o">==</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
             <span class="n">c</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Normal&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<span class="c1"># Plot Outlier (Merah)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X_pca_outlier</span><span class="p">[</span><span class="n">y_outliers</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">X_pca_outlier</span><span class="p">[</span><span class="n">y_outliers</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
             <span class="n">c</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Outlier&#39;</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;X&#39;</span><span class="p">)</span>
 
@@ -965,8 +1420,9 @@ document.write(`
 <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 
+<span class="c1"># --- VISUALISASI SINYAL (PERBANDINGAN) ---</span>
 <span class="k">if</span> <span class="n">total_outliers</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
-    <span class="n">idx_sample_outlier</span> <span class="o">=</span> <span class="n">outlier_index</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="c1"># Ambil outlier pertama</span>
+    <span class="n">idx_sample_outlier</span> <span class="o">=</span> <span class="n">outlier_index</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>  <span class="c1"># Ambil outlier pertama</span>
     <span class="n">idx_sample_normal</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">y_outliers</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="c1"># Ambil normal pertama</span>
 
     <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
@@ -974,17 +1430,35 @@ document.write(`
     <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X_train_check</span><span class="p">[</span><span class="n">idx_sample_normal</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">)</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Contoh Sinyal NORMAL (Index </span><span class="si">{</span><span class="n">idx_sample_normal</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span> <span class="c1"># Limit visual agar sebanding (sesuaikan jika perlu)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="n">X_train_check</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">X_train_check</span><span class="o">.</span><span class="n">max</span><span class="p">())</span> <span class="c1"># Auto limit</span>
 
     <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X_train_check</span><span class="p">[</span><span class="n">idx_sample_outlier</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">)</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Contoh Sinyal OUTLIER (Index </span><span class="si">{</span><span class="n">idx_sample_outlier</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="n">X_train_check</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">X_train_check</span><span class="o">.</span><span class="n">max</span><span class="p">())</span> <span class="c1"># Samakan limit biar adil</span>
 
     <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>⚠️ Data olahan tidak ditemukan. Meload ulang dari raw file: /content/drive/MyDrive/uaspsd/SemgHandSubjectCh2_TRAIN.ts
+✅ Data raw berhasil diload, di-reshape, dan di-scale otomatis.
+
+Dimensi Data untuk Outlier Check: (450, 1500)
+Ditemukan 23 data yang dicurigai sebagai OUTLIER.
+   (Sekitar 5.11% dari total data)
+
+ Distribusi Outlier per Subjek:
+   - Subjek 2: 9 sampel terdeteksi aneh.
+   - Subjek 3: 3 sampel terdeteksi aneh.
+   - Subjek 4: 10 sampel terdeteksi aneh.
+   - Subjek 5: 1 sampel terdeteksi aneh.
+</pre></div>
+</div>
+<img alt="_images/84094a81259f8d21d11fd8ee083add426de920e1b3fb94990f76db5ccf9abb3c.png" src="_images/84094a81259f8d21d11fd8ee083add426de920e1b3fb94990f76db5ccf9abb3c.png" />
+<img alt="_images/d831b66f2dfe166f584ddb86bd269f76479513f450d9b478b49bd52b2e36a9ba.png" src="_images/d831b66f2dfe166f584ddb86bd269f76479513f450d9b478b49bd52b2e36a9ba.png" />
 </div>
 </div>
 <p>#preprosesing</p>
@@ -999,8 +1473,8 @@ document.write(`
 <span class="n">pd</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="s1">&#39;display.max_columns&#39;</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s1">&#39;seaborn-v0_8-whitegrid&#39;</span><span class="p">)</span>
 
-<span class="n">train_path</span> <span class="o">=</span> <span class="s2">&quot;dataset/SemgHandSubjectCh2_TRAIN.ts&quot;</span>
-<span class="n">test_path</span>  <span class="o">=</span> <span class="s2">&quot;dataset/SemgHandSubjectCh2_TEST.ts&quot;</span>
+<span class="n">train_path</span> <span class="o">=</span> <span class="s2">&quot;/content/drive/MyDrive/uaspsd/SemgHandSubjectCh2_TRAIN.ts&quot;</span>
+<span class="n">test_path</span>  <span class="o">=</span> <span class="s2">&quot;/content/drive/MyDrive/uaspsd/SemgHandSubjectCh2_TEST.ts&quot;</span>
 
 <span class="k">def</span><span class="w"> </span><span class="nf">load_ts_file</span><span class="p">(</span><span class="n">file_path</span><span class="p">):</span>
     <span class="n">encodings</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;utf-8&#39;</span><span class="p">,</span> <span class="s1">&#39;latin-1&#39;</span><span class="p">]</span>
@@ -1090,6 +1564,26 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   TAHAP DATA PREPARATION   
+
+
+ Label Encoding Selesai.
+   Mapping Kelas: {&#39;1&#39;: np.int64(0), &#39;2&#39;: np.int64(1), &#39;3&#39;: np.int64(2), &#39;4&#39;: np.int64(3), &#39;5&#39;: np.int64(4)}
+   Contoh Label Lama : [&#39;1&#39; &#39;1&#39; &#39;1&#39; &#39;1&#39; &#39;1&#39;]
+   Contoh Label Baru : [0 0 0 0 0]
+
+ Feature Scaling (StandardScaler) Selesai.
+   Mean sebelum scaling : 16.8005
+   Mean setelah scaling : -0.0000
+   Std  setelah scaling : 1.0000 
+
+ DATA SIAP UNTUK PEMODELAN (MODELING)!
+   Dimensi X_train_final: (450, 1500)
+   Dimensi y_train_final: (450,)
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1108,6 +1602,744 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> Data Sebelum Scaling:
+</pre></div>
+</div>
+<div class="output text_html">
+  <div id="df-0ec904d9-9266-4cf2-b43c-80c3c93f8ad7" class="colab-df-container">
+    <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>0</th>
+      <th>1</th>
+      <th>2</th>
+      <th>3</th>
+      <th>4</th>
+      <th>5</th>
+      <th>6</th>
+      <th>7</th>
+      <th>8</th>
+      <th>9</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>4.727125</td>
+      <td>2.797737</td>
+      <td>3.636139</td>
+      <td>2.746511</td>
+      <td>0.971014</td>
+      <td>2.210892</td>
+      <td>3.344643</td>
+      <td>0.584697</td>
+      <td>2.450385</td>
+      <td>2.185442</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>3.710899</td>
+      <td>2.427400</td>
+      <td>1.624620</td>
+      <td>0.835390</td>
+      <td>1.268488</td>
+      <td>1.498597</td>
+      <td>0.799706</td>
+      <td>1.259650</td>
+      <td>0.412866</td>
+      <td>0.928109</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3.691784</td>
+      <td>7.646312</td>
+      <td>4.573417</td>
+      <td>6.589344</td>
+      <td>1.606932</td>
+      <td>5.105149</td>
+      <td>3.388973</td>
+      <td>6.454872</td>
+      <td>2.436382</td>
+      <td>6.159850</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>3.659098</td>
+      <td>1.348780</td>
+      <td>2.660728</td>
+      <td>1.951933</td>
+      <td>1.336938</td>
+      <td>2.802475</td>
+      <td>2.054903</td>
+      <td>2.298930</td>
+      <td>1.007570</td>
+      <td>0.718818</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>6.352287</td>
+      <td>3.688895</td>
+      <td>5.923694</td>
+      <td>4.516546</td>
+      <td>3.978157</td>
+      <td>4.106319</td>
+      <td>4.735417</td>
+      <td>5.000411</td>
+      <td>3.958317</td>
+      <td>3.482435</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+    <div class="colab-df-buttons">
+
+  <div class="colab-df-container">
+    <button class="colab-df-convert" onclick="convertToInteractive('df-0ec904d9-9266-4cf2-b43c-80c3c93f8ad7')"
+            title="Convert this dataframe to an interactive table."
+            style="display:none;">
+
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960">
+    <path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"/>
+  </svg>
+    </button>
+
+  <style>
+    .colab-df-container {
+      display:flex;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    .colab-df-buttons div {
+      margin-bottom: 4px;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+    <script>
+      const buttonEl =
+        document.querySelector('#df-0ec904d9-9266-4cf2-b43c-80c3c93f8ad7 button.colab-df-convert');
+      buttonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+      async function convertToInteractive(key) {
+        const element = document.querySelector('#df-0ec904d9-9266-4cf2-b43c-80c3c93f8ad7');
+        const dataTable =
+          await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                    [key], {});
+        if (!dataTable) return;
+
+        const docLinkHtml = 'Like what you see? Visit the ' +
+          '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+          + ' to learn more about interactive tables.';
+        element.innerHTML = '';
+        dataTable['output_type'] = 'display_data';
+        await google.colab.output.renderOutput(dataTable, element);
+        const docLink = document.createElement('div');
+        docLink.innerHTML = docLinkHtml;
+        element.appendChild(docLink);
+      }
+    </script>
+  </div>
+
+
+    <div id="df-e9d27aad-7eca-48df-8649-5f5c116d4f42">
+      <button class="colab-df-quickchart" onclick="quickchart('df-e9d27aad-7eca-48df-8649-5f5c116d4f42')"
+                title="Suggest charts"
+                style="display:none;">
+
+<svg xmlns="http://www.w3.org/2000/svg" height="24px"viewBox="0 0 24 24"
+     width="24px">
+    <g>
+        <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/>
+    </g>
+</svg>
+      </button>
+
+<style>
+  .colab-df-quickchart {
+      --bg-color: #E8F0FE;
+      --fill-color: #1967D2;
+      --hover-bg-color: #E2EBFA;
+      --hover-fill-color: #174EA6;
+      --disabled-fill-color: #AAA;
+      --disabled-bg-color: #DDD;
+  }
+
+  [theme=dark] .colab-df-quickchart {
+      --bg-color: #3B4455;
+      --fill-color: #D2E3FC;
+      --hover-bg-color: #434B5C;
+      --hover-fill-color: #FFFFFF;
+      --disabled-bg-color: #3B4455;
+      --disabled-fill-color: #666;
+  }
+
+  .colab-df-quickchart {
+    background-color: var(--bg-color);
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: none;
+    fill: var(--fill-color);
+    height: 32px;
+    padding: 0;
+    width: 32px;
+  }
+
+  .colab-df-quickchart:hover {
+    background-color: var(--hover-bg-color);
+    box-shadow: 0 1px 2px rgba(60, 64, 67, 0.3), 0 1px 3px 1px rgba(60, 64, 67, 0.15);
+    fill: var(--button-hover-fill-color);
+  }
+
+  .colab-df-quickchart-complete:disabled,
+  .colab-df-quickchart-complete:disabled:hover {
+    background-color: var(--disabled-bg-color);
+    fill: var(--disabled-fill-color);
+    box-shadow: none;
+  }
+
+  .colab-df-spinner {
+    border: 2px solid var(--fill-color);
+    border-color: transparent;
+    border-bottom-color: var(--fill-color);
+    animation:
+      spin 1s steps(1) infinite;
+  }
+
+  @keyframes spin {
+    0% {
+      border-color: transparent;
+      border-bottom-color: var(--fill-color);
+      border-left-color: var(--fill-color);
+    }
+    20% {
+      border-color: transparent;
+      border-left-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+    }
+    30% {
+      border-color: transparent;
+      border-left-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+      border-right-color: var(--fill-color);
+    }
+    40% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+    }
+    60% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+    }
+    80% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+      border-bottom-color: var(--fill-color);
+    }
+    90% {
+      border-color: transparent;
+      border-bottom-color: var(--fill-color);
+    }
+  }
+</style>
+
+      <script>
+        async function quickchart(key) {
+          const quickchartButtonEl =
+            document.querySelector('#' + key + ' button');
+          quickchartButtonEl.disabled = true;  // To prevent multiple clicks.
+          quickchartButtonEl.classList.add('colab-df-spinner');
+          try {
+            const charts = await google.colab.kernel.invokeFunction(
+                'suggestCharts', [key], {});
+          } catch (error) {
+            console.error('Error during call to suggestCharts:', error);
+          }
+          quickchartButtonEl.classList.remove('colab-df-spinner');
+          quickchartButtonEl.classList.add('colab-df-quickchart-complete');
+        }
+        (() => {
+          let quickchartButtonEl =
+            document.querySelector('#df-e9d27aad-7eca-48df-8649-5f5c116d4f42 button');
+          quickchartButtonEl.style.display =
+            google.colab.kernel.accessAllowed ? 'block' : 'none';
+        })();
+      </script>
+    </div>
+
+  <div id="id_637a8f69-d2d6-47f8-b2eb-3cd71dec7217">
+    <style>
+      .colab-df-generate {
+        background-color: #E8F0FE;
+        border: none;
+        border-radius: 50%;
+        cursor: pointer;
+        display: none;
+        fill: #1967D2;
+        height: 32px;
+        padding: 0 0 0 0;
+        width: 32px;
+      }
+
+      .colab-df-generate:hover {
+        background-color: #E2EBFA;
+        box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+        fill: #174EA6;
+      }
+
+      [theme=dark] .colab-df-generate {
+        background-color: #3B4455;
+        fill: #D2E3FC;
+      }
+
+      [theme=dark] .colab-df-generate:hover {
+        background-color: #434B5C;
+        box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+        filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+        fill: #FFFFFF;
+      }
+    </style>
+    <button class="colab-df-generate" onclick="generateWithVariable('X_before')"
+            title="Generate code using this dataframe."
+            style="display:none;">
+
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px"viewBox="0 0 24 24"
+       width="24px">
+    <path d="M7,19H8.4L18.45,9,17,7.55,7,17.6ZM5,21V16.75L18.45,3.32a2,2,0,0,1,2.83,0l1.4,1.43a1.91,1.91,0,0,1,.58,1.4,1.91,1.91,0,0,1-.58,1.4L9.25,21ZM18.45,9,17,7.55Zm-12,3A5.31,5.31,0,0,0,4.9,8.1,5.31,5.31,0,0,0,1,6.5,5.31,5.31,0,0,0,4.9,4.9,5.31,5.31,0,0,0,6.5,1,5.31,5.31,0,0,0,8.1,4.9,5.31,5.31,0,0,0,12,6.5,5.46,5.46,0,0,0,6.5,12Z"/>
+  </svg>
+    </button>
+    <script>
+      (() => {
+      const buttonEl =
+        document.querySelector('#id_637a8f69-d2d6-47f8-b2eb-3cd71dec7217 button.colab-df-generate');
+      buttonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+      buttonEl.onclick = () => {
+        google.colab.notebook.generateWithVariable('X_before');
+      }
+      })();
+    </script>
+  </div>
+
+    </div>
+  </div>
+</div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> Data Sesudah Scaling (StandardScaler):
+</pre></div>
+</div>
+<div class="output text_html">
+  <div id="df-91bebd28-4cb3-4a54-a9bc-06b0a6f8833a" class="colab-df-container">
+    <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>0</th>
+      <th>1</th>
+      <th>2</th>
+      <th>3</th>
+      <th>4</th>
+      <th>5</th>
+      <th>6</th>
+      <th>7</th>
+      <th>8</th>
+      <th>9</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>-0.040111</td>
+      <td>-0.331952</td>
+      <td>-0.098083</td>
+      <td>-0.194462</td>
+      <td>-0.943621</td>
+      <td>-0.379479</td>
+      <td>0.123906</td>
+      <td>-1.062592</td>
+      <td>-0.201530</td>
+      <td>-0.364214</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>-0.219762</td>
+      <td>-0.420839</td>
+      <td>-0.509532</td>
+      <td>-0.612577</td>
+      <td>-0.819651</td>
+      <td>-0.685947</td>
+      <td>-1.038461</td>
+      <td>-0.764704</td>
+      <td>-1.197992</td>
+      <td>-0.904067</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>-0.223141</td>
+      <td>0.831791</td>
+      <td>0.093633</td>
+      <td>0.646274</td>
+      <td>-0.678606</td>
+      <td>0.865786</td>
+      <td>0.144153</td>
+      <td>1.528182</td>
+      <td>-0.208378</td>
+      <td>1.342253</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>-0.228919</td>
+      <td>-0.679727</td>
+      <td>-0.297600</td>
+      <td>-0.368300</td>
+      <td>-0.791124</td>
+      <td>-0.124948</td>
+      <td>-0.465166</td>
+      <td>-0.306023</td>
+      <td>-0.907148</td>
+      <td>-0.993928</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>0.247189</td>
+      <td>-0.118058</td>
+      <td>0.369827</td>
+      <td>0.192786</td>
+      <td>0.309588</td>
+      <td>0.436035</td>
+      <td>0.759124</td>
+      <td>0.886263</td>
+      <td>0.535935</td>
+      <td>0.192668</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+    <div class="colab-df-buttons">
+
+  <div class="colab-df-container">
+    <button class="colab-df-convert" onclick="convertToInteractive('df-91bebd28-4cb3-4a54-a9bc-06b0a6f8833a')"
+            title="Convert this dataframe to an interactive table."
+            style="display:none;">
+
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960">
+    <path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"/>
+  </svg>
+    </button>
+
+  <style>
+    .colab-df-container {
+      display:flex;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    .colab-df-buttons div {
+      margin-bottom: 4px;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+    <script>
+      const buttonEl =
+        document.querySelector('#df-91bebd28-4cb3-4a54-a9bc-06b0a6f8833a button.colab-df-convert');
+      buttonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+      async function convertToInteractive(key) {
+        const element = document.querySelector('#df-91bebd28-4cb3-4a54-a9bc-06b0a6f8833a');
+        const dataTable =
+          await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                    [key], {});
+        if (!dataTable) return;
+
+        const docLinkHtml = 'Like what you see? Visit the ' +
+          '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+          + ' to learn more about interactive tables.';
+        element.innerHTML = '';
+        dataTable['output_type'] = 'display_data';
+        await google.colab.output.renderOutput(dataTable, element);
+        const docLink = document.createElement('div');
+        docLink.innerHTML = docLinkHtml;
+        element.appendChild(docLink);
+      }
+    </script>
+  </div>
+
+
+    <div id="df-642e81c0-1537-47b3-9bd9-1043f4c88564">
+      <button class="colab-df-quickchart" onclick="quickchart('df-642e81c0-1537-47b3-9bd9-1043f4c88564')"
+                title="Suggest charts"
+                style="display:none;">
+
+<svg xmlns="http://www.w3.org/2000/svg" height="24px"viewBox="0 0 24 24"
+     width="24px">
+    <g>
+        <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/>
+    </g>
+</svg>
+      </button>
+
+<style>
+  .colab-df-quickchart {
+      --bg-color: #E8F0FE;
+      --fill-color: #1967D2;
+      --hover-bg-color: #E2EBFA;
+      --hover-fill-color: #174EA6;
+      --disabled-fill-color: #AAA;
+      --disabled-bg-color: #DDD;
+  }
+
+  [theme=dark] .colab-df-quickchart {
+      --bg-color: #3B4455;
+      --fill-color: #D2E3FC;
+      --hover-bg-color: #434B5C;
+      --hover-fill-color: #FFFFFF;
+      --disabled-bg-color: #3B4455;
+      --disabled-fill-color: #666;
+  }
+
+  .colab-df-quickchart {
+    background-color: var(--bg-color);
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: none;
+    fill: var(--fill-color);
+    height: 32px;
+    padding: 0;
+    width: 32px;
+  }
+
+  .colab-df-quickchart:hover {
+    background-color: var(--hover-bg-color);
+    box-shadow: 0 1px 2px rgba(60, 64, 67, 0.3), 0 1px 3px 1px rgba(60, 64, 67, 0.15);
+    fill: var(--button-hover-fill-color);
+  }
+
+  .colab-df-quickchart-complete:disabled,
+  .colab-df-quickchart-complete:disabled:hover {
+    background-color: var(--disabled-bg-color);
+    fill: var(--disabled-fill-color);
+    box-shadow: none;
+  }
+
+  .colab-df-spinner {
+    border: 2px solid var(--fill-color);
+    border-color: transparent;
+    border-bottom-color: var(--fill-color);
+    animation:
+      spin 1s steps(1) infinite;
+  }
+
+  @keyframes spin {
+    0% {
+      border-color: transparent;
+      border-bottom-color: var(--fill-color);
+      border-left-color: var(--fill-color);
+    }
+    20% {
+      border-color: transparent;
+      border-left-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+    }
+    30% {
+      border-color: transparent;
+      border-left-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+      border-right-color: var(--fill-color);
+    }
+    40% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+    }
+    60% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+    }
+    80% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+      border-bottom-color: var(--fill-color);
+    }
+    90% {
+      border-color: transparent;
+      border-bottom-color: var(--fill-color);
+    }
+  }
+</style>
+
+      <script>
+        async function quickchart(key) {
+          const quickchartButtonEl =
+            document.querySelector('#' + key + ' button');
+          quickchartButtonEl.disabled = true;  // To prevent multiple clicks.
+          quickchartButtonEl.classList.add('colab-df-spinner');
+          try {
+            const charts = await google.colab.kernel.invokeFunction(
+                'suggestCharts', [key], {});
+          } catch (error) {
+            console.error('Error during call to suggestCharts:', error);
+          }
+          quickchartButtonEl.classList.remove('colab-df-spinner');
+          quickchartButtonEl.classList.add('colab-df-quickchart-complete');
+        }
+        (() => {
+          let quickchartButtonEl =
+            document.querySelector('#df-642e81c0-1537-47b3-9bd9-1043f4c88564 button');
+          quickchartButtonEl.style.display =
+            google.colab.kernel.accessAllowed ? 'block' : 'none';
+        })();
+      </script>
+    </div>
+
+  <div id="id_f3bea6fc-3e35-40f2-9435-5d4dbcf76919">
+    <style>
+      .colab-df-generate {
+        background-color: #E8F0FE;
+        border: none;
+        border-radius: 50%;
+        cursor: pointer;
+        display: none;
+        fill: #1967D2;
+        height: 32px;
+        padding: 0 0 0 0;
+        width: 32px;
+      }
+
+      .colab-df-generate:hover {
+        background-color: #E2EBFA;
+        box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+        fill: #174EA6;
+      }
+
+      [theme=dark] .colab-df-generate {
+        background-color: #3B4455;
+        fill: #D2E3FC;
+      }
+
+      [theme=dark] .colab-df-generate:hover {
+        background-color: #434B5C;
+        box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+        filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+        fill: #FFFFFF;
+      }
+    </style>
+    <button class="colab-df-generate" onclick="generateWithVariable('X_after')"
+            title="Generate code using this dataframe."
+            style="display:none;">
+
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px"viewBox="0 0 24 24"
+       width="24px">
+    <path d="M7,19H8.4L18.45,9,17,7.55,7,17.6ZM5,21V16.75L18.45,3.32a2,2,0,0,1,2.83,0l1.4,1.43a1.91,1.91,0,0,1,.58,1.4,1.91,1.91,0,0,1-.58,1.4L9.25,21ZM18.45,9,17,7.55Zm-12,3A5.31,5.31,0,0,0,4.9,8.1,5.31,5.31,0,0,0,1,6.5,5.31,5.31,0,0,0,4.9,4.9,5.31,5.31,0,0,0,6.5,1,5.31,5.31,0,0,0,8.1,4.9,5.31,5.31,0,0,0,12,6.5,5.46,5.46,0,0,0,6.5,12Z"/>
+  </svg>
+    </button>
+    <script>
+      (() => {
+      const buttonEl =
+        document.querySelector('#id_f3bea6fc-3e35-40f2-9435-5d4dbcf76919 button.colab-df-generate');
+      buttonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+      buttonEl.onclick = () => {
+        google.colab.notebook.generateWithVariable('X_after');
+      }
+      })();
+    </script>
+  </div>
+
+    </div>
+  </div>
+</div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1122,6 +2354,372 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+  <div id="df-dc01cea9-7b25-4bfa-a612-596021ddd17f" class="colab-df-container">
+    <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Mean Sebelum</th>
+      <th>Std Sebelum</th>
+      <th>Mean Sesudah</th>
+      <th>Std Sesudah</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>4.954020</td>
+      <td>5.662970</td>
+      <td>-6.315935e-17</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>4.180769</td>
+      <td>4.170998</td>
+      <td>-1.578984e-16</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>4.115655</td>
+      <td>4.894315</td>
+      <td>-3.157968e-17</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>3.635357</td>
+      <td>4.575887</td>
+      <td>3.157968e-17</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>3.235284</td>
+      <td>2.402225</td>
+      <td>-1.184238e-16</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>3.092881</td>
+      <td>2.326796</td>
+      <td>-1.815831e-16</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>3.073359</td>
+      <td>2.191880</td>
+      <td>-2.368476e-17</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>2.992316</td>
+      <td>2.268322</td>
+      <td>0.000000e+00</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>2.862463</td>
+      <td>2.047029</td>
+      <td>7.894919e-18</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>3.033705</td>
+      <td>2.331620</td>
+      <td>0.000000e+00</td>
+      <td>1.0</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+    <div class="colab-df-buttons">
+
+  <div class="colab-df-container">
+    <button class="colab-df-convert" onclick="convertToInteractive('df-dc01cea9-7b25-4bfa-a612-596021ddd17f')"
+            title="Convert this dataframe to an interactive table."
+            style="display:none;">
+
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960">
+    <path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"/>
+  </svg>
+    </button>
+
+  <style>
+    .colab-df-container {
+      display:flex;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    .colab-df-buttons div {
+      margin-bottom: 4px;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+    <script>
+      const buttonEl =
+        document.querySelector('#df-dc01cea9-7b25-4bfa-a612-596021ddd17f button.colab-df-convert');
+      buttonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+      async function convertToInteractive(key) {
+        const element = document.querySelector('#df-dc01cea9-7b25-4bfa-a612-596021ddd17f');
+        const dataTable =
+          await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                    [key], {});
+        if (!dataTable) return;
+
+        const docLinkHtml = 'Like what you see? Visit the ' +
+          '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+          + ' to learn more about interactive tables.';
+        element.innerHTML = '';
+        dataTable['output_type'] = 'display_data';
+        await google.colab.output.renderOutput(dataTable, element);
+        const docLink = document.createElement('div');
+        docLink.innerHTML = docLinkHtml;
+        element.appendChild(docLink);
+      }
+    </script>
+  </div>
+
+
+    <div id="df-55431131-57b8-4015-b8a1-e0d7fcff277d">
+      <button class="colab-df-quickchart" onclick="quickchart('df-55431131-57b8-4015-b8a1-e0d7fcff277d')"
+                title="Suggest charts"
+                style="display:none;">
+
+<svg xmlns="http://www.w3.org/2000/svg" height="24px"viewBox="0 0 24 24"
+     width="24px">
+    <g>
+        <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/>
+    </g>
+</svg>
+      </button>
+
+<style>
+  .colab-df-quickchart {
+      --bg-color: #E8F0FE;
+      --fill-color: #1967D2;
+      --hover-bg-color: #E2EBFA;
+      --hover-fill-color: #174EA6;
+      --disabled-fill-color: #AAA;
+      --disabled-bg-color: #DDD;
+  }
+
+  [theme=dark] .colab-df-quickchart {
+      --bg-color: #3B4455;
+      --fill-color: #D2E3FC;
+      --hover-bg-color: #434B5C;
+      --hover-fill-color: #FFFFFF;
+      --disabled-bg-color: #3B4455;
+      --disabled-fill-color: #666;
+  }
+
+  .colab-df-quickchart {
+    background-color: var(--bg-color);
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: none;
+    fill: var(--fill-color);
+    height: 32px;
+    padding: 0;
+    width: 32px;
+  }
+
+  .colab-df-quickchart:hover {
+    background-color: var(--hover-bg-color);
+    box-shadow: 0 1px 2px rgba(60, 64, 67, 0.3), 0 1px 3px 1px rgba(60, 64, 67, 0.15);
+    fill: var(--button-hover-fill-color);
+  }
+
+  .colab-df-quickchart-complete:disabled,
+  .colab-df-quickchart-complete:disabled:hover {
+    background-color: var(--disabled-bg-color);
+    fill: var(--disabled-fill-color);
+    box-shadow: none;
+  }
+
+  .colab-df-spinner {
+    border: 2px solid var(--fill-color);
+    border-color: transparent;
+    border-bottom-color: var(--fill-color);
+    animation:
+      spin 1s steps(1) infinite;
+  }
+
+  @keyframes spin {
+    0% {
+      border-color: transparent;
+      border-bottom-color: var(--fill-color);
+      border-left-color: var(--fill-color);
+    }
+    20% {
+      border-color: transparent;
+      border-left-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+    }
+    30% {
+      border-color: transparent;
+      border-left-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+      border-right-color: var(--fill-color);
+    }
+    40% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+    }
+    60% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+    }
+    80% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+      border-bottom-color: var(--fill-color);
+    }
+    90% {
+      border-color: transparent;
+      border-bottom-color: var(--fill-color);
+    }
+  }
+</style>
+
+      <script>
+        async function quickchart(key) {
+          const quickchartButtonEl =
+            document.querySelector('#' + key + ' button');
+          quickchartButtonEl.disabled = true;  // To prevent multiple clicks.
+          quickchartButtonEl.classList.add('colab-df-spinner');
+          try {
+            const charts = await google.colab.kernel.invokeFunction(
+                'suggestCharts', [key], {});
+          } catch (error) {
+            console.error('Error during call to suggestCharts:', error);
+          }
+          quickchartButtonEl.classList.remove('colab-df-spinner');
+          quickchartButtonEl.classList.add('colab-df-quickchart-complete');
+        }
+        (() => {
+          let quickchartButtonEl =
+            document.querySelector('#df-55431131-57b8-4015-b8a1-e0d7fcff277d button');
+          quickchartButtonEl.style.display =
+            google.colab.kernel.accessAllowed ? 'block' : 'none';
+        })();
+      </script>
+    </div>
+
+  <div id="id_68dfb95c-4061-48c0-be48-93111b4b3f5d">
+    <style>
+      .colab-df-generate {
+        background-color: #E8F0FE;
+        border: none;
+        border-radius: 50%;
+        cursor: pointer;
+        display: none;
+        fill: #1967D2;
+        height: 32px;
+        padding: 0 0 0 0;
+        width: 32px;
+      }
+
+      .colab-df-generate:hover {
+        background-color: #E2EBFA;
+        box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+        fill: #174EA6;
+      }
+
+      [theme=dark] .colab-df-generate {
+        background-color: #3B4455;
+        fill: #D2E3FC;
+      }
+
+      [theme=dark] .colab-df-generate:hover {
+        background-color: #434B5C;
+        box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+        filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+        fill: #FFFFFF;
+      }
+    </style>
+    <button class="colab-df-generate" onclick="generateWithVariable('comparison_stats')"
+            title="Generate code using this dataframe."
+            style="display:none;">
+
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px"viewBox="0 0 24 24"
+       width="24px">
+    <path d="M7,19H8.4L18.45,9,17,7.55,7,17.6ZM5,21V16.75L18.45,3.32a2,2,0,0,1,2.83,0l1.4,1.43a1.91,1.91,0,0,1,.58,1.4,1.91,1.91,0,0,1-.58,1.4L9.25,21ZM18.45,9,17,7.55Zm-12,3A5.31,5.31,0,0,0,4.9,8.1,5.31,5.31,0,0,0,1,6.5,5.31,5.31,0,0,0,4.9,4.9,5.31,5.31,0,0,0,6.5,1,5.31,5.31,0,0,0,8.1,4.9,5.31,5.31,0,0,0,12,6.5,5.46,5.46,0,0,0,6.5,12Z"/>
+  </svg>
+    </button>
+    <script>
+      (() => {
+      const buttonEl =
+        document.querySelector('#id_68dfb95c-4061-48c0-be48-93111b4b3f5d button.colab-df-generate');
+      buttonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+      buttonEl.onclick = () => {
+        google.colab.notebook.generateWithVariable('comparison_stats');
+      }
+      })();
+    </script>
+  </div>
+
+    </div>
+  </div>
+</div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1146,10 +2744,23 @@ document.write(`
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;   - </span><span class="si">{</span><span class="n">save_dir</span><span class="si">}</span><span class="s2">/y_train_final.npy&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;   - </span><span class="si">{</span><span class="n">save_dir</span><span class="si">}</span><span class="s2">/y_test_final.npy&quot;</span><span class="p">)</span>
 
-<span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="s2">&quot;models&quot;</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">joblib</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">scaler</span><span class="p">,</span> <span class="s1">&#39;models/scaler.pkl&#39;</span><span class="p">)</span>
+<span class="n">model_dir</span> <span class="o">=</span> <span class="s2">&quot;/content/drive/MyDrive/uaspsd&quot;</span>
+<span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">model_dir</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Scaler berhasil disimpan di: models/scaler.pkl&quot;</span><span class="p">)</span>
+<span class="n">joblib</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">scaler</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">model_dir</span><span class="p">,</span> <span class="s2">&quot;scaler.pkl&quot;</span><span class="p">))</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Scaler berhasil disimpan di: </span><span class="si">{</span><span class="n">model_dir</span><span class="si">}</span><span class="s2">/scaler.pkl&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   MENYIMPAN DATA (SAVING)   
+ Data berhasil disimpan di folder: &#39;processed_data/&#39;
+   - processed_data/X_train_final.npy
+   - processed_data/X_test_final.npy
+   - processed_data/y_train_final.npy
+   - processed_data/y_test_final.npy
+Scaler berhasil disimpan di: /content/drive/MyDrive/uaspsd/scaler.pkl
 </pre></div>
 </div>
 </div>
@@ -1228,7 +2839,119 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Library &#39;sktime&#39; terdeteksi.
+   MINIROCKET + RIDGE CLASSIFIER   
+Dimensi Input MiniRocket (Train): (450, 1, 1500)
+Dimensi Input MiniRocket (Test) : (450, 1, 1500)
+
+ Sedang melakukan Transformasi MiniRocket (Ekstraksi Fitur)...
+Transformasi Selesai dalam 4.47 detik.
+   Shape Baru Train: (450, 9996) (Perhatikan jumlah fiturnya meledak jadi ~10.000!)
+
+ Sedang melatih Ridge ClassifierCV (Linear Model)...
+
+ HASIL AKHIR MINIROCKET:
+   Akurasi: 86.44%
+------------------------------
+              precision    recall  f1-score   support
+
+    Subjek 1       0.83      0.89      0.86        90
+    Subjek 2       0.80      0.93      0.86        90
+    Subjek 3       0.91      0.86      0.88        90
+    Subjek 4       0.89      0.78      0.83        90
+    Subjek 5       0.92      0.87      0.89        90
+
+    accuracy                           0.86       450
+   macro avg       0.87      0.86      0.86       450
+weighted avg       0.87      0.86      0.86       450
+</pre></div>
 </div>
+<img alt="_images/45a97f1011609868e3f527d862ce4e8afe394e22818a215953c49795654d252e.png" src="_images/45a97f1011609868e3f527d862ce4e8afe394e22818a215953c49795654d252e.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">joblib</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.pipeline</span><span class="w"> </span><span class="kn">import</span> <span class="n">make_pipeline</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+
+<span class="c1"># --- TAHAP FINAL: MENYIMPAN MODEL TERBAIK ---</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;   MENYIMPAN MODEL   &quot;</span><span class="p">)</span>
+
+<span class="n">final_pipeline</span> <span class="o">=</span> <span class="n">make_pipeline</span><span class="p">(</span><span class="n">minirocket</span><span class="p">,</span> <span class="n">classifier</span><span class="p">)</span>
+
+<span class="c1"># Path ke Google Drive</span>
+<span class="n">save_dir</span> <span class="o">=</span> <span class="s2">&quot;/content/drive/MyDrive/uaspsd&quot;</span>
+<span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">save_dir</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">model_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">save_dir</span><span class="p">,</span> <span class="s2">&quot;best_model_minirocket_84acc.pkl&quot;</span><span class="p">)</span>
+
+<span class="c1"># Simpan model</span>
+<span class="n">joblib</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">final_pipeline</span><span class="p">,</span> <span class="n">model_path</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot; Model berhasil disimpan!&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;   Lokasi: </span><span class="si">{</span><span class="n">model_path</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;   Akurasi: </span><span class="si">{</span><span class="n">acc_rocket</span><span class="o">*</span><span class="mi">100</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">%&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   MENYIMPAN MODEL   
+ Model berhasil disimpan!
+   Lokasi: /content/drive/MyDrive/uaspsd/best_model_minirocket_84acc.pkl
+   Akurasi: 86.44%
+</pre></div>
+</div>
+</div>
+</div>
+<section id="hapus-outliyer">
+<h2><strong>hapus outliyer</strong><a class="headerlink" href="#hapus-outliyer" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;   EKSPERIMEN: REMOVE OUTLIERS   &quot;</span><span class="p">)</span>
+
+<span class="c1"># 1. Filter Data (Hapus yang labelnya -1)</span>
+<span class="n">mask_clean</span> <span class="o">=</span> <span class="n">y_outliers</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span>
+<span class="n">X_train_clean</span> <span class="o">=</span> <span class="n">X_train_final</span><span class="p">[</span><span class="n">mask_clean</span><span class="p">]</span>
+<span class="n">y_train_clean</span> <span class="o">=</span> <span class="n">y_train_final</span><span class="p">[</span><span class="n">mask_clean</span><span class="p">]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Data Training Berkurang: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">X_train_final</span><span class="p">)</span><span class="si">}</span><span class="s2"> -&gt; </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">X_train_clean</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># 2. Reshape untuk MiniRocket</span>
+<span class="n">X_train_clean_3d</span> <span class="o">=</span> <span class="n">X_train_clean</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">X_train_clean</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="mi">1</span><span class="p">,</span> <span class="n">X_train_clean</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="c1"># X_test tetap sama (karena outlier di data test adalah kenyataan yang harus dihadapi)</span>
+<span class="n">X_test_3d</span> <span class="o">=</span> <span class="n">X_test_final</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">X_test_final</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="mi">1</span><span class="p">,</span> <span class="n">X_test_final</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+
+<span class="c1"># 3. Retrain MiniRocket dengan Data Bersih</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sktime.transformations.panel.rocket</span><span class="w"> </span><span class="kn">import</span> <span class="n">MiniRocket</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.linear_model</span><span class="w"> </span><span class="kn">import</span> <span class="n">RidgeClassifierCV</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Sedang melatih ulang model tanpa outlier...&quot;</span><span class="p">)</span>
+<span class="n">rocket_clean</span> <span class="o">=</span> <span class="n">MiniRocket</span><span class="p">()</span>
+<span class="n">X_train_trans_clean</span> <span class="o">=</span> <span class="n">rocket_clean</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X_train_clean_3d</span><span class="p">)</span>
+<span class="n">X_test_trans_clean</span>  <span class="o">=</span> <span class="n">rocket_clean</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X_test_3d</span><span class="p">)</span>
+
+<span class="n">classifier_clean</span> <span class="o">=</span> <span class="n">RidgeClassifierCV</span><span class="p">(</span><span class="n">alphas</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">logspace</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+<span class="n">classifier_clean</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train_trans_clean</span><span class="p">,</span> <span class="n">y_train_clean</span><span class="p">)</span>
+
+<span class="c1"># 4. Evaluasi</span>
+<span class="n">acc_clean</span> <span class="o">=</span> <span class="n">classifier_clean</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_test_trans_clean</span><span class="p">,</span> <span class="n">y_test_final</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;   - Akurasi BARU (Tanpa Outlier) : </span><span class="si">{</span><span class="n">acc_clean</span><span class="o">*</span><span class="mi">100</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">%&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   EKSPERIMEN: REMOVE OUTLIERS   
+Data Training Berkurang: 450 -&gt; 427
+Sedang melatih ulang model tanpa outlier...
+   - Akurasi BARU (Tanpa Outlier) : 84.22%
+</pre></div>
+</div>
+</div>
+</div>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -1308,7 +3031,10 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ringkasan-data-understanding"><strong>9. Ringkasan Data Understanding</strong></a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#eda">EDA</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#eda">EDA</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hapus-outliyer"><strong>hapus outliyer</strong></a></li>
+</ul>
+</li>
 </ul>
 
   </nav></div>
