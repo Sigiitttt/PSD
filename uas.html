@@ -416,6 +416,8 @@ document.write(`
 </ul>
 </li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#eda">EDA</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preprosesing"><strong>preprosesing</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modeling"><strong>modeling</strong></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hapus-outliyer"><strong>hapus outliyer</strong></a></li>
 </ul>
 </li>
@@ -431,7 +433,8 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="business-understanding">
+  <p>#<strong>Uas PSD semghandsubject</strong></p>
+<section id="business-understanding">
 <h1><strong>Business Understanding</strong><a class="headerlink" href="#business-understanding" title="Permalink to this heading">#</a></h1>
 <section id="latar-belakang-masalah">
 <h2><strong>1. Latar Belakang Masalah</strong><a class="headerlink" href="#latar-belakang-masalah" title="Permalink to this heading">#</a></h2>
@@ -1461,7 +1464,8 @@ Ditemukan 23 data yang dicurigai sebagai OUTLIER.
 <img alt="_images/d831b66f2dfe166f584ddb86bd269f76479513f450d9b478b49bd52b2e36a9ba.png" src="_images/d831b66f2dfe166f584ddb86bd269f76479513f450d9b478b49bd52b2e36a9ba.png" />
 </div>
 </div>
-<p>#preprosesing</p>
+<section id="preprosesing">
+<h2><strong>preprosesing</strong><a class="headerlink" href="#preprosesing" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
@@ -2765,7 +2769,9 @@ Scaler berhasil disimpan di: /content/drive/MyDrive/uaspsd/scaler.pkl
 </div>
 </div>
 </div>
-<p>#modeling</p>
+</section>
+<section id="modeling">
+<h2><strong>modeling</strong><a class="headerlink" href="#modeling" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
@@ -2784,9 +2790,6 @@ Scaler berhasil disimpan di: /content/drive/MyDrive/uaspsd/scaler.pkl
     <span class="c1"># Stop eksekusi jika library tidak ada</span>
     <span class="k">raise</span>
 
-<span class="c1"># --- 1. DATA RESHAPING (PENTING!) ---</span>
-<span class="c1"># sktime MiniRocket butuh input 3D: (Jumlah Sampel, Jumlah Channel, Panjang Sinyal)</span>
-<span class="c1"># Data kita saat ini 2D: (450, 1500) -&gt; Kita ubah jadi (450, 1, 1500)</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;   MINIROCKET + RIDGE CLASSIFIER   &quot;</span><span class="p">)</span>
 
@@ -2905,6 +2908,7 @@ weighted avg       0.87      0.86      0.86       450
 </div>
 </div>
 </div>
+</section>
 <section id="hapus-outliyer">
 <h2><strong>hapus outliyer</strong><a class="headerlink" href="#hapus-outliyer" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
@@ -3032,6 +3036,8 @@ Sedang melatih ulang model tanpa outlier...
 </ul>
 </li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#eda">EDA</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preprosesing"><strong>preprosesing</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modeling"><strong>modeling</strong></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hapus-outliyer"><strong>hapus outliyer</strong></a></li>
 </ul>
 </li>
